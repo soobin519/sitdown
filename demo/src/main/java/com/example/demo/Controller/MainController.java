@@ -6,12 +6,12 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.example.demo.Service.userImpl;
+import com.example.demo.Service.userImplService;
 
 @Controller
 public class MainController {
 	@Resource(name="userService")
-	private userImpl aa;
+	private userImplService aa;
 	
 	@RequestMapping(value="/")
 	public String main(Model model) {
