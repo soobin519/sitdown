@@ -1,4 +1,4 @@
-package com.example.demo.Controller;
+/*package com.example.demo.Controller;
 
 import javax.annotation.Resource;
 
@@ -18,4 +18,4 @@ public class MainController {
 		aa.execute(model);
 		return "index";
 	}
-}
+}*/
