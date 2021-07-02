@@ -54,7 +54,8 @@ public class UserUtilController {
 		return message;
 		
 	}
-  
+	
+	//로그인 
   	@RequestMapping(value = "/login", method = RequestMethod.POST)
 	public String login(@ModelAttribute userVO vo, HttpServletRequest req, RedirectAttributes rttr) throws Exception{
 		logger.info("post login");
@@ -71,7 +72,7 @@ public class UserUtilController {
 			
 		}
 		
-		return "redirect:/";
+		return "redirect:";
 	}
 	
 	@RequestMapping(value = "/logout", method = RequestMethod.GET)
@@ -80,6 +81,11 @@ public class UserUtilController {
 		session.invalidate();
 		
 		return "redirect:/";
+	}
+	
+	@RequestMapping(value="/")
+	public String main(Model model) {
+		return "home";
 	}
 
 }

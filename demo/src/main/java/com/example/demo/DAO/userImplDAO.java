@@ -21,7 +21,7 @@ public class userImplDAO implements userDAO {
 	  @Override 
 	  public int createUser(userVO user) {
 		  // 회원가입
-		  return sqlSession.insert(Namespace,user);
+		  return sql.insert(Namespace,user);
 	  }
   
   	//로그인 
