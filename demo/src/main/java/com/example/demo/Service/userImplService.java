@@ -13,13 +13,11 @@ import com.example.demo.VO.userVO;
 public class userImplService implements userService {
 	
 	@Resource(name="db")
-	private userDAO mm;
+	private userDAO udao;
 	
 	@Override
-	public int execute(Model model) {
-		List<userVO> user = mm.selectUser();
-		System.out.println(mm.selectUser());
-		model.addAttribute("test",user);
-		return 0;
+	public int createUser(userVO user) {
+		//회원가입
+		return udao.createUser(user);
 	}
 }

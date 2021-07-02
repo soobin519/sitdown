@@ -7,6 +7,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.example.demo.Service.userImplService;
+import com.example.demo.VO.userVO;
 
 @Controller
 public class MainController {
@@ -15,7 +16,7 @@ public class MainController {
 	
 	@RequestMapping(value="/")
 	public String main(Model model) {
-		aa.execute(model);
 		return "index";
 	}
+	
 }

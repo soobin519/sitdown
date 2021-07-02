@@ -8,4 +8,5 @@ import com.example.demo.VO.userVO;
 @Repository("db")
 public interface userDAO {
 	public List<userVO> selectUser();
+	public int createUser(userVO user);
 }

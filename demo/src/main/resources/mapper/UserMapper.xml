@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.example.demo.DAO.userDAO">
+
+<select id="selectUser" parameterType="String" resultType="com.example.demo.VO.userVO">
+	select * from user
+</select>
+
+<!-- 회원가입 -->
+<insert id="createUser" parameterType="com.example.demo.VO.userVO">
+	insert into user(name,userId,password,email) values(#{name},#{userId},#{password},#{email}) 
+</insert>
+
+
+</mapper>
