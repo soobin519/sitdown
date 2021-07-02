@@ -16,17 +16,11 @@ public class userImplService implements userService {
 	@Inject
 	private userDAO dao;
 	
-	/*@Resource(name="db")
-	private userDAO mm;
-	
 	@Override
-	public int execute(Model model) {
-		List<userVO> user = mm.selectUser();
-		System.out.println(mm.selectUser());
-		model.addAttribute("test",user);
-		return 0;
+	public int createUser(userVO user) {
+		//회원가입
+		return dao.createUser(user);
 	}
-	*/
 	
 	//로그인 
 	//dao에서 vo안에 조회된 값들이 담김 

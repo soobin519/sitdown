@@ -7,9 +7,12 @@ import com.example.demo.VO.userVO;
 
 @Repository
 public interface userDAO {
-	//public List<userVO> selectUser();
+
+  //회
+	public int createUser(userVO user);
 	
 	//로그인  
 	//login(userVO vo)에 파라미터 값이 전달되며 xml에서 조회한 데이터들은 userVO에 담김 
 	public userVO login(userVO vo) throws Exception;
+
 }

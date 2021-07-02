@@ -9,8 +9,14 @@
 	select * from user
 </select>
 
+<!-- 회원가입 -->
+<insert id="createUser" parameterType="com.example.demo.VO.userVO">
+	insert into user(name,userId,password,email) values(#{name},#{userId},#{password},#{email}) 
+</insert>
+
 <!--로그인-->
 <select id ="login" resultType="com.example.demo.VO.userVO">
 	SELECT * from user WHERE userId=#{userId} AND password=#{password}
 </select>
+
 </mapper>
