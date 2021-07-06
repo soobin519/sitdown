@@ -6,6 +6,8 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
@@ -34,28 +36,42 @@ public class UserUtilController {
   
   private static final org.slf4j.Logger logger = LoggerFactory.getLogger(UserUtilController.class);
 	
-	//아이디 중복 check 
+
+	//아이디 중복 check
+  	@RequestMapping(value="/checkID", method=RequestMethod.POST, produces ="application/json; charset=UTF-8")
+  	@ResponseBody
+  	public boolean checkID(String userId) {
+  		
+  		System.out.println("connect");
+  		System.out.println("id=>"+userId);
+  		String uid = userId;
+  		boolean result =true;
+  		
+  		int count = service.checkId(uid);
+  		if(count==1) result=false;
+  		
+  		return result;
+  	}
+  	
+  
   	@RequestMapping(value="/join")
   	public String joinPage(Model model) {
   		return "join";
   	}
 	
 	//회원가입
-	@RequestMapping(value="/createuser", method=RequestMethod.POST)
-	public String insertUser(@ModelAttribute userVO user) {
+	@RequestMapping(value="/createuser", method=RequestMethod.POST, produces ="application/json; charset=UTF-8")
+	@ResponseBody
+	public int insertUser(userVO user) {
 		int result = 0;
-		String message = "";
 		//패스워드 암호화 
 		System.out.println("user info "+user.toString());
 		String password = bcryptPE.encode(user.getPassword());
 		user.setPassword(password);
 		result = service.createUser(user);
 		
-		if(result>0) message = "success";
-		else message = "fail";
-		System.out.println("result"+message);
-		
-		return "index";
+		return result;
+
 		
 	}
 	

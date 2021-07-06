@@ -29,5 +29,11 @@ public class userImplDAO implements userDAO {
 	  public userVO login(userVO vo) throws Exception {
 		  return sql.selectOne("userMapper.login",vo);
 	  }
+	  
+	  //아이디 중복 체크 
+	  @Override 
+	  public int checkId(String id) {
+		  return sql.selectOne("Namespace"+".checkId",id);
+	  }
 	    
 }
