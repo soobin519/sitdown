@@ -82,14 +82,14 @@
             <div class="control-group">
               <div class="form-group floating-label-form-group controls mb-0 pb-2 floating-label-form-group-with-value">
                 <label>이름</label>
-                <input class="form-control" name="name" type="text" placeholder="username">
+                <input class="form-control" id="name" type="text" placeholder="username">
                 <p class="help-block text-danger"></p>
               </div>
             </div>
             <div class="control-group">
               <div class="form-group floating-label-form-group controls mb-0 pb-2 floating-label-form-group-with-value">
                 <label>email</label>
-                <input class="form-control" name="email" type="text" placeholder="email">
+                <input class="form-control" id="email" type="text" placeholder="email">
                 <p class="help-block text-danger"></p>
               </div>
             </div>
@@ -98,7 +98,7 @@
             <div class="col-lg-9">
               <div class="form-group floating-label-form-group controls mb-0 pb-2 floating-label-form-group-with-value">
                 <label>아이디</label>
-                <input class="form-control" name="userId" type="text" placeholder="userID">
+                <input class="form-control" id="userId" type="text" placeholder="userID">
   <p class="help-block text-danger"></p>
               </div>
              </div>
@@ -110,14 +110,14 @@
             <div class="control-group">
               <div class="form-group floating-label-form-group controls mb-0 pb-2 floating-label-form-group-with-value">
                 <label>비밀번호</label>
-                <input class="form-control" name="password" type="password" placeholder="Password" value="">
+                <input class="form-control" id="password" type="password" placeholder="Password" value="">
                 <p class="help-block text-danger"></p>
               </div>
             </div>
             <div class="control-group">
                 <div class="form-group floating-label-form-group controls mb-0 pb-2">
                   <label>Confirm Password</label>
-                  <input class="form-control" name="password2" type="password" placeholder="Confirm Password" value="">
+                  <input class="form-control" id="checkpw" type="password" placeholder="Confirm Password" value="">
                   <p class="help-block text-danger"></p>
                 </div>
               </div>
@@ -125,7 +125,7 @@
             <br>
             <div id="success"></div>
             <div class="form-group">
-              <button type="submit" class="btn btn-primary btn-xl" id="sendMessageButton">가입하기</button>
+              <button type="button" class="btn btn-primary btn-xl" id="sendMessageButton" onclick='create();'>가입하기</button>
             </div>
           </form>
         </div>
@@ -171,9 +171,63 @@
 <script src="http://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
 <script type="text/javascript">
 
+function create(){
+	
+	var data = new FormData();
+	
+	let id = $('#userId').val();
+	let email = $('#email').val();
+	let password = $('#password').val();
+	let password2 = $('#checkpw').val();
+	let name = $('#name').val();
+	
+	if(name==='undefined'||name===''){
+		alert('모두 입력해주세요');
+		return false;
+	}
+	
+	console.log(password);
+	console.log(password2);
+	
+	if(password!==password2){
+		alert("패스워드가 일치하지 않습니다.");
+		return false;
+	}else{
+		
+		data.append('userId',id);
+		data.append('email',email);
+		data.append('password',password);
+		data.append('name',name);
+		
+		$.ajax({
+		    url: 'createuser',
+		    processData: false,  
+		    contentType: false, 
+		    data: data, 
+		    type: 'POST',
+		    success: function(res){
+		    	console.log(res);
+		    	if(res>0){
+		    		alert('회원가입 완료');
+		    		location.href='/';
+		    	}else{
+		    		alert('다시 시도해주세요');
+		    		return false;
+		    	}
+		    },
+		    error : function(e){
+		    console.log(e);
+		    }
+		})
+		
+	}
+	
+}
+
 //아이디 중복 체크
 function checkUserId(){
 	
+	var data = new FormData();
 	//let id = document.getElementById("userId").val(); // 입력된 아이디값 가져오기
 	let id = $('#userId').val();
 	console.log("id"+id);
@@ -185,26 +239,26 @@ function checkUserId(){
 	}
 	
 	var data=new FormData();
-	data.append('id',id);
+	data.append('userId',id);
 	
 	//var url = "checkID.do";
 	//console.log(url);
 	
-	$.ajax({
-		url:"checkID.do",
-		type:'post',
-		dataType : 'json',
-		data:{"id":id},
-		success: function(res) {
-			if(res==true){
-				alert("사용 가능한 아이디입니다.");
-				return false;
-			}else{
-				alert("이미 사용중인 아이디입니다");
-				return false;
-			}
-		}
-	});
+		$.ajax({
+		    url:'checkID',
+		    processData: false,  
+		    contentType: false, 
+		    data: data, 
+		    type: 'POST',
+		    success: function(res){
+		    	console.log(res);
+		    	alert(res);
+		  
+		    },
+		    error : function(e){
+		    console.log(e);
+		    }
+		})
 	
 }
   
