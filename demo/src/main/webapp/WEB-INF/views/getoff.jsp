@@ -3,13 +3,14 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
-<<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Sit Down</title>
+    <link href="${ pageContext.request.contextPath }/resources/css/main.css" rel="stylesheet">
+    <title>SIT DOWN</title>
     <style>
         body {
             margin: 0;
@@ -19,8 +20,8 @@
         }
 
         .box {
-            width: 300px;
-            padding: 40px;
+            width: 500px;
+            padding: 50px;
             position: absolute;
             top: 50%;
             left: 50%;
@@ -59,10 +60,10 @@
                 border: 0;
                 background: none;
                 display: block;
-                margin: 20px auto;
+                margin: 15px auto;
                 text-align: center;
                 border: 2px solid #ffe597;
-                padding: 14px 40px;
+                padding: 10px 30px;
                 outline: none;
                 color: #808080;
                 border-radius: 24px;
@@ -73,16 +74,46 @@
                 .box input[type = "submit"]:hover {
                     background: #ffe597;
                 }
+                
+               .form-control{
+               		width:60%;
+               		margin-bottom:18px;
+               		text-align-last:center;
+               		margin-inline:auto;
+             
+               }
+          
     </style>
 </head>
 <body>
     <form class="box" action="index.html" method="post">
         <p style="font-size:30px; color:black; font-family:'210 맨발의청춘'";>하차정보 등록</p>
-        <input type="text" name="" placeholder="Username">
-        <input type="text" name="" placeholder="ID">
-        <input type="password" name="" placeholder="Password">
-        <input type="text" name="" placeholder="Phone number">
-        <input type="submit" name="" value="Join">
+        <select name="select" id="selectLine" class="form-control">
+        	<option>분당선 </option>
+        	<option>2</option>
+        	<option>3</option>
+        	<option>4</option>
+        </select>
+        <select name="select" id="selectTrain" class="form-control">
+        	<option>노선을 선택해주세요 </option>
+        	<option>2</option>
+        	<option>3</option>
+        	<option>4</option>
+        </select>
+        <select name="select" id="selectStation" class="form-control">
+        	<option>하차역을 선택해주세요 </option>
+        	<option>2</option>
+        	<option>3</option>
+        	<option>4</option>
+        </select>
+        <select name="select" id="selectNum" class="form-control">
+        	<option>1량</option>
+        	<option>2</option>
+        	<option>3</option>
+        	<option>4</option>
+        </select>
+        <input type="submit" name="" value="다음">
     </form>
+    <script type="text/javascript" src="${ pageContext.request.contextPath }/resources/js/main.js"></script>
 </body>
 </html>
