@@ -40,7 +40,7 @@
           </li>
           
           <li class="nav-item mx-0 mx-lg-1">
-            <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="/accounts/login/">Login</a>
+            <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="/user/logout/">LOGOUT</a>
           </li>
           
         </ul>
@@ -70,12 +70,12 @@
       <div class="row">
         <div class="col-lg-8 mx-auto">
           <!-- To configure the contact form email address, go to mail/contact_me.php and update the email address in the PHP file on line 19. -->
-          <form method = "POST" action="/accounts/login/">
+          <form method = "POST" action="checkuser">
               <input type="hidden" name="csrfmiddlewaretoken" value="jSSP77gU6Koyd4XtS8L2UgFKhpVtyfFbwi3KbokHRMPHNfKTygAuECgMyw8NFhbS">
             <div class="control-group">
               <div class="form-group floating-label-form-group controls mb-0 pb-2">
-                <label>username</label>
-                <input class="form-control" name="username" type="text" placeholder="username" required="required" data-validation-required-message="Please enter your ID.">
+                <label>id</label>
+                <input class="form-control" name="userId" type="text" placeholder="userId" required="required" data-validation-required-message="Please enter your ID.">
                 <p class="help-block text-danger"></p>
               </div>
             </div>
@@ -98,7 +98,8 @@
 
     </div>
   </section>
-
+  
+  
 
   <!-- Footer -->
   <footer class="footer text-center">
@@ -143,7 +144,7 @@
   <!-- Copyright Section -->
   <section class="copyright py-4 text-center text-white">
     <div class="container">
-      <small>Copyright &copy; Your Website 2019</small>
+      <small>Copyright &copy; Your Website 2021</small>
     </div>
   </section>
 

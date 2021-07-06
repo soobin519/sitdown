@@ -47,7 +47,7 @@
           </li>
           
           <li class="nav-item mx-0 mx-lg-1">
-            <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="/accounts/login/">Login</a>
+            <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="/user/login/">Login</a>
           </li>
           
         </ul>
@@ -73,16 +73,23 @@
         <div class="divider-custom-line"></div>
       </div> -->
 
-      <!-- login -->
+      <!-- join -->
       <div class="row">
         <div class="col-lg-7 mx-auto">
           <!-- To configure the contact form email address, go to mail/contact_me.php and update the email address in the PHP file on line 19. -->
-          <form method="POST" action="/accounts/signup/">
+          <form method="POST" action="createuser">
               <input type="hidden" name="csrfmiddlewaretoken" value="RfLaJqq5naRirQI44wHhC1i1Z8SlBzO3lcnpNBEUxliXu90cin3BnvHkVVKnEND2">
             <div class="control-group">
               <div class="form-group floating-label-form-group controls mb-0 pb-2 floating-label-form-group-with-value">
                 <label>이름</label>
-                <input class="form-control" name="username" type="text" placeholder="username">
+                <input class="form-control" name="name" type="text" placeholder="username">
+                <p class="help-block text-danger"></p>
+              </div>
+            </div>
+            <div class="control-group">
+              <div class="form-group floating-label-form-group controls mb-0 pb-2 floating-label-form-group-with-value">
+                <label>email</label>
+                <input class="form-control" name="email" type="text" placeholder="email">
                 <p class="help-block text-danger"></p>
               </div>
             </div>
@@ -91,7 +98,7 @@
             <div class="col-lg-9">
               <div class="form-group floating-label-form-group controls mb-0 pb-2 floating-label-form-group-with-value">
                 <label>아이디</label>
-                <input class="form-control" name="username" type="text" placeholder="ID">
+                <input class="form-control" name="userId" type="text" placeholder="userID">
                 <p class="help-block text-danger"></p>
               </div>
              </div>
@@ -103,7 +110,7 @@
             <div class="control-group">
               <div class="form-group floating-label-form-group controls mb-0 pb-2 floating-label-form-group-with-value">
                 <label>비밀번호</label>
-                <input class="form-control" name="password1" type="password" placeholder="Password" value="">
+                <input class="form-control" name="password" type="password" placeholder="Password" value="">
                 <p class="help-block text-danger"></p>
               </div>
             </div>
