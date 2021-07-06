@@ -28,4 +28,10 @@ public class userImplService implements userService {
 	public userVO login(userVO vo) throws Exception {
 		return dao.login(vo);
 	}
+	
+	//아이디 체크 
+	@Override
+	public int checkId(String id) {
+		return dao.checkId(id);
+	}
 }
