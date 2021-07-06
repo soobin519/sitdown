@@ -38,12 +38,13 @@ public class UserUtilController {
 	
 
 	//아이디 중복 check
-  	@RequestMapping(value="checkID.do", method=RequestMethod.POST)
+  	@RequestMapping(value="/checkID", method=RequestMethod.POST, produces ="application/json; charset=UTF-8")
   	@ResponseBody
-  	public boolean checkID(@RequestParam("id") String id, HttpServletRequest request) {
+  	public boolean checkID(String userId) {
   		
-  		System.out.println("id=>"+id);
-  		String uid = id;
+  		System.out.println("connect");
+  		System.out.println("id=>"+userId);
+  		String uid = userId;
   		boolean result =true;
   		
   		int count = service.checkId(uid);
@@ -59,20 +60,17 @@ public class UserUtilController {
   	}
 	
 	//회원가입
-	@RequestMapping(value="/createuser", method=RequestMethod.POST)
-	public String insertUser(@ModelAttribute userVO user) {
+	@RequestMapping(value="/createuser", method=RequestMethod.POST, produces ="application/json; charset=UTF-8")
+	@ResponseBody
+	public int insertUser(userVO user) {
 		int result = 0;
-		String message = "";
 		//패스워드 암호화 
 		System.out.println("user info "+user.toString());
 		String password = bcryptPE.encode(user.getPassword());
 		user.setPassword(password);
 		result = service.createUser(user);
 		
-		if(result>0) message = "success";
-		else message = "fail";
-		
-		return "index";
+		return result;
 
 		
 	}
