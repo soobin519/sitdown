@@ -35,6 +35,11 @@ public class UserUtilController {
   private static final org.slf4j.Logger logger = LoggerFactory.getLogger(UserUtilController.class);
 	
 	//아이디 중복 check
+  
+  	@RequestMapping(value="/join")
+  	public String joinPage(Model model) {
+  		return "join";
+  	}
 	
 	//회원가입
 	@RequestMapping(value="/createuser", method=RequestMethod.POST)
