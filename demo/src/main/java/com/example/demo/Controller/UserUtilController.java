@@ -36,6 +36,7 @@ public class UserUtilController {
   
   private static final org.slf4j.Logger logger = LoggerFactory.getLogger(UserUtilController.class);
 	
+
 	//아이디 중복 check
   	@RequestMapping(value="checkID.do", method=RequestMethod.POST)
   	@ResponseBody
@@ -71,12 +72,19 @@ public class UserUtilController {
 		if(result>0) message = "success";
 		else message = "fail";
 		
-		return "redirect:/";
+		return "index";
+
 		
 	}
 	
+	//로그인 페이지 
+	@RequestMapping(value="/login")
+	public String loginPage(Model model) {
+		return "login";
+	}
+	
 	//로그인 
-  	@RequestMapping(value = "/login", method = RequestMethod.POST)
+  	@RequestMapping(value = "/checkuser", method = RequestMethod.POST)
 	public String login(@ModelAttribute userVO vo, HttpServletRequest req, RedirectAttributes rttr) throws Exception{
 		logger.info("post login");
 		
@@ -92,7 +100,7 @@ public class UserUtilController {
 			
 		}
 		
-		return "redirect:";
+		return "index";
 	}
 	
 	@RequestMapping(value = "/logout", method = RequestMethod.GET)
@@ -103,9 +111,5 @@ public class UserUtilController {
 		return "redirect:/";
 	}
 	
-	@RequestMapping(value="/login2")
-	public String main(Model model) {
-		return "login";
-	}
 
 }
