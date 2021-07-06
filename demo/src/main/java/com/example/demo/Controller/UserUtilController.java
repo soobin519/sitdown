@@ -88,9 +88,9 @@ public class UserUtilController {
 		return "redirect:/";
 	}
 	
-	@RequestMapping(value="/")
+	@RequestMapping(value="/login2")
 	public String main(Model model) {
-		return "home";
+		return "login";
 	}
 
 }
