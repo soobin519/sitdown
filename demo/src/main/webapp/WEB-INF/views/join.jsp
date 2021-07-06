@@ -91,12 +91,12 @@
             <div class="col-lg-9">
               <div class="form-group floating-label-form-group controls mb-0 pb-2 floating-label-form-group-with-value">
                 <label>아이디</label>
-                <input class="form-control" name="username" type="text" placeholder="ID">
+                <input class="form-control" id="userId" type="text" placeholder="ID">
                 <p class="help-block text-danger"></p>
               </div>
              </div>
              <div class="col-lg-3">
-             	<button type="submit" class="mb-2 mr-2 border-0 btn-transition btn btn-outline-success" id="idcheck">중복 확인</button>
+             	<button type="button" class="mb-2 mr-2 border-0 btn-transition btn btn-outline-success" id="idcheck" onclick='checkUserId(); return false'>중복 확인</button>
              </div>
             </div>
             </div>
@@ -159,21 +159,49 @@
     </div>
   </section>
 
-  <!-- Bootstrap core JavaScript -->
-  <script src="/static/vendor/jquery/jquery.min.js"></script>
-  <script src="/static/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
-  <!-- Plugin JavaScript -->
-  <script src="/static/vendor/jquery-easing/jquery.easing.min.js"></script>
+<script src="http://code.jquery.com/jquery-1.11.2.min.js"></script>
+<script src="http://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+<script type="text/javascript">
 
-  <!-- Contact Form JavaScript -->
-  <script src="/static/js/jqBootstrapValidation.js"></script>
-  <script src="/static/js/contact_me.js"></script>
-
-  <!-- Custom scripts for this template -->
-  <script src="/static/js/freelancer.min.js"></script>
-
-
+//아이디 중복 체크
+function checkUserId(){
+	
+	//let id = document.getElementById("userId").val(); // 입력된 아이디값 가져오기
+	let id = $('#userId').val();
+	console.log("id"+id);
+	
+	//입력된 값이 없을경우
+	if(id===''||id==='undefined'){
+		alert("아이디를 입력해주세요");
+		return false;
+	}
+	
+	var data=new FormData();
+	data.append('id',id);
+	
+	//var url = "checkID.do";
+	//console.log(url);
+	
+	$.ajax({
+		url:"checkID.do",
+		type:'post',
+		dataType : 'json',
+		data:{"id":id},
+		success: function(res) {
+			if(res==true){
+				alert("사용 가능한 아이디입니다.");
+				return false;
+			}else{
+				alert("이미 사용중인 아이디입니다");
+				return false;
+			}
+		}
+	});
+	
+}
+  
+</script>
 
 
 </body></html>

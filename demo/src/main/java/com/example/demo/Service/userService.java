@@ -12,5 +12,7 @@ public interface userService {
 	public int createUser(userVO user);
 	//로그인 
 	public userVO login(userVO vo) throws Exception;
+	//아이디 체크 
+	public int checkId(String userId);
 
 }
