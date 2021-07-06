@@ -6,6 +6,8 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
@@ -35,6 +37,20 @@ public class UserUtilController {
   private static final org.slf4j.Logger logger = LoggerFactory.getLogger(UserUtilController.class);
 	
 	//아이디 중복 check
+  	@RequestMapping(value="checkID.do", method=RequestMethod.POST)
+  	@ResponseBody
+  	public boolean checkID(@RequestParam("id") String id, HttpServletRequest request) {
+  		
+  		System.out.println("id=>"+id);
+  		String uid = id;
+  		boolean result =true;
+  		
+  		int count = service.checkId(uid);
+  		if(count==1) result=false;
+  		
+  		return result;
+  	}
+  	
   
   	@RequestMapping(value="/join")
   	public String joinPage(Model model) {
@@ -54,9 +70,8 @@ public class UserUtilController {
 		
 		if(result>0) message = "success";
 		else message = "fail";
-		System.out.println("result"+message);
 		
-		return message;
+		return "redirect:/";
 		
 	}
 	
