@@ -16,7 +16,7 @@ public class userImplDAO implements userDAO {
 
 	  @Inject
 	  private SqlSession sql;	    
-	  private static final String Namespace = " com.example.demo.UserMapper";
+	  private static final String Namespace = "com.example.demo.UserMapper";
 	    
 	  @Override 
 	  public int createUser(userVO user) {
@@ -32,8 +32,8 @@ public class userImplDAO implements userDAO {
 	  
 	  //아이디 중복 체크 
 	  @Override 
-	  public int checkId(String id) {
-		  return sql.selectOne("Namespace"+".checkId",id);
+	  public int checkId(userVO user) {
+		  return sql.selectOne("com.example.demo.UserMapper.checkId",user);
 	  }
 	    
 }

@@ -40,17 +40,14 @@ public class UserUtilController {
 	//아이디 중복 check
   	@RequestMapping(value="/checkID", method=RequestMethod.POST, produces ="application/json; charset=UTF-8")
   	@ResponseBody
-  	public boolean checkID(String userId) {
+  	public int checkID(userVO user) {
   		
   		System.out.println("connect");
-  		System.out.println("id=>"+userId);
-  		String uid = userId;
-  		boolean result =true;
+  		System.out.println("id=>"+user.toString());
   		
-  		int count = service.checkId(uid);
-  		if(count==1) result=false;
+  		int count = service.checkId(user);
   		
-  		return result;
+  		return count;
   	}
   	
   

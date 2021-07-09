@@ -31,7 +31,7 @@ public class userImplService implements userService {
 	
 	//아이디 체크 
 	@Override
-	public int checkId(String id) {
-		return dao.checkId(id);
+	public int checkId(userVO user) {
+		return dao.checkId(user);
 	}
 }

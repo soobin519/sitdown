@@ -6,6 +6,12 @@ public class userVO {
 	private String password;
 	private String email;
 	
+	
+	public userVO() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
 	public userVO(String name, String userId, String password, String email) {
 		super();
 		this.name = name;

@@ -16,6 +16,6 @@ public interface userDAO {
 	public userVO login(userVO vo) throws Exception;
 	
 	//아이디 체크 
-	public int checkId(String id);
+	public int checkId(userVO user);
 
 }
