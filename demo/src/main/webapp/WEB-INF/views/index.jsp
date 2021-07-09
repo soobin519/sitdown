@@ -36,6 +36,7 @@
                 </button>
                 <div class="collapse navbar-collapse" id="navbarResponsive">
                     <ul class="navbar-nav ms-auto">
+
                     	<!-- 로그인 했을 경우 --> 
                     	<c:if test="${user !=null }">                    		
                     			<li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="#portfolio">Menu</a></li>
@@ -49,6 +50,7 @@
                         		<li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="/user/login">LOGIN</a></li>	
                         		<li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="/user/join">JOIN US</a></li>
                     	</c:if>                   
+
                     </ul>
                 </div>
             </div>

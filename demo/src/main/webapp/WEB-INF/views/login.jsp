@@ -40,7 +40,7 @@
           </li>
           
           <li class="nav-item mx-0 mx-lg-1">
-            <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="/user/logout/" onclick="alert('로그아웃완료');return false;">LOGOUT</a>
+            <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="/user/join/">JOIN US</a>
           </li>
           
         </ul>
