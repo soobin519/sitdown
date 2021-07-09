@@ -20,7 +20,7 @@
 </select>
 
 <!--아이디 중복 체크-->
-<select id ="checkId" parameterType="String">
+<select id ="checkId" parameterType="com.example.demo.VO.userVO" resultType="_int">
 	SELECT count(*) from user WHERE userId=#{userId}
 </select>
 

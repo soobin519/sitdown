@@ -121,7 +121,7 @@
                   <p class="help-block text-danger"></p>
                 </div>
               </div>
-            
+            	<input type="hidden" id="isChecked" value="0">
             <br>
             <div id="success"></div>
             <div class="form-group">
@@ -180,6 +180,14 @@ function create(){
 	let password = $('#password').val();
 	let password2 = $('#checkpw').val();
 	let name = $('#name').val();
+	
+	let isChecked = document.getElementById('isChecked').value;
+	console.log("isChecked=>"+isChecked);
+	
+	if(isChecked==='0'){
+		alert("아이디 중복확인이 필요합니다.");
+		return false;
+	}
 	
 	if(name==='undefined'||name===''){
 		alert('모두 입력해주세요');
@@ -251,9 +259,15 @@ function checkUserId(){
 		    data: data, 
 		    type: 'POST',
 		    success: function(res){
-		    	console.log(res);
-		    	alert(res);
-		  
+		  		if(res>0){
+		  			alert("이미 사용중인 아이디입니다.");
+		  			document.getElementById('isChecked').value = 0;
+		  			return false;
+		  		}else{
+		  			alert("사용가능한 아이디입니다.");
+		  			document.getElementById('isChecked').value = 1;
+		  			return false;
+		  		}
 		    },
 		    error : function(e){
 		    console.log(e);
