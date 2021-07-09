@@ -20,9 +20,6 @@ public class userVO {
 		this.email = email;
 	}
 	
-	public userVO(String userId) {
-		this.userId = userId;
-	}
 	
 	public String getName() {
 		return name;
