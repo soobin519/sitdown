@@ -89,16 +89,14 @@
     <form class="box" action="index.html" method="post">
         <p style="font-size:30px; color:black; font-family:'210 맨발의청춘'";>하차정보 등록</p>
         <select name="select" id="selectLine" class="form-control">
-        	<option>분당선 </option>
-        	<option>2</option>
-        	<option>3</option>
-        	<option>4</option>
+        	<option>노선을 선택해주세요</option>
+        	<option value="분당선">분당선</option>
+        	<option value="8호선">8호선</option>
+        	<option value="2호선">2호선</option>
+        	<option value="3호선">3호선</option>
         </select>
         <select name="select" id="selectTrain" class="form-control">
-        	<option>노선을 선택해주세요 </option>
-        	<option>2</option>
-        	<option>3</option>
-        	<option>4</option>
+        	<option>열차를 선택해주세요 </option>
         </select>
         <select name="select" id="selectStation" class="form-control">
         	<option>하차역을 선택해주세요 </option>
@@ -114,6 +112,40 @@
         </select>
         <input type="submit" name="" value="다음">
     </form>
-    <script type="text/javascript" src="${ pageContext.request.contextPath }/resources/js/main.js"></script>
+<script type="text/javascript" src="${ pageContext.request.contextPath }/resources/js/main.js"/></script>
+<script src="http://code.jquery.com/jquery-1.11.2.min.js"></script>
+<script src="http://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+<script type="text/javascript">
+ 
+$(function(){
+	alert('hi');
+	$("#selectLine").on('change',function(){
+		var line = $('#selectLine option:selected').val();
+		console.log(line);
+		$.ajax({
+			url: 'trainList',
+			type: 'post',
+			data: { line : line },
+			success: function(res){
+				$('#selectTrain').empty();
+				$('#selectTrain').html(res);
+				
+			},
+			error: function(error) {
+				console.log(error.status);
+			}
+		}); // Ajax
+		
+		
+	})
+	
+	
+})
+
+    	
+    
+    
+</script>
+    
 </body>
 </html>
