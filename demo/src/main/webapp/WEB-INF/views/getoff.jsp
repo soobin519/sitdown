@@ -22,6 +22,7 @@
     <!--  <link href="${ pageContext.request.contextPath }/resources/css/main.css" rel="stylesheet"> -->
 
 </head>
+
 <body id="page-top">
 
   <!-- Navigation -->
@@ -105,6 +106,7 @@
          <div class="control-group" style="text=align:center">
         	<button type="submit" class="btn btn-primary btn-xl" id="sendMessageButton">다음</button>
     	</div>
+
     </form>
     </div>
     </div>
@@ -115,9 +117,10 @@
 <script src="http://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
 <script type="text/javascript"> 
 $(function(){
-	alert('hi');
+	
+	// 노선 별 열차list 가져오기 
 	$("#selectLine").on('change',function(){
-		var line = $('#selectLine option:selected').val();
+		var line = $('#selectLine option:selected').text();
 		console.log(line);
 		$.ajax({
 			url: 'trainList',
@@ -133,6 +136,25 @@ $(function(){
 			}
 		}); // Ajax
 		
+		
+	})
+	
+	// 하차역 정보 가져오기 Ajax 
+	$('#selectTrain').on('change',function(){
+		var lineNum = $('#selectLine option:selected').val();
+		console.log(lineNum);
+		$.ajax({
+			url: 'stationList',
+			type: 'post',
+			data: { lineNum : lineNum },
+			success: function(res){
+				$('#selectStation').empty();
+				$('#selectStation').html(res);
+			},
+			error: function(error) {
+				console.log(error.status);
+			}
+		}); //Ajax
 		
 	})
 	

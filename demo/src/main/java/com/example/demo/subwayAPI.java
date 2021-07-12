@@ -22,7 +22,7 @@ import com.example.demo.VO.trainVO;
 @RestController
 public class subwayAPI {
 	
-	private final static String url = "http://swopenapi.seoul.go.kr/api/subway/5048634d437470673130386548486867/json/realtimePosition/1/20/";
+	private final static String url = "http://swopenapi.seoul.go.kr/api/subway/5048634d437470673130386548486867/json/realtimePosition/1/40/";
 	
 	// API 가져오기 위한 메소드
 	public static List<Map<String, Object>> getSubwayAPI(String station) throws ParseException {
