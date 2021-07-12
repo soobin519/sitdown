@@ -67,38 +67,36 @@
     
     <div class="row">
  	<div class="col-lg-7 mx-auto">
-    <form  action="index.html" method="post">
+    <form  action="selectSeat" method="post">
         <div class="control-group" style="width:350px; margin:0 auto;" >
-        	<select name="select" id="selectLine" class="form-control">
-        		<option>노선을 선택해주세요</option>
-        		<option value="분당선">분당선</option>
-        		<option value="8호선">8호선</option>
-        		<option value="2호선">2호선</option>
-        		<option value="3호선">3호선</option>
-        	</select>
+        	<select name="subwayId" id="selectLine" class="form-control">
+        	<option>노선을 선택해주세요</option>
+        	<c:forEach items="${lineInfo}" var="line">
+     			<option value="${line.id}"><c:out value="${line.line}"/></option>
+			</c:forEach>
+			</select>
         </div>
         <br>
         <div class="control-group" style="width:350px; margin:0 auto;">
-        	<select name="select" id="selectTrain" class="form-control">
+        	<select name="trainNo" id="selectTrain" class="form-control">
         		<option>열차를 선택해주세요 </option>
         	</select>
         </div>
         <br>
         <div class="control-group" style="width:350px; margin:0 auto;">
-        	<select name="select" id="selectStation" class="form-control">
+        	<select name="statnTnm" id="selectStation" class="form-control">
         		<option>하차역을 선택해주세요 </option>
-        		<option>2</option>
-        		<option>3</option>
-        		<option>4</option>
         	</select>
         </div>
         <br>
         <div class="control-group" style="width:350px; margin:0 auto;">
         	<select name="select" id="selectNum" class="form-control">
         		<option>1량</option>
-        		<option>2</option>
-        		<option>3</option>
-        		<option>4</option>
+        		<option>2량</option>
+        		<option>3량</option>
+        		<option>4량</option>
+        		<option>5량</option>
+        		<option>6량</option>
         	</select>
         </div>
         
