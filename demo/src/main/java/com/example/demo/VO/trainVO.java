@@ -6,6 +6,7 @@ public class trainVO {
 	private int trainNo; // 열차번호 
 	private String statnNm; //현재 위치 
 	private String statnTnm; //목적지
+	private int carNum;
 	
 	
 	public trainVO() {
@@ -13,13 +14,14 @@ public class trainVO {
 		// TODO Auto-generated constructor stub
 	}
 
-	public trainVO(int subwayId, String subwayNm, int trainNo, String statnNm, String statnTnm) {
+	public trainVO(int subwayId, String subwayNm, int trainNo, String statnNm, String statnTnm, int carNum) {
 		super();
 		this.subwayId = subwayId;
 		this.subwayNm = subwayNm;
 		this.trainNo = trainNo;
 		this.statnNm = statnNm;
 		this.statnTnm = statnTnm;
+		this.carNum = carNum;
 	}
 
 	@Override
@@ -57,6 +59,13 @@ public class trainVO {
 	}
 	public void setStatnTnm(String statnTnm) {
 		this.statnTnm = statnTnm;
+	}
+	
+	public int getCarNum() {
+		return carNum;
+	}
+	public void setCarNum(int carNum) {
+		this.carNum = carNum;
 	}
 	
 	

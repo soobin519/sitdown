@@ -86,29 +86,27 @@
     </style>
 </head>
 <body>
-    <form class="box" action="index.html" method="post">
+    <form class="box" action="selectSeat" method="post">
         <p style="font-size:30px; color:black; font-family:'210 맨발의청춘'";>하차정보 등록</p>
         <select name="select" id="selectLine" class="form-control">
         	<option>노선을 선택해주세요</option>
-        	<option value="분당선">분당선</option>
-        	<option value="8호선">8호선</option>
-        	<option value="2호선">2호선</option>
-        	<option value="3호선">3호선</option>
+        	<c:forEach items="${lineInfo}" var="line">
+     			<option value="${line.id}"><c:out value="${line.line}"/></option>
+			</c:forEach>
         </select>
         <select name="select" id="selectTrain" class="form-control">
         	<option>열차를 선택해주세요 </option>
         </select>
         <select name="select" id="selectStation" class="form-control">
         	<option>하차역을 선택해주세요 </option>
-        	<option>2</option>
-        	<option>3</option>
-        	<option>4</option>
         </select>
         <select name="select" id="selectNum" class="form-control">
         	<option>1량</option>
-        	<option>2</option>
-        	<option>3</option>
-        	<option>4</option>
+        	<option>2량</option>
+        	<option>3량</option>
+        	<option>4량</option>
+        	<option>5량</option>
+        	<option>6량</option>
         </select>
         <input type="submit" name="" value="다음">
     </form>
@@ -118,9 +116,10 @@
 <script type="text/javascript">
  
 $(function(){
-	alert('hi');
+	
+	// 노선 별 열차list 가져오기 
 	$("#selectLine").on('change',function(){
-		var line = $('#selectLine option:selected').val();
+		var line = $('#selectLine option:selected').text();
 		console.log(line);
 		$.ajax({
 			url: 'trainList',
@@ -136,6 +135,25 @@ $(function(){
 			}
 		}); // Ajax
 		
+		
+	})
+	
+	// 하차역 정보 가져오기 Ajax 
+	$('#selectTrain').on('change',function(){
+		var lineNum = $('#selectLine option:selected').val();
+		console.log(lineNum);
+		$.ajax({
+			url: 'stationList',
+			type: 'post',
+			data: { lineNum : lineNum },
+			success: function(res){
+				$('#selectStation').empty();
+				$('#selectStation').html(res);
+			},
+			error: function(error) {
+				console.log(error.status);
+			}
+		}); //Ajax
 		
 	})
 	
