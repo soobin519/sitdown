@@ -1,13 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
-
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-
-    <!-- Custom fonts for this theme -->
+	<!-- Custom fonts for this theme -->
     <link href="/resources/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet" type="text/css">
@@ -18,9 +14,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    
-    <!--  <link href="${ pageContext.request.contextPath }/resources/css/main.css" rel="stylesheet"> -->
-
 </head>
 <body id="page-top">
 
@@ -84,15 +77,6 @@
         </div>
         <br>
         <div class="control-group" style="width:350px; margin:0 auto;">
-        	<select name="select" id="selectStation" class="form-control">
-        		<option>하차역을 선택해주세요 </option>
-        		<option>2</option>
-        		<option>3</option>
-        		<option>4</option>
-        	</select>
-        </div>
-        <br>
-        <div class="control-group" style="width:350px; margin:0 auto;">
         	<select name="select" id="selectNum" class="form-control">
         		<option>1량</option>
         		<option>2</option>
@@ -103,7 +87,7 @@
         
         <br>
          <div class="control-group" style="text=align:center">
-        	<button type="submit" class="btn btn-primary btn-xl" id="sendMessageButton">다음</button>
+        	<button type="submit" class="btn btn-primary btn-xl" id="sendMessageButton">확인하기</button>
     	</div>
     </form>
     </div>
@@ -186,5 +170,6 @@ $(function(){
 
 
     
+
 </body>
 </html>
