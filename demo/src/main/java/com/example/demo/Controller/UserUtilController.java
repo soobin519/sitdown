@@ -81,22 +81,32 @@ public class UserUtilController {
 	
 	//로그인 
   	@RequestMapping(value = "/checkuser", method = RequestMethod.POST)
-	public String login(@ModelAttribute userVO vo, HttpServletRequest req, RedirectAttributes rttr) throws Exception{
+	public String login(@ModelAttribute userVO vo, HttpServletRequest req, RedirectAttributes rttr, Model model) throws Exception{
 		logger.info("post login");
 		
 		HttpSession session = req.getSession();
 		userVO login = service.login(vo);
+		//String result = " ";
 		
 		if(login == null) {
 			session.setAttribute("user", null);
 			rttr.addFlashAttribute("msg", false);
+			//result="False";
+			//model.addAttribute("msg", false);
+			//return result;
+			return "redirect:/user/login";
 		}else {
 			session.setAttribute("user", login);
-			System.out.println("userinfo"+login.getEmail());		
+			//rttr.addFlashAttribute("msg", true);
+			System.out.println("userinfo"+login.getEmail());	
+			//result="True";
+			//model.addAttribute("msg", true);
+			//return result;
+			return "redirect:/";
 			
 		}
 		
-		return "index";
+		
 	}
 	
 	@RequestMapping(value = "/logout", method = RequestMethod.GET)

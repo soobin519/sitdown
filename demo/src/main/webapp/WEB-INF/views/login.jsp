@@ -75,14 +75,14 @@
             <div class="control-group">
               <div class="form-group floating-label-form-group controls mb-0 pb-2">
                 <label>id</label>
-                <input class="form-control" name="userId" type="text" placeholder="userId" required="required" data-validation-required-message="Please enter your ID.">
+                <input class="form-control" id="userId" name="userId" type="text" placeholder="userId" required="required" data-validation-required-message="Please enter your ID.">
                 <p class="help-block text-danger"></p>
               </div>
             </div>
             <div class="control-group">
               <div class="form-group floating-label-form-group controls mb-0 pb-2">
                 <label>Password</label>
-                <input class="form-control" name="password" type="password" placeholder="Password" required="required" data-validation-required-message="Please enter your Password.">
+                <input class="form-control" id="password" name="password" type="password" placeholder="Password" required="required" data-validation-required-message="Please enter your Password.">
                 <p class="help-block text-danger"></p>
               </div>
             </div>
@@ -90,7 +90,7 @@
             <div id="success"></div>
             <br>
             <div class="form-group">
-              <button type="submit" class="btn btn-primary btn-xl" id="sendMessageButton">로그인</button>
+              <button onclick="javascript:loginbtn('${msg}')" type="submit" class="btn btn-primary btn-xl" id="sendMessageButton">로그인</button>
             </div>
           </form>
         </div>
@@ -99,6 +99,29 @@
     </div>
   </section>
   
+  
+<script type="text/javascript">
+
+  	function loginbtn(msg){
+  		
+  		//저장된 아이디, 비밀번호 가져오기  
+  		//var data = new FormData();
+  		//var r = "${result}";
+  	
+  		
+  		//사용자로부터 페이지에서 입력받은 아이디, 비밀번호 가져오기
+  		//const idValue = document.getElementById('userId').value;
+  		//const pwValue = document.getElementById('password').value;
+
+  		
+  		//입력된 값이 틀렸을 경우
+  		if(msg==false){
+  			//console.log(msg);
+  			alert("입력하신 아이디가 등록되어 있지 않거나, 아이디 또는 비밀번호를 잘못 입력하셨습니다."); 			
+  		}
+  	
+  	}
+</script>
   
 
   <!-- Footer -->
@@ -161,6 +184,8 @@
 
   <!-- Custom scripts for this template -->
   <script src='/resources/js/freelancer.min.js'></script>
+ 
+
 
 </body>
 

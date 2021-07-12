@@ -20,7 +20,6 @@ public class userVO {
 		this.email = email;
 	}
 	
-	
 	public String getName() {
 		return name;
 	}
