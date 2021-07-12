@@ -116,6 +116,7 @@
 <script type="text/javascript"> 
 $(function(){
 	
+	
 	// 노선 별 열차list 가져오기 
 	$("#selectLine").on('change',function(){
 		var line = $('#selectLine option:selected').text();
