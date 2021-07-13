@@ -59,10 +59,10 @@ public class SubwayController {
 		return view;
 	}
 	
-	//좌석 정보 확인 상세페이
+	//좌석 정보 확인 상세페이지 
 	@RequestMapping(value="/seatinfo")
   	public String seatinfoPage(Model model) {
-  		return "seatiinfo";
+  		return "seatinfo";
   	}
 	
 	// 열차api 리스트 가져오기 
