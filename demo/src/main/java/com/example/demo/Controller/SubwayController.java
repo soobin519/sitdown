@@ -93,7 +93,7 @@ public class SubwayController {
 	
 	// 좌석선택 page
 	@RequestMapping(value="selectSeat",method=RequestMethod.POST)
-	public ModelAndView selectSeat(@RequestBody trainVO train) {
+	public ModelAndView selectSeat(trainVO train) {
 		ModelAndView view = new ModelAndView();
 		String viewPage="selectSeat";
 		

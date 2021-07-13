@@ -27,7 +27,7 @@ public class trainVO {
 	@Override
 	public String toString() {
 		return "trainVO [subwayId=" + subwayId + ", subwayNm=" + subwayNm + ", trainNo=" + trainNo + ", statnNm="
-				+ statnNm + ", statnTnm=" + statnTnm + "]";
+				+ statnNm + ", statnTnm=" + statnTnm + ", carNum="+ carNum +"]";
 	}
 	
 	public int getSubwayId() {

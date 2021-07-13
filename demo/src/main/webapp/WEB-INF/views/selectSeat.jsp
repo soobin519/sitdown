@@ -11,12 +11,12 @@
     <title>SIT DOWN</title>
 
     <!-- Custom fonts for this theme -->
-    <link href="/static/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+    <link href="${ pageContext.request.contextPath }/resources/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet" type="text/css">
 
     <!-- Theme CSS -->
-    <link href="/static/css/freelancer.min.css" rel="stylesheet">
+    <link href="${ pageContext.request.contextPath }/resources/css/freelancer.min.css" rel="stylesheet">
     
 
 <style>
@@ -325,18 +325,18 @@
   </section>
 
   <!-- Bootstrap core JavaScript -->
-  <script src="/static/vendor/jquery/jquery.min.js"></script>
-  <script src="/static/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="${ pageContext.request.contextPath }/resources/vendor/jquery/jquery.min.js"></script>
+  <script src="${ pageContext.request.contextPath }/resources/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
   <!-- Plugin JavaScript -->
-  <script src="/static/vendor/jquery-easing/jquery.easing.min.js"></script>
+  <script src="${ pageContext.request.contextPath }/resources/vendor/jquery-easing/jquery.easing.min.js"></script>
 
   <!-- Contact Form JavaScript -->
-  <script src="/static/js/jqBootstrapValidation.js"></script>
-  <script src="/static/js/contact_me.js"></script>
+  <script src="${ pageContext.request.contextPath }/resources/js/jqBootstrapValidation.js"></script>
+  <script src="${ pageContext.request.contextPath }/resources/js/contact_me.js"></script>
 
   <!-- Custom scripts for this template -->
-  <script src="/static/js/freelancer.min.js"></script>
+  <script src="${ pageContext.request.contextPath }/resources/js/freelancer.min.js"></script>
 
 
 
