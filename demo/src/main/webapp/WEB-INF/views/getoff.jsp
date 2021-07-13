@@ -67,10 +67,10 @@
     
     <div class="row">
  	<div class="col-lg-7 mx-auto">
-    <form  action="selectSeat" method="post">
+    <form id="getoffInfoForm" action="selectSeat" method="post">
         <div class="control-group" style="width:350px; margin:0 auto;" >
         	<select name="subwayId" id="selectLine" class="form-control">
-        	<option>노선을 선택해주세요</option>
+        	<option value="">노선을 선택해주세요</option>
         	<c:forEach items="${lineInfo}" var="line">
      			<option value="${line.id}"><c:out value="${line.line}"/></option>
 			</c:forEach>
@@ -79,30 +79,30 @@
         <br>
         <div class="control-group" style="width:350px; margin:0 auto;">
         	<select name="trainNo" id="selectTrain" class="form-control">
-        		<option>열차를 선택해주세요 </option>
+        		<option value="">열차를 선택해주세요 </option>
         	</select>
         </div>
         <br>
         <div class="control-group" style="width:350px; margin:0 auto;">
         	<select name="statnTnm" id="selectStation" class="form-control">
-        		<option>하차역을 선택해주세요 </option>
+        		<option value="">하차역을 선택해주세요 </option>
         	</select>
         </div>
         <br>
         <div class="control-group" style="width:350px; margin:0 auto;">
         	<select name="select" id="selectNum" class="form-control">
-        		<option>1량</option>
-        		<option>2량</option>
-        		<option>3량</option>
-        		<option>4량</option>
-        		<option>5량</option>
-        		<option>6량</option>
+        		<option value="1">1량</option>
+        		<option value="2">2량</option>
+        		<option value="3">3량</option>
+        		<option value="4">4량</option>
+        		<option value="5">5량</option>
+        		<option value="6">6량</option>
         	</select>
         </div>
         
         <br>
-         <div class="control-group" style="text=align:center">
-        	<button type="submit" class="btn btn-primary btn-xl" id="sendMessageButton">다음</button>
+         <div class="control-group" style="text-align:center">
+        	<button type="button" class="btn btn-primary btn-xl" id="sendMessageButton">다음</button>
     	</div>
 
     </form>
@@ -116,6 +116,7 @@
 <script type="text/javascript"> 
 $(function(){
 	
+	let getoffInfoBtn = document.getElementById("sendMessageButton");
 	
 	// 노선 별 열차list 가져오기 
 	$("#selectLine").on('change',function(){
@@ -157,8 +158,34 @@ $(function(){
 		
 	})
 	
+	getoffInfoBtn.addEventListener('click',function() {
+		fn_isSelectInfo();
+	},false);
+	
 	
 })    
+
+// 정보 입력 check function
+function fn_isSelectInfo(){
+		
+	var line = $('#selectLine option:selected').val();
+	var train = $('#selectTrain option:selected').val();
+	var station = $('#selectStation option:selected').val();
+
+	console.log(line);
+	console.log(train);
+	console.log(station);
+	
+	if(line==''||train===''||station==''){
+		alert('항목을 모두 선택해주세요.');
+		return false;
+	}
+	
+	document.getElementById("getoffInfoForm").submit();
+	
+}
+
+
 </script>
 
   <!-- Footer -->
