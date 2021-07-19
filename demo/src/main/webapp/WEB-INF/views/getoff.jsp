@@ -18,8 +18,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    
-    <!--  <link href="${ pageContext.request.contextPath }/resources/css/main.css" rel="stylesheet"> -->
+
 
 </head>
 
@@ -214,7 +213,7 @@ function fn_isSelectInfo(){
   <!-- Copyright Section -->
   <section class="copyright py-4 text-center text-white">
     <div class="container">
-      <small>Copyright © Your Website 2019</small>
+      <small>Copyright © Your Website 2021</small>
     </div>
   </section>
   
