@@ -34,4 +34,9 @@ public class userImplService implements userService {
 	public int checkId(userVO user) {
 		return dao.checkId(user);
 	}
+	
+	@Override
+	public userVO findId(userVO user) {
+		return dao.findId(user);
+	}
 }
