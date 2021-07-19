@@ -84,13 +84,13 @@
         </div>
         <br>
         <div class="control-group" style="width:350px; margin:0 auto;">
-        	<select name="statnTnm" id="selectStation" class="form-control">
+        	<select name="getoffstatn" id="selectStation" class="form-control">
         		<option value="">하차역을 선택해주세요 </option>
         	</select>
         </div>
         <br>
         <div class="control-group" style="width:350px; margin:0 auto;">
-        	<select name="select" id="selectNum" class="form-control">
+        	<select name="carNum" id="selectNum" class="form-control">
         		<option value="1">1량</option>
         		<option value="2">2량</option>
         		<option value="3">3량</option>
@@ -99,6 +99,14 @@
         		<option value="6">6량</option>
         	</select>
         </div>
+        <!-- 노선이름  -->
+        <input type='hidden' id='id_subwayNm' name='subwayNm' value=''/> 
+        <!-- 현재위치  -->
+        <input type='hidden' id='id_statnNm' name='statnNm' value=''/>
+        <!-- 종착역 -->
+        <input type="hidden" id='id_statnTmn' name='statnTmn' value=''/>
+        <!-- 목적지 -->
+        <input type="hidden" id='id_getoffNm' name='getoffNm' value=''/>
         
         <br>
          <div class="control-group" style="text-align:center">
@@ -181,6 +189,21 @@ function fn_isSelectInfo(){
 		return false;
 	}
 	
+	var subwayNm_val = $('#selectLine option:selected').text(); // 노선
+	var statnNm_val = $('#selectTrain option:selected').attr('statnnm'); // 현재위치 
+	var statnTmn_val = $('#selectTrain option:selected').attr('statntnm'); // 종착역
+	var getoffNm_val = $('#selectStation option:selected').attr('getoffnm');  // 목적지
+	
+	//alert(statnTmn_val);
+	//console.log("종착역=>"+statnTmn_val);
+	
+	//input value 추가
+	$('#id_subwayNm').attr('value',subwayNm_val);
+	$('#id_statnNm').attr('value',statnNm_val);
+	$('#id_statnTmn').attr('value',statnTmn_val);
+	$('#id_getoffNm').attr('value',getoffNm_val);
+	
+
 	document.getElementById("getoffInfoForm").submit();
 	
 }
