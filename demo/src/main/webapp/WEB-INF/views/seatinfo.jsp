@@ -59,7 +59,7 @@
     
     <div class="row">
  	<div class="col-lg-7 mx-auto">
-    <form  action="index.html" method="post">
+    <form action="checkSeat" method="post">
         <div class="control-group" style="width:350px; margin:0 auto;" >
         	<select name="select" id="selectLine" class="form-control">
         		<option>노선을 선택해주세요</option>
@@ -86,8 +86,8 @@
         </div>
         
         <br>
-         <div class="control-group" style="text=align:center">
-        	<button type="submit" class="btn btn-primary btn-xl" id="sendMessageButton">확인하기</button>
+         <div class="control-group" style="text-align:center">
+        	<button type="submit" class="btn btn-primary btn-xl" id="sendMessageButton" >다음</button>
     	</div>
     </form>
     </div>
@@ -99,7 +99,6 @@
 <script src="http://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
 <script type="text/javascript"> 
 $(function(){
-	alert('hi');
 	$("#selectLine").on('change',function(){
 		var line = $('#selectLine option:selected').val();
 		console.log(line);

@@ -65,6 +65,12 @@ public class SubwayController {
   		return "seatinfo";
   	}
 	
+	//좌석 상세페이지 
+		@RequestMapping(value="/checkSeat")
+	  	public String seatPage(Model model) {
+	  		return "checkSeat";
+	  	}
+	
 	// 열차api 리스트 가져오기 
 	@RequestMapping(value="/trainList",method=RequestMethod.POST)
 	public ModelAndView trainList(@RequestParam (value="line") String line) throws ParseException {
