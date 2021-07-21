@@ -14,5 +14,7 @@ public interface userService {
 	public userVO login(userVO vo) throws Exception;
 	//아이디 체크 
 	public int checkId(userVO user);
+	//아이디 찾기 
+	public userVO findId(userVO user);
 
 }

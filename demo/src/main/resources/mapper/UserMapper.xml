@@ -24,5 +24,10 @@
 	SELECT count(*) from user WHERE userId=#{userId}
 </select>
 
+<!-- 아이디 찾기 -->
+<select id="findId" parameterType="com.example.demo.VO.userVO" resultType="com.example.demo.VO.userVO">
+	SELECT userid,name FROM user WHERE name=#{name} AND email=#{email}
+</select> 
+
 
 </mapper>
