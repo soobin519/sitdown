@@ -5,7 +5,10 @@ public class trainVO {
 	private String subwayNm; //노선이름 
 	private int trainNo; // 열차번호 
 	private String statnNm; //현재 위치 
-	private String statnTnm; //목적지
+	private String statnTmn; //종착역 
+	private int statnNmId; //현재 위치 
+	private int getoffstatn; //목적지
+	private String getoffNm;
 	private int carNum;
 	
 	
@@ -14,22 +17,27 @@ public class trainVO {
 		// TODO Auto-generated constructor stub
 	}
 
-	public trainVO(int subwayId, String subwayNm, int trainNo, String statnNm, String statnTnm, int carNum) {
+	public trainVO(int subwayId, String subwayNm, int trainNo, String statnNm, String statnTmn, int carNum,int statnNmId,int getoffstatn, String getoffNm) {
 		super();
 		this.subwayId = subwayId;
 		this.subwayNm = subwayNm;
 		this.trainNo = trainNo;
 		this.statnNm = statnNm;
-		this.statnTnm = statnTnm;
+		this.statnTmn = statnTmn;
 		this.carNum = carNum;
+		this.statnNmId = statnNmId;
+		this.getoffstatn = getoffstatn;
+		this.getoffNm = getoffNm;
 	}
+
 
 	@Override
 	public String toString() {
 		return "trainVO [subwayId=" + subwayId + ", subwayNm=" + subwayNm + ", trainNo=" + trainNo + ", statnNm="
-				+ statnNm + ", statnTnm=" + statnTnm + ", carNum="+ carNum +"]";
+				+ statnNm + ", statnTmn=" + statnTmn + ", statnNmId=" + statnNmId + ", getoffstatn=" + getoffstatn
+				+ ", getoffNm=" + getoffNm + ", carNum=" + carNum + "]";
 	}
-	
+
 	public int getSubwayId() {
 		return subwayId;
 	}
@@ -54,11 +62,11 @@ public class trainVO {
 	public void setStatnNm(String statnNm) {
 		this.statnNm = statnNm;
 	}
-	public String getStatnTnm() {
-		return statnTnm;
+	public String getStatnTmn() {
+		return statnTmn;
 	}
-	public void setStatnTnm(String statnTnm) {
-		this.statnTnm = statnTnm;
+	public void setStatnTmn(String statnTmn) {
+		this.statnTmn = statnTmn;
 	}
 	
 	public int getCarNum() {
@@ -67,6 +75,33 @@ public class trainVO {
 	public void setCarNum(int carNum) {
 		this.carNum = carNum;
 	}
+
+	public int getStatnNmId() {
+		return statnNmId;
+	}
+
+	public void setStatnNmId(int statnNmId) {
+		this.statnNmId = statnNmId;
+	}
+
+	public int getGetoffstatn() {
+		return getoffstatn;
+	}
+
+	public void setGetoffstatn(int getoffstatn) {
+		this.getoffstatn = getoffstatn;
+	}
+
+	public String getGetoffNm() {
+		return getoffNm;
+	}
+
+	public void setGetoffNm(String getoffNm) {
+		this.getoffNm = getoffNm;
+	}
+	
+	
+	
 	
 	
 	

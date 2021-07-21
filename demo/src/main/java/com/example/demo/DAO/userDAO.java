@@ -1,6 +1,7 @@
 package com.example.demo.DAO;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.stereotype.Repository;
 import com.example.demo.VO.userVO;
@@ -17,5 +18,8 @@ public interface userDAO {
 	
 	//아이디 체크 
 	public int checkId(userVO user);
+	
+	//아이디 찾기 
+	public userVO findId(userVO user);
 
 }

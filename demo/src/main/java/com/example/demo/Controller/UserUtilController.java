@@ -117,5 +117,17 @@ public class UserUtilController {
 		return "redirect:/";
 	}
 	
+	//아이디 찾기
+	@RequestMapping(value ="/findId", method=RequestMethod.POST)
+	public String findId(@ModelAttribute userVO user, Model model) {
+		
+		String page = "findId";
+		
+		userVO result = service.findId(user);
+		model.addAttribute("user",result);
+		
+		return page;
+	}
+	
 
 }

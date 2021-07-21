@@ -35,5 +35,11 @@ public class userImplDAO implements userDAO {
 	  public int checkId(userVO user) {
 		  return sql.selectOne("com.example.demo.UserMapper.checkId",user);
 	  }
+	  
+	  //아이디 찾기 
+	  @Override
+	  public userVO findId(userVO user) {
+		  return sql.selectOne("com.example.demo.UserMapper.findId",user);
+	  }
 	    
 }
