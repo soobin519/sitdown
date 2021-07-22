@@ -21,7 +21,8 @@ import org.json.simple.parser.JSONParser;
 import org.slf4j.LoggerFactory;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-
+import com.example.demo.mailSend;
+import com.example.demo.pwdMaker;
 import com.example.demo.Service.userService;
 import com.example.demo.VO.userVO;
 
@@ -34,6 +35,9 @@ public class UserUtilController {
 	
 	@Autowired
 	userService service;
+	
+	@Autowired
+	private mailSend mail;
   
   private static final org.slf4j.Logger logger = LoggerFactory.getLogger(UserUtilController.class);
 	
@@ -128,6 +132,19 @@ public class UserUtilController {
 		
 		return page;
 	}
+	
+	//비밀번호 mail 전송 
+	@RequestMapping(value="/sendPwdMail", method=RequestMethod.POST)
+	@ResponseBody
+	public boolean sendPwdMail() {
+
+		String email="sehhe22@gmail.com";
+		String newPwd = pwdMaker.generatePwd(); // 랜덤 패스워드 생성 
+		boolean result = mail.sendPwdMail(email, newPwd); // 메일 전송
+		
+		return result;
+	}
+	
 	
 
 }
