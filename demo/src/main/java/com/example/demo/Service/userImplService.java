@@ -40,4 +40,16 @@ public class userImplService implements userService {
 	public userVO findId(userVO user) {
 		return dao.findId(user);
 	}
+	
+	//비밀번호 변경
+	@Override
+	public int updatePassword(userVO user) {
+		return dao.updatePassword(user);
+	}
+	
+	//유저 정보 조회 
+	@Override
+	public int selectUser(userVO user) {
+		return dao.selectUser(user);
+	}
 }

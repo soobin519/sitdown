@@ -16,5 +16,9 @@ public interface userService {
 	public int checkId(userVO user);
 	//아이디 찾기 
 	public userVO findId(userVO user);
+	//비밀번호 변경 
+	public int updatePassword(userVO user);
+	//유저 정보 조회 
+	public int selectUser(userVO user);
 
 }

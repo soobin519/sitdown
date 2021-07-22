@@ -21,7 +21,8 @@ import org.json.simple.parser.JSONParser;
 import org.slf4j.LoggerFactory;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-
+import com.example.demo.mailSend;
+import com.example.demo.pwdMaker;
 import com.example.demo.Service.userService;
 import com.example.demo.VO.userVO;
 
@@ -34,6 +35,9 @@ public class UserUtilController {
 	
 	@Autowired
 	userService service;
+	
+	@Autowired
+	private mailSend mail;
   
   private static final org.slf4j.Logger logger = LoggerFactory.getLogger(UserUtilController.class);
 	
@@ -141,6 +145,47 @@ public class UserUtilController {
 	public String viewIdPage(Model model) {
 		return "findId";
 	}
+	
+	//비밀번호 mail 전송 
+	@RequestMapping(value="/sendPwdMail", method=RequestMethod.POST)
+	@ResponseBody
+	public String sendPwdMail(@ModelAttribute userVO user) {
+
+		String msg="";
+		
+		String email = user.getEmail();
+		int count= service.selectUser(user);
+		
+		if(count>0) {
+			// 조회되는 정보가 있다면
+			String pwd = pwdMaker.generatePwd(); // 랜덤 패스워드 생성 
+			String newPwd = bcryptPE.encode(pwd); //암호
+			user.setPassword(newPwd); // 새 패스워드 update
+			int result = service.updatePassword(user);
+			
+			if(result>0) {
+				//패스워드 업데이트 성공 시
+				boolean success = mail.sendPwdMail(email, pwd); // 메일 전송
+				if(success) {
+					msg="메일 전송이 완료되었습니다.";
+				}else {
+					msg="메일 전송에 실패하였습니다.";
+				}
+				
+			}else {
+				//패스워드 업데이트 실패 시
+				msg="다시 시도해 주세요.";
+			}
+			
+		}else {
+			// 입력 정보가 조회되지 않을 경우
+			msg="유저 정보가 일치하지 않습니다.";
+		}
+		
+		
+		return msg;
+	}
+	
 	
 
 }

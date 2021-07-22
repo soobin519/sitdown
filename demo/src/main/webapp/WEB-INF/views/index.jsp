@@ -47,6 +47,7 @@
 			<div class="collapse navbar-collapse" id="navbarResponsive">
 				<ul class="navbar-nav ms-auto">
 
+
 					<!-- 로그인 했을 경우 -->
 					<c:if test="${user !=null }">
 						<li class="nav-item mx-0 mx-lg-1"><a
