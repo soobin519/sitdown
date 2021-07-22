@@ -16,7 +16,7 @@ public class mailSend {
 	
 	    
 	public boolean sendPwdMail(String userEmail,String newPwd) {
-		String content = "<p> 임시 비밀번호는 ["+ newPwd +"] 입니다. </p>" ;
+		String content = "<p> 임시 비밀번호는 [ "+ newPwd +" ] 입니다. </p>" ;
 		String subject = "[sit-down] 임시 비밀번호 발송메일 입니다.";
 		String from = "tpgml122@gmail.com";
 		

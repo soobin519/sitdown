@@ -47,7 +47,7 @@
           </li>
           
           <li class="nav-item mx-0 mx-lg-1">
-            <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="/user/login/">Login</a>
+            <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="login">Login</a>
           </li>
           
         </ul>
@@ -62,7 +62,7 @@
     <div class="container">
 
       <!-- Contact Section Heading -->
-      <h3 class="page-section-heading text-center text-uppercase text-secondary mb-0">Signup</h2>
+      <h3 class="page-section-heading text-center text-uppercase text-secondary mb-0">Signup</h3>
 
       <!-- Icon Divider -->
 <!--       <div class="divider-custom">
@@ -78,18 +78,18 @@
         <div class="col-lg-7 mx-auto">
           <!-- To configure the contact form email address, go to mail/contact_me.php and update the email address in the PHP file on line 19. -->
           <form method="POST" action="createuser">
-              <input type="hidden" name="csrfmiddlewaretoken" value="RfLaJqq5naRirQI44wHhC1i1Z8SlBzO3lcnpNBEUxliXu90cin3BnvHkVVKnEND2">
+             <!--  <input type="hidden" name="csrfmiddlewaretoken" value="RfLaJqq5naRirQI44wHhC1i1Z8SlBzO3lcnpNBEUxliXu90cin3BnvHkVVKnEND2"> -->
             <div class="control-group">
               <div class="form-group floating-label-form-group controls mb-0 pb-2 floating-label-form-group-with-value">
                 <label>이름</label>
-                <input class="form-control" id="name" type="text" placeholder="username">
+                <input class="form-control" id="s_name" type="text" placeholder="username">
                 <p class="help-block text-danger"></p>
               </div>
             </div>
             <div class="control-group">
               <div class="form-group floating-label-form-group controls mb-0 pb-2 floating-label-form-group-with-value">
                 <label>email</label>
-                <input class="form-control" id="email" type="text" placeholder="email">
+                <input class="form-control" id="s_email" type="text" placeholder="email">
                 <p class="help-block text-danger"></p>
               </div>
             </div>
@@ -98,7 +98,7 @@
             <div class="col-lg-9">
               <div class="form-group floating-label-form-group controls mb-0 pb-2 floating-label-form-group-with-value">
                 <label>아이디</label>
-                <input class="form-control" id="userId" type="text" placeholder="userID">
+                <input class="form-control" id="s_userId" type="text" placeholder="userID">
   <p class="help-block text-danger"></p>
               </div>
              </div>
@@ -110,14 +110,14 @@
             <div class="control-group">
               <div class="form-group floating-label-form-group controls mb-0 pb-2 floating-label-form-group-with-value">
                 <label>비밀번호</label>
-                <input class="form-control" id="password" type="password" placeholder="Password" value="">
+                <input class="form-control" id="s_password" type="password" placeholder="Password" value="">
                 <p class="help-block text-danger"></p>
               </div>
             </div>
             <div class="control-group">
                 <div class="form-group floating-label-form-group controls mb-0 pb-2">
                   <label>Confirm Password</label>
-                  <input class="form-control" id="checkpw" type="password" placeholder="Confirm Password" value="">
+                  <input class="form-control" id="s_checkpw" type="password" placeholder="Confirm Password" value="">
                   <p class="help-block text-danger"></p>
                 </div>
               </div>
@@ -175,11 +175,11 @@ function create(){
 	
 	var data = new FormData();
 	
-	let id = $('#userId').val();
-	let email = $('#email').val();
-	let password = $('#password').val();
-	let password2 = $('#checkpw').val();
-	let name = $('#name').val();
+	let id = $('#s_userId').val();
+	let email = $('#s_email').val();
+	let password = $('#s_password').val();
+	let password2 = $('#s_checkpw').val();
+	let name = $('#s_name').val();
 	
 	let isChecked = document.getElementById('isChecked').value;
 	console.log("isChecked=>"+isChecked);
@@ -237,7 +237,7 @@ function checkUserId(){
 	
 	var data = new FormData();
 	//let id = document.getElementById("userId").val(); // 입력된 아이디값 가져오기
-	let id = $('#userId').val();
+	let id = $('#s_userId').val();
 	console.log("id"+id);
 	
 	//입력된 값이 없을경우

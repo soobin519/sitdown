@@ -5,8 +5,9 @@
 
 <mapper namespace="com.example.demo.DAO.userDAO">
 
-<select id="selectUser" parameterType="String" resultType="com.example.demo.VO.userVO">
-	select * from user
+<!-- 유저 정보 확인 -->
+<select id="selectUser" parameterType="com.example.demo.VO.userVO" resultType="_int">
+	select count(*) from user where userId=#{userId} and email=#{email}
 </select>
 
 <!-- 회원가입 -->
@@ -28,6 +29,12 @@
 <select id="findId" parameterType="com.example.demo.VO.userVO" resultType="com.example.demo.VO.userVO">
 	SELECT userid,name FROM user WHERE name=#{name} AND email=#{email}
 </select> 
+
+<!-- 비밀번호 변경 -->
+<update id="updatePassword" parameterType="com.example.demo.VO.userVO">
+	UPDATE user SET password=#{password} WHERE userId=#{userId} AND email=#{email}
+</update> 
+
 
 
 </mapper>
