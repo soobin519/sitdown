@@ -35,6 +35,7 @@ public class userImplService implements userService {
 		return dao.checkId(user);
 	}
 	
+	//아이디 찾기
 	@Override
 	public userVO findId(userVO user) {
 		return dao.findId(user);

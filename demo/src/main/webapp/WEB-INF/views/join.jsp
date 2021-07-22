@@ -47,7 +47,7 @@
           </li>
           
           <li class="nav-item mx-0 mx-lg-1">
-            <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="/user/login/">Login</a>
+            <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="login">Login</a>
           </li>
           
         </ul>
@@ -62,7 +62,7 @@
     <div class="container">
 
       <!-- Contact Section Heading -->
-      <h3 class="page-section-heading text-center text-uppercase text-secondary mb-0">Signup</h2>
+      <h3 class="page-section-heading text-center text-uppercase text-secondary mb-0">Signup</h3>
 
       <!-- Icon Divider -->
 <!--       <div class="divider-custom">
@@ -77,7 +77,7 @@
       <div class="row">
         <div class="col-lg-7 mx-auto">
           <!-- To configure the contact form email address, go to mail/contact_me.php and update the email address in the PHP file on line 19. -->
-          <form method="POST" action="createuser">
+          <form method="POST" >
               <input type="hidden" name="csrfmiddlewaretoken" value="RfLaJqq5naRirQI44wHhC1i1Z8SlBzO3lcnpNBEUxliXu90cin3BnvHkVVKnEND2">
             <div class="control-group">
               <div class="form-group floating-label-form-group controls mb-0 pb-2 floating-label-form-group-with-value">
@@ -224,7 +224,7 @@ function create(){
 		    	}
 		    },
 		    error : function(e){
-		    console.log(e);
+		    	console.log(e);
 		    }
 		})
 		
