@@ -77,8 +77,9 @@
       <div class="row">
         <div class="col-lg-7 mx-auto">
           <!-- To configure the contact form email address, go to mail/contact_me.php and update the email address in the PHP file on line 19. -->
-          <form method="POST" action="createuser">
-             <!--  <input type="hidden" name="csrfmiddlewaretoken" value="RfLaJqq5naRirQI44wHhC1i1Z8SlBzO3lcnpNBEUxliXu90cin3BnvHkVVKnEND2"> -->
+
+          <form method="POST" >
+              <input type="hidden" name="csrfmiddlewaretoken" value="RfLaJqq5naRirQI44wHhC1i1Z8SlBzO3lcnpNBEUxliXu90cin3BnvHkVVKnEND2">
             <div class="control-group">
               <div class="form-group floating-label-form-group controls mb-0 pb-2 floating-label-form-group-with-value">
                 <label>이름</label>
@@ -224,7 +225,7 @@ function create(){
 		    	}
 		    },
 		    error : function(e){
-		    console.log(e);
+		    	console.log(e);
 		    }
 		})
 		

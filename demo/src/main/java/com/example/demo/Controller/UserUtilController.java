@@ -55,7 +55,7 @@ public class UserUtilController {
   		return count;
   	}
   	
-  
+  	//로그인 페이지
   	@RequestMapping(value="/join")
   	public String joinPage(Model model) {
   		return "join";
@@ -113,6 +113,7 @@ public class UserUtilController {
 		
 	}
 	
+  	//로그아웃
 	@RequestMapping(value = "/logout", method = RequestMethod.GET)
 	public String logout(HttpSession session) throws Exception{
 		
@@ -121,16 +122,28 @@ public class UserUtilController {
 		return "redirect:/";
 	}
 	
+	//아이디찾기 페이지 
+		@RequestMapping(value="/findid")
+		public String findIdPage(Model model) {
+			return "findId";
+		}
+	
 	//아이디 찾기
 	@RequestMapping(value ="/findId", method=RequestMethod.POST)
 	public String findId(@ModelAttribute userVO user, Model model) {
 		
-		String page = "findId";
-		
 		userVO result = service.findId(user);
 		model.addAttribute("user",result);
+		System.out.println("아이디찾기 완료 ");
+		System.out.println(result);
 		
-		return page;
+		return "redirect:/user/viewid";
+	}
+	
+	//찾은 아이디 보여주는 페이지 
+	@RequestMapping(value="/viewid")
+	public String viewIdPage(Model model) {
+		return "findId";
 	}
 	
 	//비밀번호 mail 전송 

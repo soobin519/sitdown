@@ -1,30 +1,32 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
-
+	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
 
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="">
-    <meta name="author" content="">
+<meta charset="utf-8">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="description" content="">
+<meta name="author" content="">
 
-    <title>SIT DOWN</title>
+<title>SIT DOWN</title>
 
-    <!-- Custom fonts for this theme -->
-    <link href="/resources/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
-    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
-    <link href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet" type="text/css">
+<!-- Custom fonts for this theme -->
+<link href="/resources/vendor/fontawesome-free/css/all.min.css"
+	rel="stylesheet" type="text/css">
+<link href="https://fonts.googleapis.com/css?family=Montserrat:400,700"
+	rel="stylesheet" type="text/css">
+<link
+	href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic"
+	rel="stylesheet" type="text/css">
 
-    <!-- Theme CSS -->
-    <link href= "/resources/css/freelancer.min.css" rel="stylesheet">
+<!-- Theme CSS -->
+<link href="/resources/css/freelancer.min.css" rel="stylesheet">
+
 </head>
-
 <body id="page-top">
-
+  
   <!-- Navigation -->
   <nav class="navbar navbar-expand-lg bg-secondary text-uppercase fixed-top" id="mainNav">
     <div class="container">
@@ -40,40 +42,15 @@
           </li>
           
           <li class="nav-item mx-0 mx-lg-1">
-            <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="join">JOIN US</a>
+            <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="/user/join/">JOIN US</a>
           </li>
           
         </ul>
       </div>
     </div>
   </nav>
-  <br>
-  <br>
-  <script type="text/javascript">
-
-  	function loginbtn(msg){
-  		
-  		//저장된 아이디, 비밀번호 가져오기  
-  		//var data = new FormData();
-  		//var r = "${result}";
-  	
-  		
-  		//사용자로부터 페이지에서 입력받은 아이디, 비밀번호 가져오기
-  		//const idValue = document.getElementById('userId').value;
-  		//const pwValue = document.getElementById('password').value;
-
-  		
-  		//입력된 값이 틀렸을 경우
-  		if(msg==false){
-  			//console.log(msg);
-  			alert("입력하신 아이디가 등록되어 있지 않거나, 아이디 또는 비밀번호를 잘못 입력하셨습니다."); 			
-  		}
-  	
-  	}
-</script>
-
   
-<section class="page-section" id="contact">
+  <section class="page-section" id="contact">
     <div class="container">
 
       <!-- Contact Section Heading -->
@@ -88,23 +65,23 @@
         <div class="divider-custom-line"></div>
       </div>
 
-      <!-- login -->
+      <!-- 아이디 찾기 -->
       <div class="row">
         <div class="col-lg-8 mx-auto">
           <!-- To configure the contact form email address, go to mail/contact_me.php and update the email address in the PHP file on line 19. -->
-          <form method = "POST" action="checkuser">
+          <form method = "POST">
               <input type="hidden" name="csrfmiddlewaretoken" value="jSSP77gU6Koyd4XtS8L2UgFKhpVtyfFbwi3KbokHRMPHNfKTygAuECgMyw8NFhbS">
             <div class="control-group">
               <div class="form-group floating-label-form-group controls mb-0 pb-2">
-                <label>id</label>
-                <input class="form-control" id="userId" name="userId" type="text" placeholder="userId" required="required" data-validation-required-message="Please enter your ID.">
+                <label>name</label>
+                <input class="form-control" id="name" name="name" type="text" placeholder="name" required="required" data-validation-required-message="Please enter your Name.">
                 <p class="help-block text-danger"></p>
               </div>
             </div>
             <div class="control-group">
               <div class="form-group floating-label-form-group controls mb-0 pb-2">
-                <label>Password</label>
-                <input class="form-control" id="password" name="password" type="password" placeholder="Password" required="required" data-validation-required-message="Please enter your Password.">
+                <label>email</label>
+                <input class="form-control" id="email" name="email" type="text" placeholder="email" required="required" data-validation-required-message="Please enter your Email.">
                 <p class="help-block text-danger"></p>
               </div>
             </div>
@@ -112,9 +89,9 @@
             <div id="success"></div>
             <br>
             <div class="form-group">
-              <button onclick="javascript:loginbtn('${msg}')" type="submit" class="btn btn-primary btn-xl" id="sendMessageButton">로그인</button>
+              <button type="submit" class="btn btn-primary btn-xl" id="sendMessageButton">로그인하기 </button>
+              <button type="submit" class="btn btn-primary btn-xl" id="sendMessageButton">비밀번호 찾기 </button>
             </div>
-            <a href="findid">아이디 찾기</a>
           </form>
         </div>
       </div>
@@ -183,9 +160,5 @@
 
   <!-- Custom scripts for this template -->
   <script src='/resources/js/freelancer.min.js'></script>
- 
-
-
 </body>
-
 </html>

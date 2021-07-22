@@ -27,7 +27,7 @@
 
 <!-- 아이디 찾기 -->
 <select id="findId" parameterType="com.example.demo.VO.userVO" resultType="com.example.demo.VO.userVO">
-	SELECT userid,name FROM user WHERE name=#{name} AND email=#{email}
+	SELECT userId,name FROM user WHERE name=#{name} AND email=#{email}
 </select> 
 
 <!-- 비밀번호 변경 -->
