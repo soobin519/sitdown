@@ -20,5 +20,9 @@ public interface userService {
 	public int updatePassword(userVO user);
 	//유저 정보 조회 
 	public int selectUser(userVO user);
+	//비밀번호 수정 
+	public int setNewPassword(userVO user);
+	//유저 전체 정보 조회
+	public userVO selectUserInfo(int id);
 
 }

@@ -1,6 +1,7 @@
 package com.example.demo.VO;
 
 public class userVO {
+	private int id;
 	private String name;
 	private String userId;
 	private String password;
@@ -11,12 +12,21 @@ public class userVO {
 		// TODO Auto-generated constructor stub
 	}
 
-	public userVO(String name, String userId, String password, String email) {
+	public userVO(int id,String name, String userId, String password, String email) {
 		super();
+		this.id = id;
 		this.name = name;
 		this.userId = userId;
 		this.password = password;
 		this.email = email;
+	}
+	
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
 	}
 
 	public String getName() {

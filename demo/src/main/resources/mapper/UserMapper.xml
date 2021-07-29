@@ -30,11 +30,20 @@
 	SELECT userId,name FROM user WHERE name=#{name} AND email=#{email}
 </select> 
 
-<!-- 비밀번호 변경 -->
+<!-- 비밀번호 변경 (임시 비밀번호 set) -->
 <update id="updatePassword" parameterType="com.example.demo.VO.userVO">
 	UPDATE user SET password=#{password} WHERE userId=#{userId} AND email=#{email}
 </update> 
 
+<!--비밀번호 수정 -->
+<update id="setNewPassword" parameterType="com.example.demo.VO.userVO">
+	UPDATE user SET password=#{password} WHERE id=#{id}
+</update>
+
+<!-- 회원정보 조회 -->
+<select id="selectUserInfo" parameterType="_int" resultType="com.example.demo.VO.userVO">
+	SELECT * FROM user WHERE id=#{id}
+</select>
 
 
 </mapper>
