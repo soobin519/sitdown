@@ -53,5 +53,19 @@ public class userImplDAO implements userDAO {
 	  public int selectUser(userVO user) {
 		  return sql.selectOne("com.example.demo.UserMapper.updatePassword",user);
 	  }
+
+	@Override
+	public int setNewPassword(userVO user) {
+		// TODO Auto-generated method stub
+		return sql.selectOne("com.example.demo.UserMapper.setNewPassword",user);
+	}
+
+	@Override
+	public userVO selectUserInfo(int id) {
+		// TODO Auto-generated method stub
+		return sql.selectOne("com.example.demo.UserMapper.selectUserInfo",id);
+	}
+	
+	
 	    
 }

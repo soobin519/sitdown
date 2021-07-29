@@ -13,6 +13,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 
 import javax.inject.Inject;
+import javax.mail.Session;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
@@ -38,6 +39,9 @@ public class UserUtilController {
 	
 	@Autowired
 	private mailSend mail;
+	
+	@Autowired
+	private HttpSession session;
   
   private static final org.slf4j.Logger logger = LoggerFactory.getLogger(UserUtilController.class);
 	
@@ -172,6 +176,33 @@ public class UserUtilController {
 		
 		return msg;
 	}
+	
+	//새 비밀번호 설정 
+	@RequestMapping(value="/setNewPassword",method=RequestMethod.POST)
+	@ResponseBody
+	public int setNewPassword(String password, String newPassword, String checkNewPassword) {
+		
+		int result = 0;
+		
+		userVO loginUser = (userVO) session.getAttribute("user");
+		System.out.println(loginUser.toString());
+		
+		if(bcryptPE.matches(loginUser.getPassword(), password)) {
+				if(newPassword == checkNewPassword) {
+					userVO user = new userVO();
+					user.setId(loginUser.getId());
+					user.setPassword(newPassword);
+					result = service.setNewPassword(user);
+					
+				}else {
+					result = 2; // 입력된 새 비밀번호가 일치하지 않을때
+				}
+		}
+		
+		
+		return result;
+	}
+	
 	
 	
 

@@ -52,4 +52,22 @@ public class userImplService implements userService {
 	public int selectUser(userVO user) {
 		return dao.selectUser(user);
 	}
+
+	@Override
+	public int setNewPassword(userVO user) {
+		// TODO Auto-generated method stub
+
+		
+		return dao.setNewPassword(user);
+	}
+
+	@Override
+	public userVO selectUserInfo(int id) {
+		// TODO Auto-generated method stub
+		return dao.selectUserInfo(id);
+	}
+	
+	
+	
+	
 }
