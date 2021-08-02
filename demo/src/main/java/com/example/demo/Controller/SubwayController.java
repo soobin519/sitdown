@@ -27,6 +27,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import com.example.demo.subwayAPI;
 import com.example.demo.Service.subwayService;
 import com.example.demo.Service.userService;
+import com.example.demo.VO.getoff_infoVO;
 import com.example.demo.VO.stationVO;
 import com.example.demo.VO.trainVO;
 import com.example.demo.VO.userVO;
@@ -116,6 +117,16 @@ public class SubwayController {
 		
 		return view;
 		
+	}
+	
+	// 하차정보 등록 (진행중)
+	@RequestMapping(value="addseatInfo",method=RequestMethod.POST)
+	public ModelAndView addseatInfo(getoff_infoVO getoff) {
+		
+		ModelAndView view = new ModelAndView();
+		System.out.println(getoff.toString()); // test
+		
+		return view;
 	}
 
 }

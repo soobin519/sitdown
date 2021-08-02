@@ -15,4 +15,8 @@
 	select * from station where lineNum=#{lineNum}
 </select>
 
+<!-- 하차정보 등록하기 -->
+<insert id="insertGetoffInfo" parameterType="com.example.demo.VO.getoff_infoVO">
+</insert>
+
 </mapper>
