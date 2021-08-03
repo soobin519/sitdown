@@ -5,21 +5,38 @@ public class getoff_infoVO {
 	private int id; // index 
 	private String trainNo; //열차 id 
 	private int carNum; //칸 번호 
-	private int sitNum; //좌석 번호 
+	private int seatNum; //좌석 번호 
 	private String statnNm; // 현재위치 (승차 위치) 
-	private String getoffStn; // 하차역 
+	private String getoffNm; // 하차역
+	private int getoffstatn; // 하차역 Id 
 	private int userId; //userId
 	
+	public getoff_infoVO() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
 	
-	public getoff_infoVO(int id, String trainNo, int carNum, int sitNum, String statnNm, String getoffStn, int userId) {
+	public getoff_infoVO(int id, String trainNo, int carNum, int seatNum, String statnNm, String getoffNm,
+			int getoffstatn, int userId) {
 		super();
 		this.id = id;
 		this.trainNo = trainNo;
 		this.carNum = carNum;
-		this.sitNum = sitNum;
+		this.seatNum = seatNum;
 		this.statnNm = statnNm;
-		this.getoffStn = getoffStn;
+		this.getoffNm = getoffNm;
+		this.getoffstatn = getoffstatn;
 		this.userId = userId;
+	}
+
+	public String getGetoffNm() {
+		return getoffNm;
+	}
+
+
+	public void setGetoffNm(String getoffNm) {
+		this.getoffNm = getoffNm;
 	}
 
 
@@ -59,14 +76,14 @@ public class getoff_infoVO {
 
 
 
-	public int getSitNum() {
-		return sitNum;
+	public int getSeatNum() {
+		return seatNum;
 	}
 
 
 
-	public void setSitNum(int sitNum) {
-		this.sitNum = sitNum;
+	public void setSeatNum(int seatNum) {
+		this.seatNum = seatNum;
 	}
 
 
@@ -80,19 +97,15 @@ public class getoff_infoVO {
 	public void setStatnNm(String statnNm) {
 		this.statnNm = statnNm;
 	}
-
-
-
-	public String getGetoffStn() {
-		return getoffStn;
+	
+	public int getGetoffstatn() {
+		return getoffstatn;
 	}
 
 
-
-	public void setGetoffStn(String getoffStn) {
-		this.getoffStn = getoffStn;
+	public void setGetoffstatn(int getoffstatn) {
+		this.getoffstatn = getoffstatn;
 	}
-
 
 
 	public int getUserId() {
@@ -106,14 +119,13 @@ public class getoff_infoVO {
 	}
 
 
-
 	@Override
 	public String toString() {
-		return "getoff_infoVO [id=" + id + ", trainNo=" + trainNo + ", carNum=" + carNum + ", sitNum=" + sitNum
-				+ ", statnNm=" + statnNm + ", getoffStn=" + getoffStn + ", userId=" + userId + "]";
+		return "getoff_infoVO [id=" + id + ", trainNo=" + trainNo + ", carNum=" + carNum + ", seatNum=" + seatNum
+				+ ", statnNm=" + statnNm + ", getoffNm=" + getoffNm + ", getoffstatn=" + getoffstatn + ", userId="
+				+ userId + "]";
 	}
-	
-	
+
 	
 
 }

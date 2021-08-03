@@ -124,9 +124,29 @@ public class SubwayController {
 	public ModelAndView addseatInfo(getoff_infoVO getoff) {
 		
 		ModelAndView view = new ModelAndView();
+		String viewPage = "redirect:successInsert";
+		
 		System.out.println(getoff.toString()); // test
 		
+		int result = service.insertGetoffInfo(getoff);
+		
+		// 등록 성공했을 시 
+		if(result==1){		
+			view.setViewName(viewPage);
+			view.addObject("getoff",getoff);
+		}
+		
 		return view;
+		
+	}
+	
+	//하차정보 등록 성공 시
+	@RequestMapping(value="successInsert")
+	public String successInsert() {
+		
+		String viewPage = "successInsert";
+		
+		return viewPage;
 	}
 
 }
