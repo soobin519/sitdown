@@ -259,8 +259,12 @@ label {
         <input type="hidden" id='id_getoffNm' name='getoffNm' value='${selectInfo.getoffNm}'/>
         <!-- 열차번호 -->
         <input type="hidden" id='id_carNum' name='carNum' value='${selectInfo.carNum}'/>
+        <!-- 하차역 정보 -->
+        <input type="hidden" id='id_getoffstatn' name='getoffstatn' value='${selectInfo.getoffstatn}'/>
         <!-- 좌석번호 -->
         <input type="hidden" id='id_seatNum' name='seatNum' value=''/>
+        <!-- 유저id -->
+        <input type="hidden" id='userId' name='userId' value='${user.id}'/>
 		</form>
 	</div>
 	
@@ -331,10 +335,15 @@ function formSeatInfo(){
 	var carNum = $('#id_carNum').val(); // 칸 번호
 	var statnTmn = $('#id_statnTmn').val(); //종착역
 	
+	if(id=='') {
+		alert("좌석을 선택해주세요");
+		return false;
+	}
+	
 	const result = confirm(subwayNm+"  "+statnTmn+"행 "+"\n열차번호 : "+trainNo+"\n하차역 : "+getoffNm+"\n좌석 번호 : "+id+" / "+carNum+" 량 "+"\n\n해당 정보로 등록하시겠습니까 ?");
 	
 	if(result){
-		document.getElementById("getoffInfoForm").submit();
+		document.getElementById("id_form").submit();
 	}else{
 		alert("등록을 취소하였습니다.");
 		return false;

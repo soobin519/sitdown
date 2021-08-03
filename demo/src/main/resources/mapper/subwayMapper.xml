@@ -17,6 +17,8 @@
 
 <!-- 하차정보 등록하기 -->
 <insert id="insertGetoffInfo" parameterType="com.example.demo.VO.getoff_infoVO">
+	insert into getoff_info(trainNo,carNum,seatNum,statnNm,getoffNm,getoffstatn,userId) 
+	values (#{trainNo}, #{carNum}, #{seatNum}, #{statnNm}, #{getoffNm}, #{getoffstatn}, #{userId})
 </insert>
 
 </mapper>
