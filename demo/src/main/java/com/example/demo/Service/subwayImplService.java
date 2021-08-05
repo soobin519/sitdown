@@ -1,5 +1,6 @@
 package com.example.demo.Service;
 
+import java.util.HashMap;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -31,4 +32,12 @@ public class subwayImplService implements subwayService {
 	public int insertGetoffInfo(getoff_infoVO getoff) {
 		return sdao.insertGetoffInfo(getoff);
 	}
+
+	@Override
+	public getoff_infoVO selectMySeatInfo(HashMap map) {
+		// TODO Auto-generated method stub
+		return sdao.selectMySeatInfo(map);
+	}
+	
+	
 }

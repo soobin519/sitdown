@@ -1,6 +1,7 @@
 package com.example.demo.Controller;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -43,6 +44,9 @@ public class SubwayController {
 	private static final org.slf4j.Logger logger = LoggerFactory.getLogger(UserUtilController.class);
 	@Inject
 	subwayService service;
+	
+	@Autowired
+	private HttpSession session;
 	
 	// 하차정보 등록 상세페이지
 	@RequestMapping(value = "/getoff", method = RequestMethod.GET, produces="application/json")
@@ -121,7 +125,7 @@ public class SubwayController {
 	
 	// 하차정보 등록 (진행중)
 	@RequestMapping(value="addseatInfo",method=RequestMethod.POST)
-	public ModelAndView addseatInfo(getoff_infoVO getoff) {
+	public ModelAndView addseatInfo(getoff_infoVO getoff, RedirectAttributes redirect) {
 		
 		ModelAndView view = new ModelAndView();
 		String viewPage = "redirect:successInsert";
@@ -129,11 +133,12 @@ public class SubwayController {
 		System.out.println(getoff.toString()); // test
 		
 		int result = service.insertGetoffInfo(getoff);
+		//System.out.println(getoff.getId());
 		
 		// 등록 성공했을 시 
 		if(result==1){		
 			view.setViewName(viewPage);
-			view.addObject("getoff",getoff);
+			view.addObject("gid",getoff.getId()); 
 		}
 		
 		return view;
@@ -142,9 +147,18 @@ public class SubwayController {
 	
 	//하차정보 등록 성공 시
 	@RequestMapping(value="successInsert")
-	public String successInsert() {
+	public String successInsert(Model model,@RequestParam("gid") int gid) {
 		
 		String viewPage = "successInsert";
+		HashMap<String,Object> map = new HashMap<>();
+		
+		userVO user = (userVO) session.getAttribute("user");
+		
+		map.put("id", gid);
+		map.put("userId", user.getId());
+		
+		getoff_infoVO myseat = service.selectMySeatInfo(map);
+		model.addAttribute("myseat", myseat);
 		
 		return viewPage;
 	}

@@ -19,6 +19,14 @@
 <insert id="insertGetoffInfo" parameterType="com.example.demo.VO.getoff_infoVO">
 	insert into getoff_info(trainNo,carNum,seatNum,statnNm,getoffNm,getoffstatn,userId) 
 	values (#{trainNo}, #{carNum}, #{seatNum}, #{statnNm}, #{getoffNm}, #{getoffstatn}, #{userId})
+	<selectKey keyProperty="id" resultType="int">
+        SELECT LAST_INSERT_ID()
+    </selectKey>
 </insert>
+
+<!-- 등록된 하차정보 가져오기 -->
+<select id="selectMySeatInfo" parameterType="map" resultType="com.example.demo.VO.getoff_infoVO">
+	select * from getoff_info where userId=#{userId} and id=#{id}
+</select>
 
 </mapper>

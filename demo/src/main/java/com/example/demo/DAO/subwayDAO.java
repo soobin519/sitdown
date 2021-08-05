@@ -1,5 +1,6 @@
 package com.example.demo.DAO;
 
+import java.util.HashMap;
 import java.util.List;
 
 import org.springframework.stereotype.Repository;
@@ -19,5 +20,8 @@ public interface subwayDAO {
 	
 	//하차정보 등록하기 
 	public int insertGetoffInfo(getoff_infoVO getoff);
+	
+	//하차정보 가져오기
+	public getoff_infoVO selectMySeatInfo(HashMap map);
 	
 }

@@ -1,5 +1,6 @@
 package com.example.demo.DAO;
 
+import java.util.HashMap;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -30,6 +31,12 @@ public class subwayImplDAO implements subwayDAO {
 	  public int insertGetoffInfo(getoff_infoVO getoff) {
 		  return sql.insert(Namespace+"insertGetoffInfo",getoff);
 	  }
+
+	@Override
+	public getoff_infoVO selectMySeatInfo(HashMap map) {
+		// TODO Auto-generated method stub
+		return sql.selectOne(Namespace+"selectMySeatInfo",map);
+	}
 	  
 
 }
