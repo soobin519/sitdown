@@ -67,14 +67,27 @@ public class SubwayController {
 	//좌석 정보 확인 상세페이지 
 	@RequestMapping(value="/seatinfo")
   	public String seatinfoPage(Model model) {
-  		return "seatinfo";
+		String viewPage = "seatinfo";
+		model.addAttribute("lineInfo",service.selectLine());
+  		return viewPage;
   	}
 	
 	//좌석 상세페이지 
-		@RequestMapping(value="/checkSeat")
-	  	public String seatPage(Model model) {
-	  		return "checkSeat";
-	  	}
+	@RequestMapping(value="/checkSeat")
+	@ResponseBody
+	public List<getoff_infoVO> seatPage(Model model, @RequestParam(value="subwayId") int subwayId, @RequestParam(value="trainNo") int trainNo, @RequestParam(value="carNum") int carNum) {
+		//System.out.println(trainNo);
+		HashMap<String,Object> map = new HashMap<>();
+		map.put("subwayId",subwayId); // 노선번호 
+		map.put("trainNo", trainNo); // 열차번호
+		map.put("carNum", carNum); // 칸번호
+			
+		List<getoff_infoVO> getoffList = service.selectGetoffInfo(map);
+		System.out.println(getoffList);
+			
+		//model.addAttribute("getoffList", getoffList);
+		return getoffList;
+	}
 	
 	// 열차api 리스트 가져오기 
 	@RequestMapping(value="/trainList",method=RequestMethod.POST)
@@ -83,7 +96,7 @@ public class SubwayController {
 		ModelAndView view = new ModelAndView();
 		String viewPage="trainListAjax";
 		
-		System.out.println("line=>"+line);
+		System.out.println("line=>"+line); // ex) 3호선 -> 노선명
 		
 		List<Map<String, Object>> train = subwayAPI.getSubwayAPI(line); // api 호출
 		

@@ -38,5 +38,8 @@ public class subwayImplDAO implements subwayDAO {
 		return sql.selectOne(Namespace+"selectMySeatInfo",map);
 	}
 	  
-
+	@Override
+	public List<getoff_infoVO> selectGetoffInfo(HashMap map) {
+		return sql.selectList(Namespace+"selectGetoffInfo", map);
+	}
 }

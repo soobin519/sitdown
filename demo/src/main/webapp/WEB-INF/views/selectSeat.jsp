@@ -67,6 +67,18 @@ html, body {
     background-color: chartreuse;
 }
 
+.selected {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	margin-right: 10px;
+	width: 50px;
+	height: 50px;
+	background: url(/resources/assets/img/portfolio/leftseat.png) no-repeat;
+	background-size: contain;
+	background-color: gainsboro;
+}
+
 label {
 	cursor: pointer;
 }
@@ -101,6 +113,12 @@ label {
 
 	<div class="container2">
 		<div class="section5">
+		</div>
+		<div class="section5">
+			<h2 class="text-center text-uppercase text-secondary mb-0">
+				${selectInfo.subwayNm} &emsp; 
+				${selectInfo.trainNo} 번 열차 &emsp; ${selectInfo.carNum}  칸 
+			</h2>
 		</div>
 		<div class="section1">
 			<div class="left">
@@ -313,17 +331,47 @@ label {
   <script src='/resources/js/freelancer.min.js'></script>
   
 <script type="text/javascript"> 
+
+	// 등록 좌석 표기 -> 선택 불가 좌석 ? 
+			
+	$.ajax({
+		url: 'checkSeat',
+		data: { 
+			trainNo : $('#id_trainNo').val(),
+			subwayId : $('#id_subwayId').val(),
+			carNum : $('#id_carNum').val(),
+		},
+		success: function(res){
+			selectedSeat(res);
+		},
+		error: function(error) {
+			console.log(error.status);
+		}
+	}); // Ajax
+
 	$(document).on('click','.seatBox',function(){
 		$('.seatBox').removeClass('clicked');
 		$(this).addClass('clicked');
 		
 		var id = $(this).children().eq(0).attr('id');
 		
-		console.log(id);
+		//console.log(id);
 		
 		$('#id_seatNum').attr('value',id);
 		
-	})
+	});
+	
+// 이미 선택된 좌석 text 및 css 변경 
+function selectedSeat(list){
+	
+	for(var item of list){
+		
+		var seat = document.getElementById(item.seatNum);
+		seat.nextElementSibling.innerHTML = 'X';
+		seat.parentElement.className='selected';
+		
+	}
+}
 	
   	
 function formSeatInfo(){

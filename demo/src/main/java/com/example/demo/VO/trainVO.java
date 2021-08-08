@@ -16,6 +16,7 @@ public class trainVO {
 		super();
 		// TODO Auto-generated constructor stub
 	}
+	
 
 	public trainVO(int subwayId, String subwayNm, int trainNo, String statnNm, String statnTmn, int carNum,int statnNmId,int getoffstatn, String getoffNm) {
 		super();

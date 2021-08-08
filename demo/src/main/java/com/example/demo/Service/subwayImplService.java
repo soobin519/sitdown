@@ -38,6 +38,12 @@ public class subwayImplService implements subwayService {
 		// TODO Auto-generated method stub
 		return sdao.selectMySeatInfo(map);
 	}
+
+	@Override
+	public List<getoff_infoVO> selectGetoffInfo(HashMap map) {
+		// TODO Auto-generated method stub
+		return sdao.selectGetoffInfo(map);
+	}
 	
 	
 }

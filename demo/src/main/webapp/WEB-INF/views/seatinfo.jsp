@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -59,35 +61,36 @@
     
     <div class="row">
  	<div class="col-lg-7 mx-auto">
-    <form action="checkSeat" method="post">
+    <form action="checkSeat" method="get">
         <div class="control-group" style="width:350px; margin:0 auto;" >
-        	<select name="select" id="selectLine" class="form-control">
-        		<option>노선을 선택해주세요</option>
-        		<option value="분당선">분당선</option>
-        		<option value="8호선">8호선</option>
-        		<option value="2호선">2호선</option>
-        		<option value="3호선">3호선</option>
-        	</select>
+          	<select name="subwayId" id="selectLine" class="form-control">
+        	<option value="">노선을 선택해주세요</option>
+        	<c:forEach items="${lineInfo}" var="line">
+     			<option value="${line.id}"><c:out value="${line.line}"/></option>
+			</c:forEach>
+			</select>
         </div>
         <br>
         <div class="control-group" style="width:350px; margin:0 auto;">
-        	<select name="select" id="selectTrain" class="form-control">
+        	<select name="trainNo" id="selectTrain" class="form-control">
         		<option>열차를 선택해주세요 </option>
         	</select>
         </div>
         <br>
         <div class="control-group" style="width:350px; margin:0 auto;">
-        	<select name="select" id="selectNum" class="form-control">
-        		<option>1량</option>
-        		<option>2</option>
-        		<option>3</option>
-        		<option>4</option>
+        	<select name="carNum" id="selectNum" class="form-control">
+        		<option value="1">1량</option>
+        		<option value="2">2량</option>
+        		<option value="3">3량</option>
+        		<option value="4">4량</option>
+        		<option value="5">5량</option>
+        		<option value="6">6량</option>
         	</select>
         </div>
         
         <br>
          <div class="control-group" style="text-align:center">
-        	<button type="submit" class="btn btn-primary btn-xl" id="sendMessageButton" >다음</button>
+        	<button type="submit" class="btn btn-primary btn-xl" id="sendMessageButton" >조회하기</button>
     	</div>
     </form>
     </div>
@@ -99,8 +102,12 @@
 <script src="http://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
 <script type="text/javascript"> 
 $(function(){
+	
+	let getoffInfoBtn = document.getElementById("sendMessageButton");
+	
+	// 해당 노선 열차 List 가져오기
 	$("#selectLine").on('change',function(){
-		var line = $('#selectLine option:selected').val();
+		var line = $('#selectLine option:selected').text();
 		console.log(line);
 		$.ajax({
 			url: 'trainList',
@@ -116,11 +123,43 @@ $(function(){
 			}
 		}); // Ajax
 		
-		
 	})
 	
+	getoffInfoBtn.addEventListener('click',function() {
+		fn_isSelectInfo();
+	},false);
 	
 })    
+
+// 정보 입력 check function
+function fn_isSelectInfo(){
+		
+	var line = $('#selectLine option:selected').val();
+	var train = $('#selectTrain option:selected').val();
+
+	console.log(line);
+	console.log(train);
+	
+	if(line==''||train===''){
+		alert('항목을 모두 선택해주세요.');
+		return false;
+	}
+	
+	var subwayNm_val = $('#selectLine option:selected').text(); // 노선
+	var statnTmn_val = $('#selectTrain option:selected').attr('statntnm'); // 종착역
+	
+	//alert(statnTmn_val);
+	//console.log("종착역=>"+statnTmn_val);
+	
+	//input value 추가
+	$('#id_subwayNm').attr('value',subwayNm_val); // 노선
+	$('#id_statnTmn').attr('value',statnTmn_val); // 종착역
+	
+
+	document.getElementById("getoffInfoForm").submit();
+	
+}
+
 </script>
 
   <!-- Footer -->

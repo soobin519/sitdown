@@ -22,4 +22,7 @@ public interface subwayService {
 	
 	//하차 정보 가져오기 
 	public getoff_infoVO selectMySeatInfo(HashMap map);
+	
+	//하차 정보 전체 조회
+	public List<getoff_infoVO> selectGetoffInfo(HashMap map);
 }
