@@ -77,6 +77,7 @@
 			<div class="col-6" style="text-align: center;">
 				<div class="card-shadow-warning border mb-3 card card-body border-warning">
 					<br>
+					<h5 class="card-title">${myseat.line}</h5>
 					<h5 class="card-title">${myseat.trainNo} 열차 </h5>
 					<h5 class="card-title">${myseat.carNum} 번 칸</h5>
 					<h5 class="card-title">${myseat.seatNum} 번 좌석</h5>

@@ -3,7 +3,9 @@ package com.example.demo.VO;
 public class getoff_infoVO {
 	// 하차정보 등록, 출력 시 사용하기 위한 VO 
 	private int id; // index 
+	private int subwayId; // 노선번호
 	private String trainNo; //열차 id 
+	private String line; // 노선명 
 	private int carNum; //칸 번호 
 	private int seatNum; //좌석 번호 
 	private String statnNm; // 현재위치 (승차 위치) 
@@ -17,10 +19,12 @@ public class getoff_infoVO {
 	}
 
 	
-	public getoff_infoVO(int id, String trainNo, int carNum, int seatNum, String statnNm, String getoffNm,
+	public getoff_infoVO(int id, int subwayId, String trainNo, String line, int carNum, int seatNum, String statnNm, String getoffNm,
 			int getoffstatn, int userId) {
 		super();
 		this.id = id;
+		this.subwayId = subwayId;
+		this.line = line;
 		this.trainNo = trainNo;
 		this.carNum = carNum;
 		this.seatNum = seatNum;
@@ -29,6 +33,27 @@ public class getoff_infoVO {
 		this.getoffstatn = getoffstatn;
 		this.userId = userId;
 	}
+	
+	
+	public String getLine() {
+		return line;
+	}
+
+
+	public void setLine(String line) {
+		this.line = line;
+	}
+
+
+	public int getSubwayId() {
+		return subwayId;
+	}
+
+
+	public void setSubwayId(int subwayId) {
+		this.subwayId = subwayId;
+	}
+
 
 	public String getGetoffNm() {
 		return getoffNm;
@@ -121,10 +146,11 @@ public class getoff_infoVO {
 
 	@Override
 	public String toString() {
-		return "getoff_infoVO [id=" + id + ", trainNo=" + trainNo + ", carNum=" + carNum + ", seatNum=" + seatNum
-				+ ", statnNm=" + statnNm + ", getoffNm=" + getoffNm + ", getoffstatn=" + getoffstatn + ", userId="
-				+ userId + "]";
+		return "getoff_infoVO [id=" + id + ", subwayId=" + subwayId + ", trainNo=" + trainNo + ", line=" + line
+				+ ", carNum=" + carNum + ", seatNum=" + seatNum + ", statnNm=" + statnNm + ", getoffNm=" + getoffNm
+				+ ", getoffstatn=" + getoffstatn + ", userId=" + userId + "]";
 	}
+
 
 	
 
