@@ -72,7 +72,7 @@ public class SubwayController {
   		return viewPage;
   	}
 	
-	//좌석 상세페이지 
+	//좌석 상세정보 가져오기
 	@RequestMapping(value="/checkSeat")
 	@ResponseBody
 	public List<getoff_infoVO> seatPage(Model model, @RequestParam(value="subwayId") int subwayId, @RequestParam(value="trainNo") int trainNo, @RequestParam(value="carNum") int carNum) {
@@ -88,6 +88,17 @@ public class SubwayController {
 		//model.addAttribute("getoffList", getoffList);
 		return getoffList;
 	}
+	
+	// 좌석 선택 page
+	@RequestMapping(value="/checkInfo")
+	public String seatinfoPage(Model model, @RequestParam(value="subwayId") int subwayId, @RequestParam(value="trainNo") int trainNo, @RequestParam(value="carNum") int carNum) {
+		
+		String viewPage = "checkSeat";
+		
+		return viewPage;
+	}
+	
+	
 	
 	// 열차api 리스트 가져오기 
 	@RequestMapping(value="/trainList",method=RequestMethod.POST)

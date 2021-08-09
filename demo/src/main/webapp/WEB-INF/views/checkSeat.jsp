@@ -60,16 +60,37 @@ html, body {
 }
 
 .left {
-	margin-right: 180px;
+	width:250px;
+	margin-right: 100px;
 }
 
 .right {
-	margin-left: 180px;
+/* 	width:250px; */
+	margin-left: 100px;
 }
 
 label {
 	cursor: pointer;
 }
+
+.selected {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 50px;
+	height: 50px;
+	background: url(/resources/assets/img/portfolio/leftseat.png) no-repeat;
+	background-size: contain;
+	background-color: gainsboro;
+}
+
+.row {
+	margin-left : 0px;
+	margin-right : 0px;
+
+
+}
+
 </style>
 
 </head>
@@ -112,16 +133,18 @@ label {
 					name="seatNum1" id="1"> <label for="seatNum1">1</label>
 				</span> <span class="seatBox"> <input hidden type="checkbox"
 					name="seatNum2" id="2"> <label for="seatNum2">2</label>
-				</span> <span class="seatBox" id="seat3"> <input hidden type="checkbox"
-					name="seatNum3" id="3"> <label for="seatNum3">3</label>
-				</span>
+				</span><div class=row><span class="seatBox" id="seat3"> <input hidden type="checkbox"
+					name="seatNum3" id="3"> <label for="seatNum3">3</label> 
+				</span>	<div class="col-4">
+					<b>하차역</b>
+				</div></div> 
 			</div>
 			<div class="right">
 				<span class="seatBox"> <input hidden type="checkbox"
 					name="seatNum1" id="4"> <label for="seatNum1">1</label>
 				</span> <span class="seatBox"> <input hidden type="checkbox"
 					name="seatNum2" id="5"> <label for="seatNum2">2</label>
-				</span> <span class="seatBox"> <input hidden type="checkbox"
+				</span><span class="seatBox"> <input hidden type="checkbox"
 					name="seatNum3" id="6"> <label for="seatNum3">3</label>
 				</span>
 			</div>
@@ -248,17 +271,36 @@ label {
 <script src="http://code.jquery.com/jquery-1.11.2.min.js"></script>
 <script src="http://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
 <script type="text/javascript"> 
-/* $(document).on('click','.seatBox',function(){
-	$('.seatBox').removeClass('clicked');
-	$(this).addClass('clicked');
+// ajax 하차정보 리스트 불러오기
+// 등록 좌석 표기 -> 선택 불가 좌석 ? 
+	console.log(location.search);
+ 	$.ajax({
+		url: "checkSeat"+location.search,
+		success: function(res){
+			getSeatInfo(res);
+/* 			for(var a of res){
+				console.log(a.getoffNm);
+				console.log(a.seatNum);
+			} */
+		},
+		error: function(error) {
+			console.log(error.status);
+		}
+	}); // Ajax */
 	
-	var id = $(this).children().eq(0).attr('id');
+	// 이미 선택된 좌석 text 및 css 변경 
+	function getSeatInfo(list){
+		
+		for(var item of list){
+			
+			var seat = document.getElementById(item.seatNum);
+			console.log(seat);
+			seat.nextElementSibling.innerHTML = 'X';
+			seat.parentElement.className='selected';
+			
+		}
+	}
 	
-	console.log(id);
-	
-	$('#id_seatNum').attr('value',id);
-	
-}) */
 </script>
 	 <!-- Footer -->
   <footer class="footer text-center">

@@ -61,7 +61,7 @@
     
     <div class="row">
  	<div class="col-lg-7 mx-auto">
-    <form action="checkSeat" method="get">
+    <form action="checkInfo" method="get">
         <div class="control-group" style="width:350px; margin:0 auto;" >
           	<select name="subwayId" id="selectLine" class="form-control">
         	<option value="">노선을 선택해주세요</option>
