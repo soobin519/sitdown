@@ -136,7 +136,7 @@
   				
   			},
   			error: function(e){
-  				alert('정보를 다시 입력해주시길 바랍니다.');
+  				alert('정보를 다시 입력해주시길 바랍니다. 확인해주세요.');
   				console.log(e);
   			}
   		}
