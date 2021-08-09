@@ -89,7 +89,7 @@
             <div id="success"></div>
             <br>
             <div class="form-group">
-              <button type="submit" class="btn btn-primary btn-xl" id="sendMessageButton">아이디 찾기</button>
+              <button onclick="findId();" type="submit" class="btn btn-primary btn-xl" id="sendMessageButton">아이디 찾기</button>
             </div>
           </form>
         </div>
@@ -105,15 +105,37 @@
   		
   		let name = $('#name').val()
   		let email = $('#email').val()
+  		console.log("name: "+name);
+  		console.log("email: "+email);
+  		
+  		//입력된 이름이 없을경우
+  		if(name===''||name==='undefined'){
+  			alert("이름을 입력해주세요");
+  			return false;
+  		}  		
+  		//입력된 이메일이 없을경우
+  		else if(email===''||email==='undefined'){
+  			alert("이메일을 입력해주세요");
+  			return false;
+  		}
   		
   		$.ajax({
   			url: 'findId',
-  			data: data,
-  			type: 'POST'
+/* 		    processData: false,  
+		    contentType: false, */
+  			data: {
+  				name : $('#name').val(),
+  				email : $('#email').val(),
+  			},
+  			type: 'POST',
   			success: function(res){
-  				alert('아이디는 찾기 완료.')
+  				console.log(res)
   				
-  			}
+  				alert('아이디는 찾기 완료.')
+  				location.replace("/user/viewid/")
+  				return false;
+  				
+  			},
   			error: function(e){
   				alert('정보를 다시 입력해주시길 바랍니다.');
   				console.log(e);

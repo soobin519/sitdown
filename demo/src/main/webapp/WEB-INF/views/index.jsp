@@ -102,7 +102,7 @@
 		<div class="container">
 			<!-- Portfolio Section Heading-->
 			<h2
-				class="page-section-heading text-center text-uppercase text-secondary mb-0">Portfolio</h2>
+				class="page-section-heading text-center text-uppercase text-secondary mb-0">MENU</h2>
 			<!-- Icon Divider-->
 			<div class="divider-custom">
 				<div class="divider-custom-line"></div>
@@ -125,7 +125,7 @@
 								<i class="fas fa-plus fa-3x"></i>
 							</div>
 						</div>
-						<img class="img-fluid"
+						<img class="img-fluid" 
 							src="/resources/assets/img/portfolio/one.png" alt="..." />
 					</div>
 				</div>

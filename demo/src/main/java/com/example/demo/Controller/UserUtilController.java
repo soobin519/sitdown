@@ -129,21 +129,23 @@ public class UserUtilController {
 		}
 	
 	//아이디 찾기
+	@ResponseBody
 	@RequestMapping(value ="/findId", method=RequestMethod.POST)
-	public String findId(@ModelAttribute userVO user, Model model) {
+	public userVO findId(@ModelAttribute userVO user, Model model) {
 		
 		userVO result = service.findId(user);
 		model.addAttribute("user",result);
 		System.out.println("아이디찾기 완료 ");
-		System.out.println(result);
+		System.out.println("controller "+result.toString());
 		
-		return "redirect:/user/viewid";
+		return result;
+//		return "redirect:/";
 	}
 	
 	//찾은 아이디 보여주는 페이지 
 	@RequestMapping(value="/viewid")
 	public String viewIdPage(Model model) {
-		return "findId";
+		return "viewId";
 	}
 	
 	//비밀번호 mail 전송 
