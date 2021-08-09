@@ -121,8 +121,7 @@
   		
   		$.ajax({
   			url: 'findId',
-/* 		    processData: false,  
-		    contentType: false, */
+
   			data: {
   				name : $('#name').val(),
   				email : $('#email').val(),
