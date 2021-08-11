@@ -9,6 +9,10 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.authentication.TestingAuthenticationToken;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContext;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 
@@ -106,6 +110,13 @@ public class UserUtilController {
 		}else {
 			session.setAttribute("user", login);
 			//rttr.addFlashAttribute("msg", true);
+			
+			// 권한 추가 
+			SecurityContext context = SecurityContextHolder.createEmptyContext();
+			Authentication authentication = new TestingAuthenticationToken(login.getId(),login.getPassword(),"ROLE_USER");
+			context.setAuthentication(authentication);
+			SecurityContextHolder.setContext(context);
+			
 			System.out.println("userinfo"+login.getEmail());	
 			//result="True";
 			//model.addAttribute("msg", true);

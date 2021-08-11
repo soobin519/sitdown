@@ -17,20 +17,18 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 	
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        http.csrf().disable(); // 인증 비활성화 ? 
-//        http
-//        	.authorizeRequests()
-//        		.antMatchers("/","/resources/**").permitAll()
-//        		.antMatchers("/user/**").permitAll()
-//        		.anyRequest().authenticated()
-//        		.and()
-//        	.formLogin()
-//        		.loginPage("/user/login")
-//        		.loginProcessingUrl("/checkuser")
-//        		.usernameParameter("userId")
-//        		.passwordParameter("password")
-//        		.defaultSuccessUrl("/login",true);
-        
+        http.csrf().disable(); // csrf 비활성화
+        http
+        	.authorizeRequests()
+        		.antMatchers("/","/resources/**").permitAll()
+        		.antMatchers("/user/**").permitAll()
+        		.anyRequest().authenticated() // 인증된 경우만 이용 가능
+        		.and()
+        	.formLogin()
+        		.loginPage("/user/login")
+        		.loginProcessingUrl("/checkuser") //로그인이 post 보낼 때의 경로 
+        		.usernameParameter("userId")
+        		.passwordParameter("password");
         	
     }
 }
