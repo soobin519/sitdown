@@ -180,6 +180,7 @@ public class SubwayController {
 		
 		map.put("id", gid);
 		map.put("userId", user.getId());
+		map.put("type", 1);
 		
 		getoff_infoVO myseat = service.selectMySeatInfo(map);
 		model.addAttribute("myseat", myseat);

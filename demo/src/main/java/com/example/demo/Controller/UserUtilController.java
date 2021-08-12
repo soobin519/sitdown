@@ -16,6 +16,8 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 
+import java.util.HashMap;
+
 import javax.inject.Inject;
 import javax.mail.Session;
 import javax.servlet.http.HttpServletRequest;
@@ -28,7 +30,9 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.example.demo.mailSend;
 import com.example.demo.pwdMaker;
+import com.example.demo.Service.subwayService;
 import com.example.demo.Service.userService;
+import com.example.demo.VO.getoff_infoVO;
 import com.example.demo.VO.userVO;
 
 @Controller
@@ -40,7 +44,7 @@ public class UserUtilController {
 	
 	@Autowired
 	userService service;
-	
+
 	@Autowired
 	private mailSend mail;
 	
@@ -227,6 +231,7 @@ public class UserUtilController {
 		return result;
 	}
 	
+
 	
 	
 
