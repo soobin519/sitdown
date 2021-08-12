@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.example.demo.DAO.myPageDAO">
+
+<!-- 하차하기 -->
+<update id="updateGetOff" parameterType="int">
+	UPDATE getoff_info SET flag=0 WHERE id=#{id}
+</update>
+
+
+</mapper>
