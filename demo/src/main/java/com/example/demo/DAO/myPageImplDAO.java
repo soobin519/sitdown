@@ -19,6 +19,12 @@ public class myPageImplDAO implements myPageDAO {
 		return sql.update(Namespace+"updateGetOff", id);
 	  }
 
+	@Override
+	public int updateSeatInfo(HashMap map) {
+		// 현재 좌석 수정하기 
+		return sql.update(Namespace+"updateSeatInfo", map);
+	}
+
 	  
 	  
 	  

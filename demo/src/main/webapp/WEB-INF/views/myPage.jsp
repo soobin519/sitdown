@@ -108,7 +108,7 @@
 				<div class="card-shadow-warning border mb-3 card card-body border-warning">
 					<br>
 					<h5 class="card-title">${myseat.line}</h5>
-					<h5 class="card-title">${myseat.trainNo} 열차 </h5>
+					<h5 class="card-title">${myseat.trainNo} 열차</h5>
 					<h5 class="card-title">${myseat.carNum} 번 칸</h5>
 					<h5 class="card-title">${myseat.seatNum} 번 좌석</h5>
 					<h5 class="card-title">${myseat.getoffNm}역 하차</h5>
@@ -121,7 +121,7 @@
 			<div class="row" style="place-content: center;">
 				<div class="col-3" style="text-align: right;">
 					<button type="button" class="btn btn-primary btn-xl"
-						id="sendMessageButton" onclick = "location.href=''" >수정하기</button>
+						id="updateButton">수정하기</button>
 				</div>
 				<div class="col-3" style="text-align: left;">
 					<button type="button" class="btn btn-primary btn-xl"
@@ -133,7 +133,22 @@
 
 		</div>
 	</section>
-
+	
+	<form id="id_form" action="updateSeat" method="post">
+	  	<!-- 노선이름  -->
+        <input type='hidden' id='line' name='line' value='${myseat.line}'/> 
+        <!-- 열차번호   -->
+        <input type='hidden' id='trainNo' name='trainNo' value='${myseat.trainNo}'/>
+        <!-- 열차번호   -->
+        <input type='hidden' id='subwayId' name='subwayId' value='${myseat.subwayId}'/>
+        <!-- 칸 -->
+        <input type="hidden" id='carNum' name='carNum' value='${myseat.carNum}'/>
+        <!-- 목적지 -->
+        <input type="hidden" id='getoffNm' name='getoffNm' value='${myseat.getoffNm}'/>
+        <!-- 목적지 -->
+        <input type="hidden" id='id' name='id' value='${myseat.id}'/>
+    </form>   
+     
 
 	<!-- Footer -->
 	<footer class="footer text-center">
@@ -167,6 +182,14 @@
 <script src="http://code.jquery.com/jquery-1.11.2.min.js"></script>
 <script src="http://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
 <script type="text/javascript"> 
+$(function(){
+	
+	let updateBtn = document.getElementById("updateButton");
+	
+	updateBtn.addEventListener('click',function() {
+		document.getElementById('id_form').submit();
+	},false);
+
 
 function getoff(id){
 	
@@ -196,6 +219,7 @@ function getoff(id){
 
 
 
+})
 
 </script>
 

@@ -10,5 +10,9 @@
 	UPDATE getoff_info SET flag=0 WHERE id=#{id}
 </update>
 
+<!-- 좌석 수정 -->
+<update id="updateSeatInfo" parameterType="map">
+	UPDATE getoff_info SET seatNum=#{seatNum} WHERE id=#{id}
+</update>
 
 </mapper>
