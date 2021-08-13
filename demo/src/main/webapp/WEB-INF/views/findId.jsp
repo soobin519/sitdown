@@ -88,6 +88,7 @@
             
             <div id="success"></div>
             <br>
+            
             <div class="form-group">
               <button onclick="findId();" type="submit" class="btn btn-primary btn-xl" id="sendMessageButton">아이디 찾기</button>
             </div>
@@ -121,7 +122,6 @@
   		
   		$.ajax({
   			url: 'findId',
-
   			data: {
   				name : $('#name').val(),
   				email : $('#email').val(),
@@ -130,8 +130,8 @@
   			success: function(res){
   				console.log(res)
   				
-  				alert('아이디는 찾기 완료.')
-  				location.replace("/user/viewid/")
+  				alert('아이디 찾기 완료.')
+  				location.replace("/user/viewid?id="+res.userId+"&name="+res.name)
   				return false;
   				
   			},
@@ -139,11 +139,9 @@
   				alert('정보를 다시 입력해주시길 바랍니다. 확인해주세요.');
   				console.log(e);
   			}
-  		}
-  				
+  		})  
   		
-  		)
-  		
+
   	}
   </script>
   

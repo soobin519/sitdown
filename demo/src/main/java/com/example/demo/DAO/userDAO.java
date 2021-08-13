@@ -27,5 +27,11 @@ public interface userDAO {
 	
 	//비밀번호 찾기 시 유저정보 조회
 	public int selectUser(userVO user);
+	
+	//새 비밀번호 설정 
+	public int setNewPassword(userVO user);
+	
+	//회원정보 조회 
+	public userVO selectUserInfo(int id);
 
 }
