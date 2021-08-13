@@ -15,4 +15,7 @@ public interface myPageService {
 	// 하차하기
 	public int updateGetOff(int id);
 	
+	// 좌석 수정하기 
+	public int updateSeatInfo(HashMap<String,Object> map);
+	
 }

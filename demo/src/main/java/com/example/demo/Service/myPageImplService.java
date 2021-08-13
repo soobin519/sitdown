@@ -24,6 +24,12 @@ public class myPageImplService implements myPageService {
 		// 하차하기
 		return pdao.updateGetOff(id);
 	}
+
+	@Override
+	public int updateSeatInfo(HashMap map) {
+		// 좌석 수정하기 
+		return pdao.updateSeatInfo(map);
+	}
 	
 	
 	

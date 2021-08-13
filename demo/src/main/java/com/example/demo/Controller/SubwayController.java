@@ -77,13 +77,14 @@ public class SubwayController {
 	@ResponseBody
 	public List<getoff_infoVO> seatPage(Model model, @RequestParam(value="subwayId") int subwayId, @RequestParam(value="trainNo") int trainNo, @RequestParam(value="carNum") int carNum) {
 		//System.out.println(trainNo);
+		System.out.println("aaaaaa");
 		HashMap<String,Object> map = new HashMap<>();
 		map.put("subwayId",subwayId); // 노선번호 
 		map.put("trainNo", trainNo); // 열차번호
 		map.put("carNum", carNum); // 칸번호
 			
 		List<getoff_infoVO> getoffList = service.selectGetoffInfo(map);
-		System.out.println(getoffList);
+		System.out.println("getofflist"+getoffList);
 			
 		//model.addAttribute("getoffList", getoffList);
 		return getoffList;

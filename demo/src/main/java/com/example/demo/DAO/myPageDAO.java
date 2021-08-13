@@ -15,4 +15,7 @@ public interface myPageDAO {
 	//하차하기
 	public int updateGetOff(int id);
 	
+	//좌석 수정 
+	public int updateSeatInfo(HashMap<String,Object> map);
+	
 }
