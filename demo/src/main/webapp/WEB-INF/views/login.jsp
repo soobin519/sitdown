@@ -112,9 +112,11 @@
             <div id="success"></div>
             <br>
             <div class="form-group">
+              <div style="text-align:right;">
+              	<a href="findid">아이디 찾기</a>
+              </div>
               <button onclick="javascript:loginbtn('${msg}')" type="submit" class="btn btn-primary btn-xl" id="sendMessageButton">로그인</button>
             </div>
-            <a href="findid">아이디 찾기</a>
           </form>
         </div>
       </div>

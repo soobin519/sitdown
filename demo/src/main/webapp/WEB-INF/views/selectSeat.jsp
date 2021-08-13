@@ -63,6 +63,22 @@ html, body {
 	margin-left: 180px;
 }
 
+.seatBox.clicked {
+    background-color: chartreuse;
+}
+
+.selected {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	margin-right: 10px;
+	width: 50px;
+	height: 50px;
+	background: url(/resources/assets/img/portfolio/leftseat.png) no-repeat;
+	background-size: contain;
+	background-color: gainsboro;
+}
+
 label {
 	cursor: pointer;
 }
