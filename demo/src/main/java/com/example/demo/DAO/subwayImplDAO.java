@@ -34,12 +34,16 @@ public class subwayImplDAO implements subwayDAO {
 
 	@Override
 	public getoff_infoVO selectMySeatInfo(HashMap map) {
-		// TODO Auto-generated method stub
 		return sql.selectOne(Namespace+"selectMySeatInfo",map);
 	}
 	  
 	@Override
 	public List<getoff_infoVO> selectGetoffInfo(HashMap map) {
 		return sql.selectList(Namespace+"selectGetoffInfo", map);
+	}
+
+	@Override
+	public int checkDuplicatedInfo(int userId) {
+		return sql.selectOne(Namespace+"checkDuplicatedInfo",userId);
 	}
 }
