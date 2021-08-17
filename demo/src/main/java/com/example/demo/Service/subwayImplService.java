@@ -35,14 +35,17 @@ public class subwayImplService implements subwayService {
 
 	@Override
 	public getoff_infoVO selectMySeatInfo(HashMap map) {
-		// TODO Auto-generated method stub
 		return sdao.selectMySeatInfo(map);
 	}
 
 	@Override
 	public List<getoff_infoVO> selectGetoffInfo(HashMap map) {
-		// TODO Auto-generated method stub
 		return sdao.selectGetoffInfo(map);
+	}
+
+	@Override
+	public int checkDuplicatedInfo(int userId) {
+		return sdao.checkDuplicatedInfo(userId);
 	}
 	
 	

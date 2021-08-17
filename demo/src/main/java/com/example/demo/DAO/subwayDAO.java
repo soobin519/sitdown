@@ -27,4 +27,7 @@ public interface subwayDAO {
 	//하차정보 전체 조회
 	public List<getoff_infoVO> selectGetoffInfo(HashMap map);
 	
+	//하차정보 중복 체크 
+	public int checkDuplicatedInfo(int userId);
+	
 }

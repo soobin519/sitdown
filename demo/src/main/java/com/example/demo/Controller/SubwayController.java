@@ -154,16 +154,30 @@ public class SubwayController {
 		
 		ModelAndView view = new ModelAndView();
 		String viewPage = "redirect:successInsert";
+		String errorPage = "errorAlert";
 		
-		System.out.println(getoff.toString()); // test
+		userVO user = (userVO) session.getAttribute("user");
+		int userId = user.getId();
 		
-		int result = service.insertGetoffInfo(getoff);
-		//System.out.println(getoff.getId());
-		
-		// 등록 성공했을 시 
-		if(result==1){		
-			view.setViewName(viewPage);
-			view.addObject("gid",getoff.getId()); 
+		// 이미 등록 된 정보가 없는 경우에만 등록 수행 
+		if(service.checkDuplicatedInfo(userId)<1) {
+			
+			// 등록 수행
+			int result = service.insertGetoffInfo(getoff);
+			
+			// 등록 성공했을 시 
+			if(result==1){		
+				view.setViewName(viewPage);
+				view.addObject("gid",getoff.getId()); 
+			}else {
+				view.setViewName(errorPage);
+				view.addObject("msg", "등록 실패 다시 시도해주세요.");
+			}
+			
+		}else {
+			// 이미 등록된 정보가 있는 경우 
+			view.setViewName(errorPage);
+			view.addObject("msg", "이미 등록된 정보가 있습니다. 하차 후 다시 등록해 주세요.");
 		}
 		
 		return view;

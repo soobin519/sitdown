@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -49,7 +50,6 @@ public class myPageController {
 		map.put("type", 2);
 		
 		getoff_infoVO myseat = tservice.selectMySeatInfo(map);
-		//System.out.println(myseat.toString());
 		model.addAttribute("myseat", myseat);
 		
 		return viewPage;
@@ -77,7 +77,7 @@ public class myPageController {
 	}
 	
 	//수정 controller
-	@RequestMapping(value="/updateSeatInfo", method = RequestMethod.POST)
+	@PostMapping(path="/updateSeatInfo")
 	public String updateInfo(Model model, @RequestParam int id, @RequestParam int seatNum) {
 		
 		//String viewPage = "redirect:info";
