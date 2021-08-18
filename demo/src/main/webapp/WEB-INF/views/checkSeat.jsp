@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -41,6 +42,7 @@ html, body {
 	align-items: center;
 	justify-content: center;
 	margin-right: 10px;
+	margin-left: 10px;
 	width: 50px;
 	height: 50px;
 }
@@ -65,7 +67,7 @@ html, body {
 }
 
 .right {
-/* 	width:250px; */
+	/*  width:250px;*/
 	margin-left: 100px;
 }
 
@@ -105,13 +107,27 @@ label {
       </button>
       <div class="collapse navbar-collapse" id="navbarResponsive">
         <ul class="navbar-nav ml-auto">
-          <li class="nav-item mx-0 mx-lg-1">
-            <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="/">Menu</a>
-          </li>
-          
-          <li class="nav-item mx-0 mx-lg-1">
-            <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="/user/login/">Login</a>
-          </li>
+  					<!-- 로그인 했을 경우 -->
+					<c:if test="${user !=null }">
+						<li class="nav-item mx-0 mx-lg-1"><a
+							class="nav-link py-3 px-0 px-lg-3 rounded" href="#portfolio">Menu</a></li>
+						<li class="nav-item mx-0 mx-lg-1"><a
+							class="nav-link py-3 px-0 px-lg-3 rounded"
+							onclick="alert('로그아웃완료');" href="/user/logout">LOGOUT</a></li>
+						<li class="nav-item mx-0 mx-lg-1"><a
+							class="nav-link py-3 px-0 px-lg-3 rounded" href="/myPage/info"><p>${user.name}님</p></a></li>
+					</c:if>
+
+					<!-- 로그인 안했을 경우  -->
+					<c:if test="${user ==null }">
+						<li class="nav-item mx-0 mx-lg-1"><a
+							class="nav-link py-3 px-0 px-lg-3 rounded" href="#portfolio">Menu</a></li>
+						<li class="nav-item mx-0 mx-lg-1"><a
+							class="nav-link py-3 px-0 px-lg-3 rounded" href="/user/login">LOGIN</a></li>
+						<li class="nav-item mx-0 mx-lg-1"><a
+							class="nav-link py-3 px-0 px-lg-3 rounded" href="/user/join">JOIN
+								US</a></li>
+					</c:if> 
           
         </ul>
       </div>
@@ -133,20 +149,31 @@ label {
 					name="seatNum1" id="1"> <label for="seatNum1">1</label>
 				</span> <span class="seatBox"> <input hidden type="checkbox"
 					name="seatNum2" id="2"> <label for="seatNum2">2</label>
-				</span><div class=row><span class="seatBox" id="seat3"> <input hidden type="checkbox"
-					name="seatNum3" id="3"> <label for="seatNum3">3</label> 
-				</span>	<div class="col-4">
-					<b>하차역</b>
-				</div></div> 
+				</span>
+				<div class=row>
+					<span class="seatBox" id="seat3"> 
+						<input hidden type="checkbox" name="seatNum3" id="3"> 
+						<label for="seatNum3">3</label> 
+					</span>	
+					<div>
+						<b>하차역</b>
+					</div></div> 
 			</div>
 			<div class="right">
 				<span class="seatBox"> <input hidden type="checkbox"
 					name="seatNum1" id="4"> <label for="seatNum1">1</label>
 				</span> <span class="seatBox"> <input hidden type="checkbox"
 					name="seatNum2" id="5"> <label for="seatNum2">2</label>
-				</span><span class="seatBox"> <input hidden type="checkbox"
-					name="seatNum3" id="6"> <label for="seatNum3">3</label>
-				</span>
+				</span>				
+				<div class=row>
+					<span class="seatBox" id="seat3"> 
+						<input hidden type="checkbox" name="seatNum3" id="3"> 
+						<label for="seatNum3">6</label> 
+					</span>	
+					<div>
+						<b>하차역</b>
+					</div>
+				</div> 
 			</div>
 		</div>
 		<div class="section2">
@@ -164,6 +191,7 @@ label {
 				</span> <span class="seatBox"> <input hidden type="checkbox"
 					name="seatNum6" id="12"> <label for="seatNum6">9</label>
 				</span>
+				
 			</div>
 			<div class="right">
 				<span class="seatBox"> <input hidden type="checkbox"
@@ -178,7 +206,7 @@ label {
 					name="seatNum5" id="17"> <label for="seatNum5">8</label>
 				</span> <span class="seatBox"> <input hidden type="checkbox"
 					name="seatNum6" id="18"> <label for="seatNum6">9</label>
-				</span>
+				</span> 
 			</div>
 		</div>
 		<div class="section3">
@@ -278,10 +306,10 @@ label {
 		url: "checkSeat"+location.search,
 		success: function(res){
 			getSeatInfo(res);
-/* 			for(var a of res){
+ 			for(var a of res){
 				console.log(a.getoffNm);
 				console.log(a.seatNum);
-			} */
+			} 
 		},
 		error: function(error) {
 			console.log(error.status);
