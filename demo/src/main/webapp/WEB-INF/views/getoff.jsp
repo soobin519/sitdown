@@ -106,7 +106,7 @@
         <input type="hidden" id='id_statnTmn' name='statnTmn' value=''/>
         <!-- 목적지 -->
         <input type="hidden" id='id_getoffNm' name='getoffNm' value=''/>
-        
+		        
         <br>
          <div class="control-group" style="text-align:center">
         	<button type="button" class="btn btn-primary btn-xl" id="sendMessageButton">다음</button>
@@ -149,11 +149,13 @@ $(function(){
 	// 하차역 정보 가져오기 Ajax 
 	$('#selectTrain').on('change',function(){
 		var lineNum = $('#selectLine option:selected').val();
+		var updnLine = $('#selectTrain option:selected').attr('updnLine'); // 상행 : 0 , 하행 : 1 
+		var station = $('#selectTrain option:selected').attr('statnnm');
 		console.log(lineNum);
 		$.ajax({
 			url: 'stationList',
 			type: 'post',
-			data: { lineNum : lineNum },
+			data: { lineNum : lineNum , updnLine : updnLine, station : station },
 			success: function(res){
 				$('#selectStation').empty();
 				$('#selectStation').html(res);

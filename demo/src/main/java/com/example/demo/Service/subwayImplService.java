@@ -24,8 +24,8 @@ public class subwayImplService implements subwayService {
 	}
 	
 	@Override 
-	public List<stationVO> selectStation(int lineNum){
-		return sdao.selectStation(lineNum);
+	public List<stationVO> selectStation(HashMap map){
+		return sdao.selectStation(map);
 	}
 
 	@Override

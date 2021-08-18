@@ -16,7 +16,7 @@ public interface subwayDAO {
 	public List<lineVO> selectLine();
 	
 	//하차역 리스트 가져오기 
-	public List<stationVO> selectStation(int lineNum);
+	public List<stationVO> selectStation(HashMap map);
 	
 	//하차정보 등록하기 
 	public int insertGetoffInfo(getoff_infoVO getoff);
