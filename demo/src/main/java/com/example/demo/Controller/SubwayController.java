@@ -167,7 +167,7 @@ public class SubwayController {
 		int userId = user.getId();
 		
 		// 이미 등록 된 정보가 없는 경우에만 등록 수행 
-		if(service.checkDuplicatedInfo(userId)<1) {
+		if(service.checkDuplicatedInfo(userId)<100) {
 			
 			// 등록 수행
 			int result = service.insertGetoffInfo(getoff);
