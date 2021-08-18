@@ -37,14 +37,16 @@
       </button>
       <div class="collapse navbar-collapse" id="navbarResponsive">
         <ul class="navbar-nav ml-auto">
-          <li class="nav-item mx-0 mx-lg-1">
+			<li class="nav-item mx-0 mx-lg-1">
             <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="/">Menu</a>
           </li>
-          
           <li class="nav-item mx-0 mx-lg-1">
-            <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="/user/join/">JOIN US</a>
+            <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="login">Login</a>
           </li>
           
+          <li class="nav-item mx-0 mx-lg-1">
+            <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="join">JOIN US</a>
+          </li>
         </ul>
       </div>
     </div>

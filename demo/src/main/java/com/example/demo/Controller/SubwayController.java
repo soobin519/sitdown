@@ -89,7 +89,7 @@ public class SubwayController {
 		return getoffList;
 	}
 	
-	// 좌석 선택 page
+	// 좌석 확인 page
 	@RequestMapping(value="/checkInfo")
 	public String seatinfoPage(Model model, @RequestParam(value="subwayId") int subwayId, @RequestParam(value="trainNo") int trainNo, @RequestParam(value="carNum") int carNum) {
 		
