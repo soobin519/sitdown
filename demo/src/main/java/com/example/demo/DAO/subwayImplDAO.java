@@ -23,8 +23,8 @@ public class subwayImplDAO implements subwayDAO {
 	  }
 	  
 	  @Override
-	  public List<stationVO> selectStation(int lineNum) {
-		  return sql.selectList(Namespace+"selectStation",lineNum);
+	  public List<stationVO> selectStation(HashMap map) {
+		  return sql.selectList(Namespace+"selectStation",map);
 	  }
 
 	  @Override

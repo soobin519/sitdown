@@ -122,12 +122,17 @@ public class SubwayController {
 	
 	//하차역 list 가져오기
 	@RequestMapping(value="stationList",method=RequestMethod.POST)
-	public ModelAndView stationList(@RequestParam (value="lineNum") int lineNum) {
+	public ModelAndView stationList(@RequestParam (value="lineNum") int lineNum, @RequestParam (value="updnLine") int updnLine, @RequestParam (value="station") String station ) {
 		ModelAndView view = new ModelAndView();
 		String viewPage="stationListAjax";
 		
-		List<stationVO> stationList = service.selectStation(lineNum);
-		System.out.println("하차역 List 가져오기 : "+stationList.toString());
+		HashMap<String,Object> map = new HashMap<>();
+		
+		map.put("lineNum", lineNum);
+		map.put("updnLine", updnLine);
+		map.put("station", station);
+		
+		List<stationVO> stationList = service.selectStation(map);
 		
 		view.setViewName(viewPage);
 		view.addObject("stationList",stationList);
