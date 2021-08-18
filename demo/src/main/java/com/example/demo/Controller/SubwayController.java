@@ -111,6 +111,7 @@ public class SubwayController {
 		System.out.println("line=>"+line); // ex) 3호선 -> 노선명
 		
 		List<Map<String, Object>> train = subwayAPI.getSubwayAPI(line); // api 호출
+		System.out.println("train 정보: "+train.toString());
 		
 		view.setViewName(viewPage);
 		view.addObject("trainInfo", train);
@@ -126,6 +127,7 @@ public class SubwayController {
 		String viewPage="stationListAjax";
 		
 		List<stationVO> stationList = service.selectStation(lineNum);
+		System.out.println("하차역 List 가져오기 : "+stationList.toString());
 		
 		view.setViewName(viewPage);
 		view.addObject("stationList",stationList);
