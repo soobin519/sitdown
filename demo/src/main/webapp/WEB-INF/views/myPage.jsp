@@ -191,6 +191,8 @@ $(function(){
 	},false);
 
 
+})
+
 function getoff(id){
 	
 	if(!confirm("하차 하시겠습니까 ?")){
@@ -216,10 +218,6 @@ function getoff(id){
 		}
 	}); // Ajax
 }
-
-
-
-})
 
 </script>
 
