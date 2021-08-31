@@ -89,7 +89,7 @@
 		</div>
 		<br>
 		<div class="form-group" style="text-align: center; ">
-              <button type="submit" class="btn btn-primary btn-xl" id="setNewPWButton">비밀번호 재설정</button>
+              <button onclick = "location.href='/user/login'" type="submit" class="btn btn-primary btn-xl">로그인</button>
               <button onclick = "location.href='/'" type="button" class="btn btn-primary btn-xl">메인으로</button>
         </div>
   </section>

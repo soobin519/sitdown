@@ -223,8 +223,33 @@ public class UserUtilController {
 	
 	//찾은 비밀번호 알림 메세지 페이지 
 	@RequestMapping(value="/viewpw")
-	public String viwPwPage(Model model) {
+	public String viewPwPage(Model model) {
 		return "viewPw";
+	}
+	
+	//비밀번호 설정 전 현재 pw확인 페이지 
+	@RequestMapping(value="/checkpw")
+	public String checkPwPage(Model model) {
+		return "checkPw";
+	}
+	
+	//현재 비밀번호 check
+  	@RequestMapping(value="/checkPw", method=RequestMethod.POST, produces ="application/json; charset=UTF-8")
+  	@ResponseBody
+  	public int checkPW(userVO user) {
+  		
+  		System.out.println("connect");
+//  		System.out.println("id=>"+user.toString());
+  		
+  		int count = service.checkPw(user);
+  		
+  		return count;
+  	}
+	
+	//새 비밀번호 설정 페이지 
+	@RequestMapping(value="/setnewpw")
+	public String setNewPwPage(Model model) {
+		return "setNewPw";
 	}
 	
 	//새 비밀번호 설정 
@@ -251,7 +276,7 @@ public class UserUtilController {
 		return result;
 	}
 	
-
+	
 	
 	
 

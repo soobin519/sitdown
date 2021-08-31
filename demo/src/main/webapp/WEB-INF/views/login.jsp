@@ -120,7 +120,7 @@
               	<a href="findpw">비밀번호 찾기</a>
               </div>
  
-              <button onclick="javascript:loginbtn('${msg}')" type="submit" class="btn btn-primary btn-xl" id="sendMessageButton">로그인</button>
+              <button type="submit" class="btn btn-primary btn-xl" id="sendMessageButton">로그인</button>
             </div>
           </form>
         </div>
