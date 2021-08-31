@@ -59,6 +59,7 @@
        <br/>
         <br/>
          <br/>
+          <br/>
       <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0">사용자 정보</h2>
 
       <!-- Icon Divider -->
@@ -70,23 +71,17 @@
         <div class="divider-custom-line"></div>
       </div>
 
-      <!-- 아이디 정보  -->
-
-<!--         <div class="col-lg-8 mx-auto">
-          To configure the contact form email address, go to mail/contact_me.php and update the email address in the PHP file on line 19.
-              <input type="hidden" name="csrfmiddlewaretoken" value="jSSP77gU6Koyd4XtS8L2UgFKhpVtyfFbwi3KbokHRMPHNfKTygAuECgMyw8NFhbS">
-            <div class="control-group">
-              <div class="form-group floating-label-form-group controls mb-0 pb-2"> -->
+      <!-- pw 알림 메세지  -->
               
         <br/>
 		<div class="row" style="justify-content: center;">
 		<div class="col-6" style="text-align: center;">
 			<div class="card-shadow-warning border mb-3 card card-body border-warning">
 			<%
-				String name = request.getParameter("name");
+				String email = request.getParameter("email");
 				String id = request.getParameter("id");
-				out.print(name+"님의 ");
-				out.print("<br/>아이디는 " + id+"입니다.");
+				out.print(id+"님의 ");
+				out.print("<br/>이메일 " +email+"로 <br>임시 비밀번호가 발송되었습니다.");
 								
 			%>
 			</div>
@@ -94,7 +89,7 @@
 		</div>
 		<br>
 		<div class="form-group" style="text-align: center; ">
-              <button onclick = "location.href='/user/login'" type="button" class="btn btn-primary btn-xl">로그인</button>
+              <button type="submit" class="btn btn-primary btn-xl" id="setNewPWButton">비밀번호 재설정</button>
               <button onclick = "location.href='/'" type="button" class="btn btn-primary btn-xl">메인으로</button>
         </div>
   </section>

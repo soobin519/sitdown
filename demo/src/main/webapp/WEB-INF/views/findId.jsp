@@ -42,7 +42,7 @@
           </li>
           
           <li class="nav-item mx-0 mx-lg-1">
-            <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="/user/join/">JOIN US</a>
+            <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="/user/join">JOIN US</a>
           </li>
           
         </ul>
@@ -54,7 +54,11 @@
     <div class="container">
 
       <!-- Contact Section Heading -->
-      <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0">Login</h2>
+      <br>
+      <br>
+      <br>
+      <br>
+      <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0">아이디 찾기</h2>
 
       <!-- Icon Divider -->
       <div class="divider-custom">
@@ -90,7 +94,7 @@
             <br>
             
             <div class="form-group">
-              <button onclick="findId();" type="submit" class="btn btn-primary btn-xl" id="sendMessageButton">아이디 찾기</button>
+              <button onclick="findId();" type="button" class="btn btn-primary btn-xl" id="sendMessageButton">아이디 찾기</button>
             </div>
           </form>
         </div>

@@ -37,16 +37,14 @@
       </button>
       <div class="collapse navbar-collapse" id="navbarResponsive">
         <ul class="navbar-nav ml-auto">
-			<li class="nav-item mx-0 mx-lg-1">
-            <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="/">Menu</a>
-          </li>
           <li class="nav-item mx-0 mx-lg-1">
-            <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="login">Login</a>
+            <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="/">Menu</a>
           </li>
           
           <li class="nav-item mx-0 mx-lg-1">
-            <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="join">JOIN US</a>
+            <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="/user/join">JOIN US</a>
           </li>
+          
         </ul>
       </div>
     </div>
@@ -56,10 +54,11 @@
     <div class="container">
 
       <!-- Contact Section Heading -->
-       <br/>
-        <br/>
-         <br/>
-      <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0">사용자 정보</h2>
+      <br>
+      <br>
+      <br>
+      <br>
+      <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0">비밀번호 찾기</h2>
 
       <!-- Icon Divider -->
       <div class="divider-custom">
@@ -70,34 +69,86 @@
         <div class="divider-custom-line"></div>
       </div>
 
-      <!-- 아이디 정보  -->
-
-<!--         <div class="col-lg-8 mx-auto">
-          To configure the contact form email address, go to mail/contact_me.php and update the email address in the PHP file on line 19.
+      <!-- 아이디 찾기 -->
+      <div class="row">
+        <div class="col-lg-8 mx-auto">
+          <!-- To configure the contact form email address, go to mail/contact_me.php and update the email address in the PHP file on line 19. -->
+          <form method = "POST">
               <input type="hidden" name="csrfmiddlewaretoken" value="jSSP77gU6Koyd4XtS8L2UgFKhpVtyfFbwi3KbokHRMPHNfKTygAuECgMyw8NFhbS">
             <div class="control-group">
-              <div class="form-group floating-label-form-group controls mb-0 pb-2"> -->
-              
-        <br/>
-		<div class="row" style="justify-content: center;">
-		<div class="col-6" style="text-align: center;">
-			<div class="card-shadow-warning border mb-3 card card-body border-warning">
-			<%
-				String name = request.getParameter("name");
-				String id = request.getParameter("id");
-				out.print(name+"님의 ");
-				out.print("<br/>아이디는 " + id+"입니다.");
-								
-			%>
-			</div>
-    	</div>
-		</div>
-		<br>
-		<div class="form-group" style="text-align: center; ">
-              <button onclick = "location.href='/user/login'" type="button" class="btn btn-primary btn-xl">로그인</button>
-              <button onclick = "location.href='/'" type="button" class="btn btn-primary btn-xl">메인으로</button>
+              <div class="form-group floating-label-form-group controls mb-0 pb-2">
+                <label>id</label>
+                <input class="form-control" id="id" name="id" type="text" placeholder="id" required="required" data-validation-required-message="Please enter your ID.">
+                <p class="help-block text-danger"></p>
+              </div>
+            </div>
+            <div class="control-group">
+              <div class="form-group floating-label-form-group controls mb-0 pb-2">
+                <label>email</label>
+                <input class="form-control" id="email" name="email" type="text" placeholder="email" required="required" data-validation-required-message="Please enter your Email.">
+                <p class="help-block text-danger"></p>
+              </div>
+            </div>
+            
+            <div id="success"></div>
+            <br>
+            
+            <div class="form-group">
+              <button onclick="findPw();" type="button" class="btn btn-primary btn-xl" id="sendMessageButton">비밀번호 찾기</button>
+            </div>
+          </form>
         </div>
+      </div>
+
+    </div>
   </section>
+  
+<script type="text/javascript">
+  	function findPw(){ // 사용자 pw 찾기
+  		
+  		var data = new FormData();
+  		
+  		let id = $('#id').val()
+  		let email = $('#email').val()
+  		console.log("id: "+id);
+  		console.log("email: "+email);
+  		
+  		//입력된 id가 없을 경우
+  		if(id===''||id==='undefined'){
+  			alert("아이디를 입력해주세요");
+  			return false;
+  		}  		
+  		//입력된 이메일이 없을 경우
+  		else if(email===''||email==='undefined'){
+  			alert("이메일을 입력해주세요");
+  			return false;
+  		}
+  		
+  		$.ajax({
+  			url: 'sendPwdMail',
+  			data: {
+  				userId : $('#id').val(),
+  				email : $('#email').val(),
+  			},
+  			type: 'POST',
+  			success: function(res){
+  				console.log("res"+res)
+  				
+				alert("success");
+  				location.replace("/user/viewpw?id="+id+"&email="+email)
+   				/*location.replace("/user/viewpw?id="+userId+"&email="+email)*/
+  				return false; 
+  				
+  			},
+  			error: function(e){
+  				alert('정보를 다시 입력해주시길 바랍니다. 확인해주세요.');
+  				console.log(e);
+  			}
+  		})  
+  		
+
+  	}
+  </script>
   
 
   <!-- Footer -->
