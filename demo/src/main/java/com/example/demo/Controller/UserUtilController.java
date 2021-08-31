@@ -102,30 +102,32 @@ public class UserUtilController {
 		
 		HttpSession session = req.getSession();
 		userVO login = service.login(vo);
-		//String result = " ";
 		
 		if(login == null) {
 			session.setAttribute("user", null);
 			rttr.addFlashAttribute("msg", false);
-			//result="False";
-			//model.addAttribute("msg", false);
-			//return result;
+
 			return "redirect:/user/login";
 		}else {
-			session.setAttribute("user", login);
-			//rttr.addFlashAttribute("msg", true);
 			
-			// 권한 추가 
-			SecurityContext context = SecurityContextHolder.createEmptyContext();
-			Authentication authentication = new TestingAuthenticationToken(login.getId(),login.getPassword(),"ROLE_USER");
-			context.setAuthentication(authentication);
-			SecurityContextHolder.setContext(context);
-			
-			System.out.println("userinfo"+login.getEmail());	
-			//result="True";
-			//model.addAttribute("msg", true);
-			//return result;
-			return "redirect:/";
+			if(bcryptPE.matches(vo.getPassword(),login.getPassword())) {
+				//패스워드 같을 경우 
+				session.setAttribute("user", login);
+				
+				// 권한 추가 
+				SecurityContext context = SecurityContextHolder.createEmptyContext();
+				Authentication authentication = new TestingAuthenticationToken(login.getId(),login.getPassword(),"ROLE_USER");
+				context.setAuthentication(authentication);
+				SecurityContextHolder.setContext(context);
+				
+				System.out.println("userinfo"+login.getEmail());	
+
+				return "redirect:/";
+				
+			}else {
+				// 패스워드가 같지 않을 경우
+				return "redirect:/user/login";
+			}
 			
 		}
 		
