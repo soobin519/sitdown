@@ -173,12 +173,19 @@ public class UserUtilController {
 		return "viewId";
 	}
 	
+	//pw찾기 페이지 
+	@RequestMapping(value="/findpw")
+	public String findPwPage(Model model) {
+		return "findPw";
+	}
+	
 	//비밀번호 mail 전송 
-	@RequestMapping(value="/sendPwdMail", method=RequestMethod.POST)
 	@ResponseBody
+	@RequestMapping(value="/sendPwdMail", method=RequestMethod.POST)
 	public String sendPwdMail(@ModelAttribute userVO user) {
 
 		String msg="";
+//		userVO u = service.findId(user);
 		
 		String email = user.getEmail();
 		int count= service.selectUser(user);
@@ -207,10 +214,15 @@ public class UserUtilController {
 		}else {
 			// 입력 정보가 조회되지 않을 경우
 			msg="유저 정보가 일치하지 않습니다.";
-		}
-		
+		}		
 		
 		return msg;
+	}
+	
+	//찾은 비밀번호 알림 메세지 페이지 
+	@RequestMapping(value="/viewpw")
+	public String viwPwPage(Model model) {
+		return "viewPw";
 	}
 	
 	//새 비밀번호 설정 
@@ -233,9 +245,7 @@ public class UserUtilController {
 				}else {
 					result = 2; // 입력된 새 비밀번호가 일치하지 않을때
 				}
-		}
-		
-		
+		}		
 		return result;
 	}
 	
