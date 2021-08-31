@@ -6,7 +6,7 @@
 <mapper namespace="com.example.demo.DAO.myPageDAO">
 
 <!-- 하차하기 -->
-<update id="updateGetOff" parameterType="int">
+<update id="updateGetOff" parameterType="_int">
 	UPDATE getoff_info SET flag=0 WHERE id=#{id}
 </update>
 
