@@ -35,9 +35,14 @@
 	UPDATE user SET password=#{password} WHERE userId=#{userId} AND email=#{email}
 </update> 
 
+<!--현재 비밀번호 체크-->
+<select id ="checkPw" parameterType="com.example.demo.VO.userVO" resultType="_int">
+	SELECT count(*) from user WHERE password=#{password} and userId=#{userId}
+</select>
+
 <!--비밀번호 수정 -->
 <update id="setNewPassword" parameterType="com.example.demo.VO.userVO">
-	UPDATE user SET password=#{password} WHERE id=#{id}
+	UPDATE user SET password=#{password} WHERE userId=#{userId}
 </update>
 
 <!-- 회원정보 조회 -->

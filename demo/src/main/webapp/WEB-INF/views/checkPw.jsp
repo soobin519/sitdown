@@ -52,14 +52,15 @@
     </div>
   </nav>
   
-  <section class="page-section" id="contact">
+ <section class="page-section" id="contact">
     <div class="container">
 
       <!-- Contact Section Heading -->
-       <br/>
-        <br/>
-         <br/>
-      <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0">사용자 정보</h2>
+      <br>
+      <br>
+      <br>
+      <br>
+      <h3 class="page-section-heading text-center text-uppercase text-secondary mb-0">현재 비밀번호 입력</h3>
 
       <!-- Icon Divider -->
       <div class="divider-custom">
@@ -70,29 +71,84 @@
         <div class="divider-custom-line"></div>
       </div>
 
-      <!-- 아이디 정보  -->
-
-              
-        <br/>
-		<div class="row" style="justify-content: center;">
-		<div class="col-6" style="text-align: center;">
-			<div class="card-shadow-warning border mb-3 card card-body border-warning">
-			<%
-				String name = request.getParameter("name");
-				String id = request.getParameter("id");
-				out.print(name+"님의 ");
-				out.print("<br/>아이디는 " + id+"입니다.");
-								
-			%>
-			</div>
-    	</div>
-		</div>
-		<br>
-		<div class="form-group" style="text-align: center; ">
-              <button onclick = "location.href='/user/login'" type="button" class="btn btn-primary btn-xl">로그인</button>
-              <button onclick = "location.href='/'" type="button" class="btn btn-primary btn-xl">메인으로</button>
+      <!-- 현재 비밀번호 확인 -->
+      <div class="row">
+        <div class="col-lg-8 mx-auto">
+          <!-- To configure the contact form email address, go to mail/contact_me.php and update the email address in the PHP file on line 19. -->
+          <form method = "POST">
+              <input type="hidden" name="csrfmiddlewaretoken" value="jSSP77gU6Koyd4XtS8L2UgFKhpVtyfFbwi3KbokHRMPHNfKTygAuECgMyw8NFhbS">
+              <div class="control-group">
+              <div class="form-group floating-label-form-group controls mb-0 pb-2">
+                <label>id</label>
+                <input class="form-control" id="id" name="id" type="text" placeholder="id" required="required" data-validation-required-message="Please enter your ID.">
+                <p class="help-block text-danger"></p>
+              </div>
+            </div>
+            <div class="control-group">
+              <div class="form-group floating-label-form-group controls mb-0 pb-2">
+                <label>password</label>
+                <input class="form-control" id="password" name="name" type="password" placeholder="password" required="required" data-validation-required-message="Please enter your Password.">
+                <p class="help-block text-danger"></p>
+              </div>
+            </div>
+            
+            <div id="success"></div>
+            <br>
+            
+            <div class="form-group" style="text-align:center;">
+              <button onclick="checkPw()" type="button" class="btn btn-primary btn-xl" id="sendPwButton">확인</button>
+            </div>
+          </form>
         </div>
+      </div>
+
+    </div>
   </section>
+  
+  <script type="text/javascript">
+  	function checkPw(){ // 사용자 현재 비밀번호 일치 여부 확인 
+  		var data = new FormData();
+  		let id = $('#id').val()
+  		let pw = $('#password').val()
+  		console.log("id: "+id);
+  		console.log("pw: "+pw);
+  		
+  		//입력된 id가 없을 경우
+  		if(id===''||id==='undefined'){
+  			alert("아이디를 입력해주세요");
+  			return false;
+  		} 
+  		//입력된 pw가 없을경우
+  		if(pw===''||pw==='undefined'){
+  			alert("비밀번호를 입력해주세요");
+  			return false;
+  		}  		
+  		
+  		$.ajax({
+  			url: 'checkPw',
+  			data: {
+  				userId: id,
+  				password : pw,
+  			},
+  			type: 'POST',
+  			 success: function(res){
+ 		  		if(res>0){ //비밀번호가 맞으면 
+ 	  				console.log(res);  				
+ 	  				location.replace("/user/setnewpw");	  			
+ 		  			return false;
+ 		  		}else{
+ 		  			alert("비밀번호가 일치하지 않습니다.");
+ 		  			return false;
+ 		  		}
+ 		    },
+  			error: function(e){
+  				alert('정보를 다시 입력해주시길 바랍니다. 확인해주세요.');
+  				console.log(e);
+  			}
+  		})  
+  		
+  	}
+  </script>
   
 
   <!-- Footer -->

@@ -52,6 +52,12 @@ public class userImplService implements userService {
 	public int selectUser(userVO user) {
 		return dao.selectUser(user);
 	}
+	
+	//현재 비밀번호 체크 
+	@Override
+	public int checkPw(userVO user) {
+		return dao.checkPw(user);
+	}
 
 	@Override
 	public int setNewPassword(userVO user) {

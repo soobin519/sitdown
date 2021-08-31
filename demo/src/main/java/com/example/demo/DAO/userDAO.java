@@ -25,6 +25,9 @@ public interface userDAO {
 	//비밀번호 변경 
 	public int updatePassword(userVO user);
 	
+	//현재 비밀번호 체크 
+	public int checkPw(userVO user);
+	
 	//비밀번호 찾기 시 유저정보 조회
 	public int selectUser(userVO user);
 	
