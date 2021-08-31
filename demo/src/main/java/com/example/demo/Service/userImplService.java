@@ -55,15 +55,11 @@ public class userImplService implements userService {
 
 	@Override
 	public int setNewPassword(userVO user) {
-		// TODO Auto-generated method stub
-
-		
 		return dao.setNewPassword(user);
 	}
 
 	@Override
 	public userVO selectUserInfo(int id) {
-		// TODO Auto-generated method stub
 		return dao.selectUserInfo(id);
 	}
 	

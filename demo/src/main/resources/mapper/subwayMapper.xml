@@ -12,17 +12,20 @@
 
 <!-- 하차역 정보 가져오기 -->
 <select id="selectStation" parameterType="map" resultType="com.example.demo.VO.stationVO">
-	select * from station where lineNum=#{lineNum} and
+	select * from station where id 
 	<choose>
-		<when test="updnLine == 1">
-		<!-- 상행 -->
-			<![CDATA[ id > ]]> (select id from demo.station where station=#{station}) 
+		<when test="updnLine == 1 ">
+		<!-- 하행 -->
+			between (select id from demo.station where station=#{station} and lineNum = #{lineNum}) 
+			and (select id from demo.station where station=#{stationTmn} and lineNum = #{lineNum})
 		</when>
 		<when test="updnLine == 0">
-		<!-- 하행 -->
-			 <![CDATA[ id < ]]> (select id from demo.station where station=#{station}) 
+		<!-- 상행 --> 
+			between (select id from demo.station where station=#{stationTmn} and lineNum = #{lineNum}) 
+			and (select id from demo.station where station=#{station} and lineNum = #{lineNum})
 		</when>
 	</choose>
+	
 </select>
 
 <!-- 하차정보 등록하기 -->

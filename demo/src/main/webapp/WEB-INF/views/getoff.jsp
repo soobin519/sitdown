@@ -166,11 +166,12 @@ $(function(){
 		var lineNum = $('#selectLine option:selected').val();
 		var updnLine = $('#selectTrain option:selected').attr('updnLine'); // 상행 : 0 , 하행 : 1 
 		var station = $('#selectTrain option:selected').attr('statnnm');
+		var stationTmn = $('#selectTrain option:selected').attr('statntnm');
 		console.log(lineNum);
 		$.ajax({
 			url: 'stationList',
 			type: 'post',
-			data: { lineNum : lineNum , updnLine : updnLine, station : station },
+			data: { lineNum : lineNum , updnLine : updnLine, station : station , stationTmn : stationTmn },
 			success: function(res){
 				$('#selectStation').empty();
 				$('#selectStation').html(res);
