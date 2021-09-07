@@ -100,27 +100,27 @@ public class UserUtilController {
 	public String login(@ModelAttribute userVO vo, HttpServletRequest req, RedirectAttributes rttr, Model model) throws Exception{
 		logger.info("post login");
 		
-		HttpSession session = req.getSession();
-		userVO login = service.login(vo);
+		HttpSession session = req.getSession(true);
+		userVO user = service.login(vo);
 		
-		if(login == null) {
+		if(user == null) {
 			session.setAttribute("user", null);
 			rttr.addFlashAttribute("msg", false);
 
 			return "redirect:/user/login";
 		}else {
 			
-			if(bcryptPE.matches(vo.getPassword(),login.getPassword())) {
+			if(bcryptPE.matches(vo.getPassword(),user.getPassword())) {
 				//패스워드 같을 경우 
-				session.setAttribute("user", login);
+				session.setAttribute("user", user);
 				
 				// 권한 추가 
 				SecurityContext context = SecurityContextHolder.createEmptyContext();
-				Authentication authentication = new TestingAuthenticationToken(login.getId(),login.getPassword(),"ROLE_USER");
+				Authentication authentication = new TestingAuthenticationToken(user.getId(),user.getPassword(),"ROLE_USER");
 				context.setAuthentication(authentication);
 				SecurityContextHolder.setContext(context);
 				
-				System.out.println("userinfo"+login.getEmail());	
+				System.out.println("userinfo"+user.getEmail());	
 
 				return "redirect:/";
 				
@@ -227,28 +227,12 @@ public class UserUtilController {
 		return "viewPw";
 	}
 	
-	//비밀번호 설정 전 현재 pw확인 페이지 
-	@RequestMapping(value="/checkpw")
-	public String checkPwPage(Model model) {
-		return "checkPw";
-	}
-	
-	//현재 비밀번호 check
-  	@RequestMapping(value="/checkPw", method=RequestMethod.POST, produces ="application/json; charset=UTF-8")
-  	@ResponseBody
-  	public int checkPW(userVO user) {
-  		
-  		System.out.println("connect");
-//  		System.out.println("id=>"+user.toString());
-  		
-  		int count = service.checkPw(user);
-  		
-  		return count;
-  	}
 	
 	//새 비밀번호 설정 페이지 
 	@RequestMapping(value="/setnewpw")
 	public String setNewPwPage(Model model) {
+		userVO loginUser = (userVO) session.getAttribute("user");
+		System.out.println("session22:  "+loginUser.toString());
 		return "setNewPw";
 	}
 	
@@ -262,15 +246,18 @@ public class UserUtilController {
 		userVO loginUser = (userVO) session.getAttribute("user");
 		System.out.println(loginUser.toString());
 		
-		if(bcryptPE.matches(loginUser.getPassword(), password)) {
-				if(newPassword == checkNewPassword) {
+		if(bcryptPE.matches(password,loginUser.getPassword())) {
+				if(newPassword.equals(checkNewPassword)) {
 					userVO user = new userVO();
 					user.setId(loginUser.getId());
-					user.setPassword(newPassword);
+					
+					user.setPassword(bcryptPE.encode(newPassword));
 					result = service.setNewPassword(user);
+					System.out.println("user"+user);
+					System.out.println("result"+result);
 					
 				}else {
-					result = 2; // 입력된 새 비밀번호가 일치하지 않을때
+					result = -1; // 입력된 새 비밀번호가 일치하지 않을때
 				}
 		}		
 		return result;
