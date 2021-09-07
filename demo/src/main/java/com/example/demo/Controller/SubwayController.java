@@ -54,6 +54,9 @@ public class SubwayController {
 		
 		ModelAndView view = new ModelAndView();
 		String viewPage="getoff";
+		
+		userVO loginUser = (userVO) session.getAttribute("user");
+		System.out.println("session:  "+loginUser.toString());
 //		String station="분당선";
 //		List<Map<String, Object>> train = subwayAPI.getSubwayAPI(station); // api 호출
 //		

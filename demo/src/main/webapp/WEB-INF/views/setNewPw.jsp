@@ -42,13 +42,16 @@
       </button>
       <div class="collapse navbar-collapse" id="navbarResponsive">
         <ul class="navbar-nav ml-auto">
-          <li class="nav-item mx-0 mx-lg-1">
-            <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="/">Menu</a>
-          </li>
-          
-          <li class="nav-item mx-0 mx-lg-1">
-            <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="login">Login</a>
-          </li>
+						<li class="nav-item mx-0 mx-lg-1"><a
+							class="nav-link py-3 px-0 px-lg-3 rounded" href="#portfolio">Menu</a></li>
+						<li class="nav-item mx-0 mx-lg-1"><a
+							class="nav-link py-3 px-0 px-lg-3 rounded"
+							onclick="alert('로그아웃완료');" href="/user/logout">LOGOUT</a></li>
+						<li class="nav-item mx-0 mx-lg-1">
+						<a class="nav-link py-3 px-0 px-lg-3 rounded" href="/user/setnewpw"><p>${user.name}님</p></a>
+<%-- 						<a
+							class="nav-link py-3 px-0 px-lg-3 rounded" href="/myPage/info"><p>${user.name}님</p></a> --%>
+							</li>
           
         </ul>
       </div>
@@ -83,18 +86,25 @@
 	<br>
           <form method="POST" >
               <input type="hidden" name="csrfmiddlewaretoken" value="RfLaJqq5naRirQI44wHhC1i1Z8SlBzO3lcnpNBEUxliXu90cin3BnvHkVVKnEND2">
-
+			  <div class="control-group">
+              <div class="form-group floating-label-form-group controls mb-0 pb-2 floating-label-form-group-with-value">
+                <label>기존 비밀번호</label>
+                <input class="form-control" id="s_password" type="password" placeholder="Password" value="">
+                <p class="help-block text-danger"></p>
+              </div>
+            </div>
+            <br>
             <div class="control-group">
               <div class="form-group floating-label-form-group controls mb-0 pb-2 floating-label-form-group-with-value">
                 <label>새로운 비밀번호</label>
-                <input class="form-control" id="s_password" type="password" placeholder="Password" value="">
+                <input class="form-control" id="s_newpassword" type="password" placeholder="New Password" value="">
                 <p class="help-block text-danger"></p>
               </div>
             </div>
             <div class="control-group">
                 <div class="form-group floating-label-form-group controls mb-0 pb-2">
                   <label>Confirm Password</label>
-                  <input class="form-control" id="s_checkpw" type="password" placeholder="Confirm Password" value="">
+                  <input class="form-control" id="s_checkpw" type="password" placeholder="Confirm New Password" value="">
                   <p class="help-block text-danger"></p>
                 </div>
               </div>
@@ -117,18 +127,22 @@ function changePw(){
 	var data = new FormData();
 	
 	let password = $('#s_password').val();
+	let newpassword = $('#s_newpassword').val();
 	let password2 = $('#s_checkpw').val();
 
 	
 	console.log(password);
+	console.log(newpassword);
 	console.log(password2);
 	
-	if(password!==password2){
+	if(newpassword!==password2){
 		alert("패스워드가 일치하지 않습니다.");
 		return false;
 	}else{
 		
 		data.append('password',password);
+		data.append('newPassword',newpassword);
+		data.append('checkNewPassword',password2);
 		
 		$.ajax({
 		    url: 'setNewPassword',
@@ -137,8 +151,9 @@ function changePw(){
 		    data: data, 
 		    type: 'POST',
 		    success: function(res){
-		    	console.log(res);
-		    	if(res>1){ //비밀번호 수정 성공시 
+		    	console.log("결과"+res);
+		    	console.log("newpw"+newpassword);
+		    	if(res>0){ //비밀번호 수정 성공시 
 		    		alert('비밀번호 수정 완료');
 		    		location.href='/';
 		    	}else{
