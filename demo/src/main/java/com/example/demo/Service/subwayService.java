@@ -3,6 +3,7 @@ package com.example.demo.Service;
 import java.util.HashMap;
 import java.util.List;
 
+import org.json.simple.parser.ParseException;
 import org.springframework.stereotype.Service;
 
 import com.example.demo.VO.getoff_infoVO;
@@ -18,7 +19,7 @@ public interface subwayService {
 	public List<stationVO> selectStation(HashMap map);
 	
 	//하차 정보 등록하기 
-	public int insertGetoffInfo(getoff_infoVO getoff);
+	public int insertGetoffInfo(getoff_infoVO getoff) throws ParseException;
 	
 	//하차 정보 가져오기 
 	public getoff_infoVO selectMySeatInfo(HashMap map);
