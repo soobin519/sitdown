@@ -37,14 +37,16 @@
       </button>
       <div class="collapse navbar-collapse" id="navbarResponsive">
         <ul class="navbar-nav ml-auto">
-          <li class="nav-item mx-0 mx-lg-1">
+			<li class="nav-item mx-0 mx-lg-1">
             <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="/">Menu</a>
           </li>
-          
           <li class="nav-item mx-0 mx-lg-1">
-            <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="/user/join">JOIN US</a>
+            <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="login">Login</a>
           </li>
           
+          <li class="nav-item mx-0 mx-lg-1">
+            <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="join">JOIN US</a>
+          </li>
         </ul>
       </div>
     </div>
@@ -54,11 +56,11 @@
     <div class="container">
 
       <!-- Contact Section Heading -->
-      <br>
-      <br>
-      <br>
-      <br>
-      <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0">아이디 찾기</h2>
+       <br/>
+        <br/>
+         <br/>
+          <br/>
+      <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0">사용자 정보</h2>
 
       <!-- Icon Divider -->
       <div class="divider-custom">
@@ -69,85 +71,28 @@
         <div class="divider-custom-line"></div>
       </div>
 
-      <!-- 아이디 찾기 -->
-      <div class="row">
-        <div class="col-lg-8 mx-auto">
-          <!-- To configure the contact form email address, go to mail/contact_me.php and update the email address in the PHP file on line 19. -->
-          <form method = "POST">
-              <input type="hidden" name="csrfmiddlewaretoken" value="jSSP77gU6Koyd4XtS8L2UgFKhpVtyfFbwi3KbokHRMPHNfKTygAuECgMyw8NFhbS">
-            <div class="control-group">
-              <div class="form-group floating-label-form-group controls mb-0 pb-2">
-                <label>name</label>
-                <input class="form-control" id="name" name="name" type="text" placeholder="name" required="required" data-validation-required-message="Please enter your Name.">
-                <p class="help-block text-danger"></p>
-              </div>
-            </div>
-            <div class="control-group">
-              <div class="form-group floating-label-form-group controls mb-0 pb-2">
-                <label>email</label>
-                <input class="form-control" id="email" name="email" type="text" placeholder="email" required="required" data-validation-required-message="Please enter your Email.">
-                <p class="help-block text-danger"></p>
-              </div>
-            </div>
-            
-            <div id="success"></div>
-            <br>
-            
-            <div class="form-group">
-              <button onclick="findId();" type="button" class="btn btn-primary btn-xl" id="sendMessageButton">아이디 찾기</button>
-            </div>
-          </form>
+      <!-- pw 알림 메세지  -->
+              
+        <br/>
+		<div class="row" style="justify-content: center;">
+		<div class="col-6" style="text-align: center;">
+			<div class="card-shadow-warning border mb-3 card card-body border-warning">
+			<%
+				String email = request.getParameter("email");
+				String id = request.getParameter("id");
+				out.print(id+"님의 ");
+				out.print("<br/>이메일 " +email+"로 <br>임시 비밀번호가 발송되었습니다.");
+								
+			%>
+			</div>
+    	</div>
+		</div>
+		<br>
+		<div class="form-group" style="text-align: center; ">
+              <button onclick = "location.href='/user/login'" type="submit" class="btn btn-primary btn-xl">로그인</button>
+              <button onclick = "location.href='/'" type="button" class="btn btn-primary btn-xl">메인으로</button>
         </div>
-      </div>
-
-    </div>
   </section>
-  
-<script type="text/javascript">
-  	function findId(){ // 사용자 아이디 찾기
-  		
-  		var data = new FormData();
-  		
-  		let name = $('#name').val()
-  		let email = $('#email').val()
-  		console.log("name: "+name);
-  		console.log("email: "+email);
-  		
-  		//입력된 이름이 없을경우
-  		if(name===''||name==='undefined'){
-  			alert("이름을 입력해주세요");
-  			return false;
-  		}  		
-  		//입력된 이메일이 없을경우
-  		else if(email===''||email==='undefined'){
-  			alert("이메일을 입력해주세요");
-  			return false;
-  		}
-  		
-  		$.ajax({
-  			url: 'findId',
-  			data: {
-  				name : $('#name').val(),
-  				email : $('#email').val(),
-  			},
-  			type: 'POST',
-  			success: function(res){
-  				console.log(res)
-  				
-  				alert('아이디 찾기 완료.')
-  				location.replace("/user/viewid?id="+res.userId+"&name="+res.name)
-  				return false;
-  				
-  			},
-  			error: function(e){
-  				alert('정보를 다시 입력해주시길 바랍니다. 확인해주세요.');
-  				console.log(e);
-  			}
-  		})  
-  		
-
-  	}
-  </script>
   
 
   <!-- Footer -->

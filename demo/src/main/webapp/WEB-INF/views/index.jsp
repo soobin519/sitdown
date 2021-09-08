@@ -13,7 +13,7 @@
 	content="width=device-width, initial-scale=1, shrink-to-fit=no" />
 <meta name="description" content="" />
 <meta name="author" content="" />
-<title>Freelancer - Start Bootstrap Theme</title>
+<title>SIT DOWN</title>
 <!-- Favicon-->
 <link rel="icon" type="image/x-icon" href="/assets/favicon.ico" />
 <!-- Font Awesome icons (free version)-->
@@ -48,15 +48,18 @@
 				<ul class="navbar-nav ms-auto">
 
 
-					<!-- 로그인 했을 경우 -->
+					<!-- 로그인 했을 경우 --> 
 					<c:if test="${user !=null }">
 						<li class="nav-item mx-0 mx-lg-1"><a
 							class="nav-link py-3 px-0 px-lg-3 rounded" href="#portfolio">Menu</a></li>
 						<li class="nav-item mx-0 mx-lg-1"><a
 							class="nav-link py-3 px-0 px-lg-3 rounded"
 							onclick="alert('로그아웃완료');" href="/user/logout">LOGOUT</a></li>
-						<li class="nav-item mx-0 mx-lg-1"><a
-							class="nav-link py-3 px-0 px-lg-3 rounded" href="/myPage/info"><p>${user.name}님</p></a></li>
+						<li class="nav-item mx-0 mx-lg-1">
+						<a class="nav-link py-3 px-0 px-lg-3 rounded" href="/user/setnewpw"><p>${user.name}님</p></a>
+ 						<a
+							class="nav-link py-3 px-0 px-lg-3 rounded" href="/myPage/info"><p>${user.name}님</p></a>
+							</li>
 					</c:if>
 
 					<!-- 로그인 안했을 경우  -->
@@ -81,7 +84,7 @@
 			<img class="masthead-avatar mb-5"
 				src="/resources/assets/img/portfolio/train.png" alt="..." />
 			<!-- Masthead Heading-->
-			<h1 class="masthead-heading text-uppercase mb-0">Start Bootstrap</h1>
+			<h1 class="masthead-heading text-uppercase mb-0">SIT DOWN</h1>
 			<!-- Icon Divider-->
 			<div class="divider-custom divider-light">
 				<div class="divider-custom-line"></div>
@@ -91,8 +94,7 @@
 				<div class="divider-custom-line"></div>
 			</div>
 			<!-- Masthead Subheading-->
-			<p class="masthead-subheading font-weight-light mb-0">Graphic
-				Artist - Web Designer - Illustrator</p>
+			<p class="masthead-subheading font-weight-light mb-0">지하철 좌석정보 확인 서비스</p>
 		</div>
 	</header>
 	 
@@ -102,7 +104,7 @@
 		<div class="container">
 			<!-- Portfolio Section Heading-->
 			<h2
-				class="page-section-heading text-center text-uppercase text-secondary mb-0">Portfolio</h2>
+				class="page-section-heading text-center text-uppercase text-secondary mb-0">MENU</h2>
 			<!-- Icon Divider-->
 			<div class="divider-custom">
 				<div class="divider-custom-line"></div>
@@ -120,12 +122,8 @@
 						data-bs-target="#portfolioModal1">
 						<div
 							class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
-							<div
-								class="portfolio-item-caption-content text-center text-white">
-								<i class="fas fa-plus fa-3x"></i>
-							</div>
 						</div>
-						<img class="img-fluid"
+						<img class="img-fluid" 
 							src="/resources/assets/img/portfolio/one.png" alt="..." />
 					</div>
 				</div>
@@ -136,10 +134,6 @@
 						data-bs-target="#portfolioModal2">
 						<div
 							class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
-							<div
-								class="portfolio-item-caption-content text-center text-white">
-								<i class="fas fa-plus fa-3x"></i>
-							</div>
 						</div>
 						<img class="img-fluid"
 							src="/resources/assets/img/portfolio/two.png" alt="..." />
@@ -154,53 +148,12 @@
 							data-bs-target="#portfolioModal3">
 							<div
 								class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
-								<div
-									class="portfolio-item-caption-content text-center text-white">
-									<i class="fas fa-plus fa-3x"></i>
-								</div>
 							</div>
 							<img class="img-fluid"
 								src="/resources/assets/img/portfolio/three.png" alt="..." />
 						</div>
 					</div>
 				</c:if>
-			</div>
-		</div>
-	</section>
-	<!-- About Section-->
-	<section class="page-section bg-primary text-white mb-0" id="about">
-		<div class="container">
-			<!-- About Section Heading-->
-			<h2
-				class="page-section-heading text-center text-uppercase text-white">About</h2>
-			<!-- Icon Divider-->
-			<div class="divider-custom divider-light">
-				<div class="divider-custom-line"></div>
-				<div class="divider-custom-icon">
-					<i class="fas fa-star"></i>
-				</div>
-				<div class="divider-custom-line"></div>
-			</div>
-			<!-- About Section Content-->
-			<div class="row">
-				<div class="col-lg-4 ms-auto">
-					<p class="lead">Freelancer is a free bootstrap theme created by
-						Start Bootstrap. The download includes the complete source files
-						including HTML, CSS, and JavaScript as well as optional SASS
-						stylesheets for easy customization.</p>
-				</div>
-				<div class="col-lg-4 me-auto">
-					<p class="lead">You can create your own custom avatar for the
-						masthead, change the icon in the dividers, and add your email
-						address to the contact form to make it fully functional!</p>
-				</div>
-			</div>
-			<!-- About Section Button-->
-			<div class="text-center mt-4">
-				<a class="btn btn-xl btn-outline-light"
-					href="https://startbootstrap.com/theme/freelancer/"> <i
-					class="fas fa-download me-2"></i> Free Download!
-				</a>
 			</div>
 		</div>
 	</section>
@@ -251,10 +204,6 @@
 		src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
 	<!-- Core theme JS-->
 	<script src="/resources/js/scripts.js"></script>
-	<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
-	<!-- * *                               SB Forms JS                               * *-->
-	<!-- * * Activate your form at https://startbootstrap.com/solution/contact-forms * *-->
-	<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
 	<script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
 </body>
 </html>

@@ -54,6 +54,9 @@ public class SubwayController {
 		
 		ModelAndView view = new ModelAndView();
 		String viewPage="getoff";
+		
+		userVO loginUser = (userVO) session.getAttribute("user");
+		System.out.println("session:  "+loginUser.toString());
 //		String station="분당선";
 //		List<Map<String, Object>> train = subwayAPI.getSubwayAPI(station); // api 호출
 //		
@@ -90,7 +93,7 @@ public class SubwayController {
 		return getoffList;
 	}
 	
-	// 좌석 선택 page
+	// 좌석 확인 page
 	@RequestMapping(value="/checkInfo")
 	public String seatinfoPage(Model model, @RequestParam(value="subwayId") int subwayId, @RequestParam(value="trainNo") int trainNo, @RequestParam(value="carNum") int carNum) {
 		
@@ -170,7 +173,7 @@ public class SubwayController {
 		int userId = user.getId();
 		
 		// 이미 등록 된 정보가 없는 경우에만 등록 수행 
-		if(service.checkDuplicatedInfo(userId)<1) {
+		if(service.checkDuplicatedInfo(userId)<100) {
 			
 			// 등록 수행
 			int result = service.insertGetoffInfo(getoff);

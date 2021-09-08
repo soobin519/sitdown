@@ -100,27 +100,27 @@ public class UserUtilController {
 	public String login(@ModelAttribute userVO vo, HttpServletRequest req, RedirectAttributes rttr, Model model) throws Exception{
 		logger.info("post login");
 		
-		HttpSession session = req.getSession();
-		userVO login = service.login(vo);
+		HttpSession session = req.getSession(true);
+		userVO user = service.login(vo);
 		
-		if(login == null) {
+		if(user == null) {
 			session.setAttribute("user", null);
 			rttr.addFlashAttribute("msg", false);
 
 			return "redirect:/user/login";
 		}else {
 			
-			if(bcryptPE.matches(vo.getPassword(),login.getPassword())) {
+			if(bcryptPE.matches(vo.getPassword(),user.getPassword())) {
 				//패스워드 같을 경우 
-				session.setAttribute("user", login);
+				session.setAttribute("user", user);
 				
 				// 권한 추가 
 				SecurityContext context = SecurityContextHolder.createEmptyContext();
-				Authentication authentication = new TestingAuthenticationToken(login.getId(),login.getPassword(),"ROLE_USER");
+				Authentication authentication = new TestingAuthenticationToken(user.getId(),user.getPassword(),"ROLE_USER");
 				context.setAuthentication(authentication);
 				SecurityContextHolder.setContext(context);
 				
-				System.out.println("userinfo"+login.getEmail());	
+				System.out.println("userinfo"+user.getEmail());	
 
 				return "redirect:/";
 				
@@ -150,29 +150,44 @@ public class UserUtilController {
 		}
 	
 	//아이디 찾기
+	@ResponseBody
 	@RequestMapping(value ="/findId", method=RequestMethod.POST)
-	public String findId(@ModelAttribute userVO user, Model model) {
+	public userVO findId(@ModelAttribute userVO user, Model model) {
 		
 		userVO result = service.findId(user);
 		model.addAttribute("user",result);
 		System.out.println("아이디찾기 완료 ");
-		System.out.println(result);
+		System.out.println("controller "+result.toString());
 		
-		return "redirect:/user/viewid";
+		String name = result.getName();
+		result.setName(name);
+		String id = result.getUserId();
+		result.setUserId(id);
+		System.out.println("name: "+name);
+		System.out.println("id "+id);
+		
+		return result;
 	}
 	
 	//찾은 아이디 보여주는 페이지 
 	@RequestMapping(value="/viewid")
 	public String viewIdPage(Model model) {
-		return "findId";
+		return "viewId";
+	}
+	
+	//pw찾기 페이지 
+	@RequestMapping(value="/findpw")
+	public String findPwPage(Model model) {
+		return "findPw";
 	}
 	
 	//비밀번호 mail 전송 
-	@RequestMapping(value="/sendPwdMail", method=RequestMethod.POST)
 	@ResponseBody
+	@RequestMapping(value="/sendPwdMail", method=RequestMethod.POST)
 	public String sendPwdMail(@ModelAttribute userVO user) {
 
 		String msg="";
+//		userVO u = service.findId(user);
 		
 		String email = user.getEmail();
 		int count= service.selectUser(user);
@@ -201,10 +216,24 @@ public class UserUtilController {
 		}else {
 			// 입력 정보가 조회되지 않을 경우
 			msg="유저 정보가 일치하지 않습니다.";
-		}
-		
+		}		
 		
 		return msg;
+	}
+	
+	//찾은 비밀번호 알림 메세지 페이지 
+	@RequestMapping(value="/viewpw")
+	public String viewPwPage(Model model) {
+		return "viewPw";
+	}
+	
+	
+	//새 비밀번호 설정 페이지 
+	@RequestMapping(value="/setnewpw")
+	public String setNewPwPage(Model model) {
+		userVO loginUser = (userVO) session.getAttribute("user");
+		System.out.println("session22:  "+loginUser.toString());
+		return "setNewPw";
 	}
 	
 	//새 비밀번호 설정 
@@ -217,23 +246,24 @@ public class UserUtilController {
 		userVO loginUser = (userVO) session.getAttribute("user");
 		System.out.println(loginUser.toString());
 		
-		if(bcryptPE.matches(loginUser.getPassword(), password)) {
-				if(newPassword == checkNewPassword) {
+		if(bcryptPE.matches(password,loginUser.getPassword())) {
+				if(newPassword.equals(checkNewPassword)) {
 					userVO user = new userVO();
 					user.setId(loginUser.getId());
-					user.setPassword(newPassword);
+					
+					user.setPassword(bcryptPE.encode(newPassword));
 					result = service.setNewPassword(user);
+					System.out.println("user"+user);
+					System.out.println("result"+result);
 					
 				}else {
-					result = 2; // 입력된 새 비밀번호가 일치하지 않을때
+					result = -1; // 입력된 새 비밀번호가 일치하지 않을때
 				}
-		}
-		
-		
+		}		
 		return result;
 	}
 	
-
+	
 	
 	
 

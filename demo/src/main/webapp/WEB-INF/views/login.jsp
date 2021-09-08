@@ -77,6 +77,8 @@
     <div class="container">
 
       <!-- Contact Section Heading -->
+      <br>
+      <br>
       <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0">Login</h2>
 
       <!-- Icon Divider -->
@@ -112,9 +114,14 @@
             <div id="success"></div>
             <br>
             <div class="form-group">
-              <button onclick="javascript:loginbtn('${msg}')" type="submit" class="btn btn-primary btn-xl" id="sendMessageButton">로그인</button>
+              <div style="text-align:right;">
+              	<a href="findid">아이디 찾기</a>
+              	<a>|</a>
+              	<a href="findpw">비밀번호 찾기</a>
+              </div>
+ 
+              <button type="submit" class="btn btn-primary btn-xl" id="sendMessageButton">로그인</button>
             </div>
-            <a href="findid">아이디 찾기</a>
           </form>
         </div>
       </div>

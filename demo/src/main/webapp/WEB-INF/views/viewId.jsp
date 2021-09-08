@@ -37,14 +37,16 @@
       </button>
       <div class="collapse navbar-collapse" id="navbarResponsive">
         <ul class="navbar-nav ml-auto">
-          <li class="nav-item mx-0 mx-lg-1">
+			<li class="nav-item mx-0 mx-lg-1">
             <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="/">Menu</a>
           </li>
-          
           <li class="nav-item mx-0 mx-lg-1">
-            <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="/user/join/">JOIN US</a>
+            <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="login">Login</a>
           </li>
           
+          <li class="nav-item mx-0 mx-lg-1">
+            <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="join">JOIN US</a>
+          </li>
         </ul>
       </div>
     </div>
@@ -54,7 +56,10 @@
     <div class="container">
 
       <!-- Contact Section Heading -->
-      <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0">Login</h2>
+       <br/>
+        <br/>
+         <br/>
+      <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0">사용자 정보</h2>
 
       <!-- Icon Divider -->
       <div class="divider-custom">
@@ -65,38 +70,28 @@
         <div class="divider-custom-line"></div>
       </div>
 
-      <!-- 아이디 찾기 -->
-      <div class="row">
-        <div class="col-lg-8 mx-auto">
-          <!-- To configure the contact form email address, go to mail/contact_me.php and update the email address in the PHP file on line 19. -->
-          <form method = "POST">
-              <input type="hidden" name="csrfmiddlewaretoken" value="jSSP77gU6Koyd4XtS8L2UgFKhpVtyfFbwi3KbokHRMPHNfKTygAuECgMyw8NFhbS">
-            <div class="control-group">
-              <div class="form-group floating-label-form-group controls mb-0 pb-2">
-                <label>name</label>
-                <input class="form-control" id="name" name="name" type="text" placeholder="name" required="required" data-validation-required-message="Please enter your Name.">
-                <p class="help-block text-danger"></p>
-              </div>
-            </div>
-            <div class="control-group">
-              <div class="form-group floating-label-form-group controls mb-0 pb-2">
-                <label>email</label>
-                <input class="form-control" id="email" name="email" type="text" placeholder="email" required="required" data-validation-required-message="Please enter your Email.">
-                <p class="help-block text-danger"></p>
-              </div>
-            </div>
-            
-            <div id="success"></div>
-            <br>
-            <div class="form-group">
-              <button type="submit" class="btn btn-primary btn-xl" id="sendMessageButton">로그인하기 </button>
-              <button type="submit" class="btn btn-primary btn-xl" id="sendMessageButton">비밀번호 찾기 </button>
-            </div>
-          </form>
-        </div>
-      </div>
+      <!-- 아이디 정보  -->
 
-    </div>
+              
+        <br/>
+		<div class="row" style="justify-content: center;">
+		<div class="col-6" style="text-align: center;">
+			<div class="card-shadow-warning border mb-3 card card-body border-warning">
+			<%
+				String name = request.getParameter("name");
+				String id = request.getParameter("id");
+				out.print(name+"님의 ");
+				out.print("<br/>아이디는 " + id+"입니다.");
+								
+			%>
+			</div>
+    	</div>
+		</div>
+		<br>
+		<div class="form-group" style="text-align: center; ">
+              <button onclick = "location.href='/user/login'" type="button" class="btn btn-primary btn-xl">로그인</button>
+              <button onclick = "location.href='/'" type="button" class="btn btn-primary btn-xl">메인으로</button>
+        </div>
   </section>
   
 

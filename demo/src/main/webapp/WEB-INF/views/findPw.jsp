@@ -58,7 +58,7 @@
       <br>
       <br>
       <br>
-      <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0">아이디 찾기</h2>
+      <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0">비밀번호 찾기</h2>
 
       <!-- Icon Divider -->
       <div class="divider-custom">
@@ -77,8 +77,8 @@
               <input type="hidden" name="csrfmiddlewaretoken" value="jSSP77gU6Koyd4XtS8L2UgFKhpVtyfFbwi3KbokHRMPHNfKTygAuECgMyw8NFhbS">
             <div class="control-group">
               <div class="form-group floating-label-form-group controls mb-0 pb-2">
-                <label>name</label>
-                <input class="form-control" id="name" name="name" type="text" placeholder="name" required="required" data-validation-required-message="Please enter your Name.">
+                <label>id</label>
+                <input class="form-control" id="id" name="id" type="text" placeholder="id" required="required" data-validation-required-message="Please enter your ID.">
                 <p class="help-block text-danger"></p>
               </div>
             </div>
@@ -94,7 +94,7 @@
             <br>
             
             <div class="form-group">
-              <button onclick="findId();" type="button" class="btn btn-primary btn-xl" id="sendMessageButton">아이디 찾기</button>
+              <button onclick="findPw();" type="button" class="btn btn-primary btn-xl" id="sendMessageButton">비밀번호 찾기</button>
             </div>
           </form>
         </div>
@@ -104,39 +104,40 @@
   </section>
   
 <script type="text/javascript">
-  	function findId(){ // 사용자 아이디 찾기
+  	function findPw(){ // 사용자 pw 찾기
   		
   		var data = new FormData();
   		
-  		let name = $('#name').val()
+  		let id = $('#id').val()
   		let email = $('#email').val()
-  		console.log("name: "+name);
+  		console.log("id: "+id);
   		console.log("email: "+email);
   		
-  		//입력된 이름이 없을경우
-  		if(name===''||name==='undefined'){
-  			alert("이름을 입력해주세요");
+  		//입력된 id가 없을 경우
+  		if(id===''||id==='undefined'){
+  			alert("아이디를 입력해주세요");
   			return false;
   		}  		
-  		//입력된 이메일이 없을경우
+  		//입력된 이메일이 없을 경우
   		else if(email===''||email==='undefined'){
   			alert("이메일을 입력해주세요");
   			return false;
   		}
   		
   		$.ajax({
-  			url: 'findId',
+  			url: 'sendPwdMail',
   			data: {
-  				name : $('#name').val(),
+  				userId : $('#id').val(),
   				email : $('#email').val(),
   			},
   			type: 'POST',
   			success: function(res){
-  				console.log(res)
+  				console.log("res"+res)
   				
-  				alert('아이디 찾기 완료.')
-  				location.replace("/user/viewid?id="+res.userId+"&name="+res.name)
-  				return false;
+				alert("success");
+  				location.replace("/user/viewpw?id="+id+"&email="+email)
+   				/*location.replace("/user/viewpw?id="+userId+"&email="+email)*/
+  				return false; 
   				
   			},
   			error: function(e){

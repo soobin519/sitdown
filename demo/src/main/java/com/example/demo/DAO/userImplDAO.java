@@ -48,6 +48,12 @@ public class userImplDAO implements userDAO {
 		  return sql.selectOne("com.example.demo.UserMapper.updatePassword",user);
 	  }
 	  
+	  //현재 비밀번호 체크 
+	  @Override 
+	  public int checkPw(userVO user) {
+		  return sql.selectOne("com.example.demo.UserMapper.checkPw",user);
+	  }
+	  
 	  //유저 정보 조회
 	  @Override
 	  public int selectUser(userVO user) {
