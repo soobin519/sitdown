@@ -22,9 +22,10 @@ import com.example.demo.VO.trainVO;
 @RestController
 public class subwayAPI {
 	
-	private final static String url = "http://swopenapi.seoul.go.kr/api/subway/5048634d437470673130386548486867/json/realtimePosition/1/40/";
+	private final static String url = "http://swopenapi.seoul.go.kr/api/subway/5048634d437470673130386548486867/json/realtimePosition/1/100/";
+	private final static String arrival_url = "http://swopenAPI.seoul.go.kr/api/subway/5048634d437470673130386548486867/json/realtimeStationArrival/0/100/";
 	
-	// API 가져오기 위한 메소드
+	// 실시간 지하철 위치 API
 	public static List<Map<String, Object>> getSubwayAPI(String station) throws ParseException {
 		
 		StringBuilder sb = new StringBuilder();
@@ -34,7 +35,7 @@ public class subwayAPI {
 		RestTemplate restTemplate = new RestTemplate();
 		ResponseEntity<String> response = restTemplate.exchange(URL,HttpMethod.GET,null,String.class);		
 		
-		List<Map<String, Object>> train = jsonUtil.jsonToMap(response); // 리스트로 반환하기 위한 형변환
+		List<Map<String, Object>> train = jsonUtil.jsonToMap(response,"realtimePositionList"); // 리스트로 반환하기 위한 형변환
 //		for(Map<String,Object> map : train) {
 //			System.out.println(map.toString());
 //		}
@@ -42,5 +43,22 @@ public class subwayAPI {
 		return train;
 		
 	}
+	
+	// 도착 정보 API
+	public static List<Map<String, Object>> getArrivalTimeAPI(String station) throws ParseException {
+		
+		StringBuilder sb = new StringBuilder();
+		sb.append((arrival_url)).append(station);
+		String URL = sb.toString();
+		
+		RestTemplate restTemplate = new RestTemplate();
+		ResponseEntity<String> response = restTemplate.exchange(URL,HttpMethod.GET,null,String.class);		
+		
+		List<Map<String, Object>> arrivalInfo = jsonUtil.jsonToMap(response,"realtimeArrivalList"); // 리스트로 반환하기 위한 형변환
+		
+		return arrivalInfo;
+		
+	}
+	
 
 }

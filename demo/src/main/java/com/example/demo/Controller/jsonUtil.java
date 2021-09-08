@@ -16,11 +16,11 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 public final class jsonUtil {
 	// entity -> list 형식 변환 유틸
 	@SuppressWarnings("unchecked")
-	public static List<Map<String, Object>>  jsonToMap(ResponseEntity<String> response) throws ParseException{
+	public static List<Map<String, Object>>  jsonToMap(ResponseEntity<String> response, String keyName) throws ParseException{
 		
 		JSONParser parser = new JSONParser();
 		JSONObject jsonObject = (JSONObject) parser.parse(response.getBody().toString());
-		JSONArray Array = (JSONArray) jsonObject.get("realtimePositionList");
+		JSONArray Array = (JSONArray) jsonObject.get(keyName);
 		
         List<Map<String, Object>> list = new ArrayList<Map<String, Object>>();
         
@@ -35,7 +35,6 @@ public final class jsonUtil {
 					map = new ObjectMapper().readValue(Object.toJSONString(), Map.class);
 					list.add(map);
 				} catch (JsonProcessingException e) {
-					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
             }

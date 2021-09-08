@@ -80,14 +80,14 @@ public class SubwayController {
 	@ResponseBody
 	public List<getoff_infoVO> seatPage(Model model, @RequestParam(value="subwayId") int subwayId, @RequestParam(value="trainNo") int trainNo, @RequestParam(value="carNum") int carNum) {
 		//System.out.println(trainNo);
-		System.out.println("aaaaaa");
+		//System.out.println("aaaaaa");
 		HashMap<String,Object> map = new HashMap<>();
 		map.put("subwayId",subwayId); // 노선번호 
 		map.put("trainNo", trainNo); // 열차번호
 		map.put("carNum", carNum); // 칸번호
 			
 		List<getoff_infoVO> getoffList = service.selectGetoffInfo(map);
-		System.out.println("getofflist"+getoffList);
+		//System.out.println("getofflist"+getoffList);
 			
 		//model.addAttribute("getoffList", getoffList);
 		return getoffList;
@@ -111,10 +111,10 @@ public class SubwayController {
 		ModelAndView view = new ModelAndView();
 		String viewPage="trainListAjax";
 		
-		System.out.println("line=>"+line); // ex) 3호선 -> 노선명
+		//System.out.println("line=>"+line); // ex) 3호선 -> 노선명
 		
 		List<Map<String, Object>> train = subwayAPI.getSubwayAPI(line); // api 호출
-		System.out.println("train 정보: "+train.toString());
+		//System.out.println("train 정보: "+train.toString());
 		
 		view.setViewName(viewPage);
 		view.addObject("trainInfo", train);
@@ -176,15 +176,19 @@ public class SubwayController {
 		if(service.checkDuplicatedInfo(userId)<100) {
 			
 			// 등록 수행
-			int result = service.insertGetoffInfo(getoff);
-			
-			// 등록 성공했을 시 
-			if(result==1){		
-				view.setViewName(viewPage);
-				view.addObject("gid",getoff.getId()); 
-			}else {
-				view.setViewName(errorPage);
-				view.addObject("msg", "등록 실패 다시 시도해주세요.");
+			int result;
+			try {
+				result = service.insertGetoffInfo(getoff);
+				// 등록 성공했을 시 
+				if(result==1){		
+					view.setViewName(viewPage);
+					view.addObject("gid",getoff.getId()); 
+				}else {
+					view.setViewName(errorPage);
+					view.addObject("msg", "등록 실패 다시 시도해주세요.");
+				}
+			} catch (ParseException e) {
+				e.printStackTrace();
 			}
 			
 		}else {
