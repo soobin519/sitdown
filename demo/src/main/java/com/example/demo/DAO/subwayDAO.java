@@ -30,4 +30,8 @@ public interface subwayDAO {
 	//하차정보 중복 체크 
 	public int checkDuplicatedInfo(int userId);
 	
+	//이미 지나간 열차 삭제 
+	public int deletePassingTrain();
+	
+	
 }

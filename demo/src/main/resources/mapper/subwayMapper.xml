@@ -30,8 +30,8 @@
 
 <!-- 하차정보 등록하기 -->
 <insert id="insertGetoffInfo" parameterType="com.example.demo.VO.getoff_infoVO">
-	insert into getoff_info(subwayId,trainNo,carNum,seatNum,statnNm,getoffNm,getoffstatn,userId) 
-	values (#{subwayId},#{trainNo}, #{carNum}, #{seatNum}, #{statnNm}, #{getoffNm}, #{getoffstatn}, #{userId})
+	insert into getoff_info(subwayId,trainNo,carNum,seatNum,statnNm,getoffNm,getoffstatn,userId, getoffTime) 
+	values (#{subwayId},#{trainNo}, #{carNum}, #{seatNum}, #{statnNm}, #{getoffNm}, #{getoffstatn}, #{userId}, #{getoffTime})
 	<selectKey keyProperty="id" resultType="int">
         SELECT LAST_INSERT_ID()
     </selectKey>
@@ -65,6 +65,12 @@
 	on l.id = g.subwayId
 	where carNum=#{carNum} and trainNo=#{trainNo} and subwayId=#{subwayId} and flag = 1
 </select>
+
+<!-- 이미 지나간 열차 삭제처리 -->
+<update id="deletePassingTrain">
+	update getoff_info SET flag=0 WHERE <![CDATA[ getoffTime < ]]> now() and flag=1
+</update>
+ 
 
 
 

@@ -79,17 +79,17 @@ public class SubwayController {
 	@RequestMapping(value="/checkSeat")
 	@ResponseBody
 	public List<getoff_infoVO> seatPage(Model model, @RequestParam(value="subwayId") int subwayId, @RequestParam(value="trainNo") int trainNo, @RequestParam(value="carNum") int carNum) {
-		//System.out.println(trainNo);
-		//System.out.println("aaaaaa");
+
+		// 삭제하기 
+		service.deletePassingTrain();
+		
 		HashMap<String,Object> map = new HashMap<>();
 		map.put("subwayId",subwayId); // 노선번호 
 		map.put("trainNo", trainNo); // 열차번호
 		map.put("carNum", carNum); // 칸번호
 			
 		List<getoff_infoVO> getoffList = service.selectGetoffInfo(map);
-		//System.out.println("getofflist"+getoffList);
-			
-		//model.addAttribute("getoffList", getoffList);
+	
 		return getoffList;
 	}
 	
@@ -149,8 +149,11 @@ public class SubwayController {
 	// 좌석선택 page
 	@RequestMapping(value="selectSeat",method=RequestMethod.POST)
 	public ModelAndView selectSeat(trainVO train) {
+		
 		ModelAndView view = new ModelAndView();
 		String viewPage="selectSeat";
+		
+		service.deletePassingTrain();
 		
 		System.out.println(train.toString());
 		
@@ -173,7 +176,7 @@ public class SubwayController {
 		int userId = user.getId();
 		
 		// 이미 등록 된 정보가 없는 경우에만 등록 수행 
-		if(service.checkDuplicatedInfo(userId)<100) {
+		if(service.checkDuplicatedInfo(userId)<1) {
 			
 			// 등록 수행
 			int result;

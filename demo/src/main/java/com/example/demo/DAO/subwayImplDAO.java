@@ -6,6 +6,7 @@ import java.util.List;
 import javax.inject.Inject;
 
 import org.apache.ibatis.session.SqlSession;
+import org.springframework.jdbc.support.rowset.SqlRowSet;
 
 import com.example.demo.VO.getoff_infoVO;
 import com.example.demo.VO.lineVO;
@@ -45,5 +46,10 @@ public class subwayImplDAO implements subwayDAO {
 	@Override
 	public int checkDuplicatedInfo(int userId) {
 		return sql.selectOne(Namespace+"checkDuplicatedInfo",userId);
+	}
+	
+	@Override 
+	public int deletePassingTrain() {
+		return sql.update(Namespace+"deletePassingTrain");
 	}
 }
