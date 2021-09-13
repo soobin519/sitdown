@@ -1,5 +1,7 @@
 package com.example.demo.VO;
 
+import java.util.Date;
+
 public class getoff_infoVO {
 	// 하차정보 등록, 출력 시 사용하기 위한 VO 
 	private int id; // index 
@@ -12,6 +14,7 @@ public class getoff_infoVO {
 	private String getoffNm; // 하차역
 	private int getoffstatn; // 하차역 Id 
 	private int userId; //userId
+	private Date getoffTime; //하차 시간 
 	
 	public getoff_infoVO() {
 		super();
@@ -20,7 +23,7 @@ public class getoff_infoVO {
 
 	
 	public getoff_infoVO(int id, int subwayId, String trainNo, String line, int carNum, int seatNum, String statnNm, String getoffNm,
-			int getoffstatn, int userId) {
+			int getoffstatn, int userId, Date getoffTime) {
 		super();
 		this.id = id;
 		this.subwayId = subwayId;
@@ -32,6 +35,7 @@ public class getoff_infoVO {
 		this.getoffNm = getoffNm;
 		this.getoffstatn = getoffstatn;
 		this.userId = userId;
+		this.getoffTime = getoffTime;
 	}
 	
 	
@@ -141,6 +145,16 @@ public class getoff_infoVO {
 
 	public void setUserId(int userId) {
 		this.userId = userId;
+	}
+	
+	
+	public Date getGetoffTime() {
+		return getoffTime;
+	}
+
+
+	public void setGetoffTime(Date getoffTime) {
+		this.getoffTime = getoffTime;
 	}
 
 

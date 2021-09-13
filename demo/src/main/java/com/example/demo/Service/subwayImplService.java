@@ -1,6 +1,8 @@
 package com.example.demo.Service;
 
+
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
@@ -46,15 +48,25 @@ public class subwayImplService implements subwayService {
 				String barvlDt = (String) map.get("barvlDt"); // 시간 (초)
 				String recptnDt = (String) map.get("recptnDt"); // 날짜 
 				
-				System.out.println(recptnDt);
 				System.out.println(barvlDt);
+				System.out.println(recptnDt);
 				
+				int sec = Integer.parseInt(barvlDt); //시간 (초) 형변환 
 				SimpleDateFormat fm = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss.SSS");
 
 				try {
 					Date to = fm.parse(recptnDt);
-					System.out.println("형변환 ");
-					System.out.println(to);
+					
+					Calendar cal = Calendar.getInstance();
+					
+					cal.setTime(to);
+					cal.add(Calendar.SECOND,sec); // 시간 초 더해주기 
+					
+					Date getoffTime = cal.getTime();
+					System.out.println("계산 결과 : "+getoffTime);
+					
+					getoff.setGetoffTime(getoffTime); // 시간 계산 결과 셋팅
+					
 					
 				} catch (java.text.ParseException e) {
 					e.printStackTrace();
@@ -79,6 +91,11 @@ public class subwayImplService implements subwayService {
 	@Override
 	public int checkDuplicatedInfo(int userId) {
 		return sdao.checkDuplicatedInfo(userId);
+	}
+	
+	@Override
+	public int deletePassingTrain() {
+		return sdao.deletePassingTrain();
 	}
 	
 	
