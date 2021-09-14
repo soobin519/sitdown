@@ -105,8 +105,9 @@ public class UserUtilController {
 
 		if(user == null) {
 			session.setAttribute("user", null);
+			model.addAttribute("msg", "입력하신 아이디가 등록되어 있지 않거나, 아이디 또는 비밀번호를 잘못 입력하셨습니다.");
 
-			return "redirect:/user/login";
+			return "loginFail";
 		}else {
 			
 			if(bcryptPE.matches(vo.getPassword(),user.getPassword())) {
@@ -125,8 +126,8 @@ public class UserUtilController {
 				
 			}else {
 				// 패스워드가 같지 않을 경우
-				session.setAttribute("user", null);
-				return "redirect:/user/login";
+				model.addAttribute("msg","입력하신 아이디가 등록되어 있지 않거나, 아이디 또는 비밀번호를 잘못 입력하셨습니다.");
+				return "loginFail";
 			}
 			
 		}
