@@ -67,7 +67,7 @@ public class UserUtilController {
   		return count;
   	}
   	
-  	//로그인 페이지
+  	//회원가입 페이지
   	@RequestMapping(value="/join")
   	public String joinPage(Model model) {
   		return "join";
@@ -102,7 +102,7 @@ public class UserUtilController {
 		
 		HttpSession session = req.getSession(true);
 		userVO user = service.login(vo);
-		
+
 		if(user == null) {
 			session.setAttribute("user", null);
 			model.addAttribute("msg", "입력하신 아이디가 등록되어 있지 않거나, 아이디 또는 비밀번호를 잘못 입력하셨습니다.");
@@ -120,8 +120,8 @@ public class UserUtilController {
 				context.setAuthentication(authentication);
 				SecurityContextHolder.setContext(context);
 				
+				
 				System.out.println("userinfo"+user.getEmail());	
-
 				return "redirect:/";
 				
 			}else {
