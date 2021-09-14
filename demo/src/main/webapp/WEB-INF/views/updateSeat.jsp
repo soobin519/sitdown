@@ -3,6 +3,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+	<title>SIT DOWN</title>
     <!-- Custom fonts for this theme -->
     <link href="/resources/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
