@@ -26,6 +26,11 @@
 
 <!-- Theme CSS -->
 <link href="/resources/css/freelancer.min.css" rel="stylesheet">
+
+<!-- Core theme CSS (includes Bootstrap)-->
+<link href="/resources/css/styles.css" rel="stylesheet" />
+
+
 </head>
 
 <body id="page-top">
