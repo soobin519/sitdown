@@ -25,6 +25,9 @@
 	href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic"
 	rel="stylesheet" type="text/css">
 
+<!-- Core theme CSS (includes Bootstrap)-->
+<link href="/resources/css/styles.css" rel="stylesheet" />
+
 <!-- Theme CSS -->
 <link href="/resources/css/freelancer.min.css" rel="stylesheet">
 </head>
