@@ -49,28 +49,6 @@
   </nav>
   <br>
   <br>
-  <script type="text/javascript">
-
-  	function loginbtn(msg){
-  		
-  		//저장된 아이디, 비밀번호 가져오기  
-  		//var data = new FormData();
-  		//var r = "${result}";
-  	
-  		
-  		//사용자로부터 페이지에서 입력받은 아이디, 비밀번호 가져오기
-  		//const idValue = document.getElementById('userId').value;
-  		//const pwValue = document.getElementById('password').value;
-
-  		
-  		//입력된 값이 틀렸을 경우
-  		if(msg==false){
-  			//console.log(msg);
-  			alert("입력하신 아이디가 등록되어 있지 않거나, 아이디 또는 비밀번호를 잘못 입력하셨습니다."); 			
-  		}
-  	
-  	}
-</script>
 
   
 <section class="page-section" id="contact">
@@ -120,7 +98,7 @@
               	<a href="findpw">비밀번호 찾기</a>
               </div>
  
-              <button type="submit" class="btn btn-primary btn-xl" id="sendMessageButton">로그인</button>
+              <button  onclick='loginbtn();' type="submit" class="btn btn-primary btn-xl" id="sendMessageButton">로그인</button>
             </div>
           </form>
         </div>

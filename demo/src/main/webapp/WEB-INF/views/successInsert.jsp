@@ -29,31 +29,34 @@
 </head>
 
 <body id="page-top">
-
-	<!-- Navigation -->
+	<!-- Navigation-->
 	<nav
 		class="navbar navbar-expand-lg bg-secondary text-uppercase fixed-top"
 		id="mainNav">
 		<div class="container">
-			<a class="navbar-brand js-scroll-trigger" href="/">Sit Down</a>
+			<a class="navbar-brand" href="#page-top">SIT DOWN</a>
 			<button
-				class="navbar-toggler navbar-toggler-right text-uppercase font-weight-bold bg-primary text-white rounded"
-				type="button" data-toggle="collapse" data-target="#navbarResponsive"
-				aria-controls="navbarResponsive" aria-expanded="false"
-				aria-label="Toggle navigation">
+				class="navbar-toggler text-uppercase font-weight-bold bg-primary text-white rounded"
+				type="button" data-bs-toggle="collapse"
+				data-bs-target="#navbarResponsive" aria-controls="navbarResponsive"
+				aria-expanded="false" aria-label="Toggle navigation">
 				Menu <i class="fas fa-bars"></i>
 			</button>
 			<div class="collapse navbar-collapse" id="navbarResponsive">
-				<ul class="navbar-nav ml-auto">
-					<!-- 로그인 했을 경우 -->
+				<ul class="navbar-nav ms-auto">
+
+
+					<!-- 로그인 했을 경우 --> 
 					<c:if test="${user !=null }">
-						<li class="nav-item mx-0 mx-lg-1"><a
-							class="nav-link py-3 px-0 px-lg-3 rounded" href="#portfolio">Menu</a></li>
-						<li class="nav-item mx-0 mx-lg-1"><a
-							class="nav-link py-3 px-0 px-lg-3 rounded"
-							onclick="alert('로그아웃완료');" href="/user/logout">LOGOUT</a></li>
-						<li class="nav-item mx-0 mx-lg-1"><a
-							class="nav-link py-3 px-0 px-lg-3 rounded" href="/myPage/info"><p>${user.name}님</p></a></li>
+						<li class="nav-item mx-0 mx-lg-1">
+							<a class="nav-link py-3 px-0 px-lg-3 rounded" href="#portfolio">Menu</a></li>
+						<li class="nav-item mx-0 mx-lg-1">
+							<a class="nav-link py-3 px-0 px-lg-3 rounded" onclick="alert('로그아웃완료');" href="/user/logout">LOGOUT</a></li>
+ 						<li class="nav-item mx-0 mx-lg-1">
+ 							<a class="nav-link py-3 px-0 px-lg-3 rounded" href="/user/setnewpw">SETTING</a></li>
+ 						<li class="nav-item mx-0 mx-lg-1">
+ 							<a class="nav-link py-3 px-0 px-lg-3 rounded" href="/myPage/info"><p>${user.name}님</p></a>
+							</li> 
 					</c:if>
 
 					<!-- 로그인 안했을 경우  -->
@@ -65,12 +68,14 @@
 						<li class="nav-item mx-0 mx-lg-1"><a
 							class="nav-link py-3 px-0 px-lg-3 rounded" href="/user/join">JOIN
 								US</a></li>
-					</c:if>  
+					</c:if>
 
 				</ul>
 			</div>
 		</div>
 	</nav>
+	
+	
 	<br>
 	<br>
 	<script type="text/javascript">
