@@ -56,7 +56,7 @@ public class SubwayController {
 		String viewPage="getoff";
 		
 		userVO loginUser = (userVO) session.getAttribute("user");
-		System.out.println("session:  "+loginUser.toString());
+		//System.out.println("session:  "+loginUser.toString());
 //		String station="분당선";
 //		List<Map<String, Object>> train = subwayAPI.getSubwayAPI(station); // api 호출
 //		
@@ -155,7 +155,7 @@ public class SubwayController {
 		
 		service.deletePassingTrain();
 		
-		System.out.println(train.toString());
+		//System.out.println(train.toString());
 		
 		view.setViewName(viewPage);
 		view.addObject("selectInfo",train);

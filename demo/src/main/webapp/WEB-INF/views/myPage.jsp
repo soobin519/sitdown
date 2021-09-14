@@ -106,15 +106,15 @@
 			<br>
 			<!-- btn -->
 			<div class="row" style="place-content: center;">
-				<div class="col-3" style="text-align: right;">
+				<div class="col-3" style="text-align: center;">
 					<button type="button" class="btn btn-primary btn-xl"
 						id="sendMessageButton" onclick = "location.href='/'" >메인으로</button>
 				</div>
-				<div class="col-3" style="text-align: left;">
+<!-- 				<div class="col-3" style="text-align: left;">
 					<button type="button" class="btn btn-primary btn-xl"
 						id="sendMessageButton" onclick="formSeatInfo();"
 						style="text-align: center; text-align: center;">메인으로</button>
-				</div>
+				</div> -->
 			</div>
 			</c:if>
 			<c:if test='${ myseat ne null }'>
