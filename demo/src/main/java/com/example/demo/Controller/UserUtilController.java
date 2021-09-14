@@ -67,7 +67,7 @@ public class UserUtilController {
   		return count;
   	}
   	
-  	//로그인 페이지
+  	//회원가입 페이지
   	@RequestMapping(value="/join")
   	public String joinPage(Model model) {
   		return "join";
@@ -102,10 +102,9 @@ public class UserUtilController {
 		
 		HttpSession session = req.getSession(true);
 		userVO user = service.login(vo);
-		
+
 		if(user == null) {
 			session.setAttribute("user", null);
-			rttr.addFlashAttribute("msg", false);
 
 			return "redirect:/user/login";
 		}else {
@@ -120,12 +119,13 @@ public class UserUtilController {
 				context.setAuthentication(authentication);
 				SecurityContextHolder.setContext(context);
 				
+				
 				System.out.println("userinfo"+user.getEmail());	
-
 				return "redirect:/";
 				
 			}else {
 				// 패스워드가 같지 않을 경우
+				session.setAttribute("user", null);
 				return "redirect:/user/login";
 			}
 			
