@@ -154,7 +154,7 @@ public class SubwayController {
 		
 		service.deletePassingTrain();
 		
-		System.out.println(train.toString());
+		//System.out.println(train.toString());
 		
 		view.setViewName(viewPage);
 		view.addObject("selectInfo",train);

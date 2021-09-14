@@ -64,9 +64,9 @@
   
   <section class="page-section" id="contact">
     <div class="container">
-    
+    <br>
       <!-- Contact Section Heading -->
-      <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0">하차정보 등록</h2>
+      <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0">좌석 정보 조회</h2>
 
       <!-- Icon Divider -->
       <div class="divider-custom">
