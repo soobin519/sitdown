@@ -6,7 +6,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-
+	<title>SIT DOWN</title>
     <!-- Custom fonts for this theme -->
     <link href="/resources/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
@@ -71,6 +71,8 @@
     <div class="container">
     
       <!-- Contact Section Heading -->
+      <br>
+      <br>
       <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0">하차정보 등록</h2>
 
       <!-- Icon Divider -->

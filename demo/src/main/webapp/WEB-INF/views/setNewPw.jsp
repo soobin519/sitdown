@@ -20,13 +20,14 @@
     </style>
 
     <!-- Custom fonts for this theme -->
-    <link href="/static/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+    <link href="/resources/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet" type="text/css">
 
     <!-- Theme CSS -->
-    <link href="${ pageContext.request.contextPath }/resources/css/freelancer.min.css" rel="stylesheet">
+    <link href= "/resources/css/freelancer.min.css" rel="stylesheet">
     
+   
 
 </head>
 
@@ -67,17 +68,17 @@
       <!-- Contact Section Heading -->
       <br>
       <br>
-      <h3 class="page-section-heading text-center text-uppercase text-secondary mb-0">Set New Password</h3>
+      <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0">Set New Password</h3>
 
       <!-- Icon Divider -->
-	 <div class="divider-custom">
+      <div class="divider-custom">
         <div class="divider-custom-line"></div>
         <div class="divider-custom-icon">
           <i class="fas fa-star"></i>
         </div>
         <div class="divider-custom-line"></div>
-      </div> 
-      <br>
+      </div>
+     
 
       <!-- 비밀번호 재설정  -->
       <div class="row">

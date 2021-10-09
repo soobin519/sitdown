@@ -4,6 +4,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+<title>SIT DOWN</title>
 <!-- Custom fonts for this theme -->
 <link href="/resources/vendor/fontawesome-free/css/all.min.css"
 	rel="stylesheet" type="text/css">

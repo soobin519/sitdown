@@ -13,6 +13,7 @@
 	content="width=device-width, initial-scale=1, shrink-to-fit=no" />
 <meta name="description" content="" />
 <meta name="author" content="" />
+
 <title>SIT DOWN</title>
 <!-- Favicon-->
 <link rel="icon" type="image/x-icon" href="/assets/favicon.ico" />
@@ -25,6 +26,7 @@
 <link
 	href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic"
 	rel="stylesheet" type="text/css" />
+	
 <!-- Core theme CSS (includes Bootstrap)-->
 <link href="/resources/css/styles.css" rel="stylesheet" />
 
@@ -186,6 +188,7 @@
       <small>Copyright © Your Website 2021</small>
     </div>
   </section>
+
 
 	<!-- Bootstrap core JS-->
 	<script
